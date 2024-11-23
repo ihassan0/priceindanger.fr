@@ -1,0 +1,144 @@
+:root {
+    --primary: #cd1127;
+    --secondary: #002654;
+}
+* {
+    font-family: Arial, sans-serif;
+}
+body {
+    overflow-x: hidden;
+}
+a {
+    color: #292b2c !important;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--primary) !important;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--primary);
+    width: 15px;
+    height: 15px;
+}
+
+.btn {
+    background-color: transparent;
+    border: 1px solid var(--secondary);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    border-width: 1px;
+    cursor: pointer;
+    line-height: normal;
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+}
+.btn::before,
+.btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--secondary);
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+    width: 51%;
+}
+.btn::after {
+    right: 0;
+    left: auto;
+}
+
+.btn:hover {
+    color: var(--secondary) !important;
+    background: #fff;
+    border: 1px solid var(--secondary);
+}
+
+.btn:hover:before,
+.btn:hover:after {
+    width: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #292b2c;
+}
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media (min-width: 576px) {
+    .container,
+    .container-sm {
+        max-width: 540px !important;
+    }
+}
+@media (min-width: 768px) {
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 720px !important;
+    }
+}
+@media (min-width: 992px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm {
+        max-width: 960px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1140px !important;
+    }
+}
+
+/* Nav */
+.delayed-invisible {
+    visibility: hidden;
+    transition: visibility 0s linear 300ms;
+}
+
+.group:hover .delayed-invisible {
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+#dropdownList {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+#dropdownList.show {
+    max-height: 300px;
+}
+#categoryDropdownList.show {
+    max-height: 3000px;
+}
+
+.description > * {
+    text-align: right;
+    text-wrap: pretty;
+    text-decoration: none;
+}
