@@ -38,7 +38,7 @@
 
     <!-- Description   -->
     <div class="relative -mt-16">
-        <p class="md:w-[60%] w-[95%] mx-auto bg-white p-4 shadow-xl rounded-sm" style="left: calc(50% - 30%);">{{ $event->description }}</p>
+        <p class="md:w-[50%] w-[95%] mx-auto bg-white p-4 shadow-xl rounded-sm text-center" style="left: calc(50% - 30%);">{{ $event->description }}</p>
     </div>
 
     <main class="container my-20">
@@ -47,22 +47,22 @@
                 <div class="sticky top-0">
                     <h3 class="font-semibold text-xl">Top-Kategorien</h3>
                     <ul class="flex flex-col gap-2 mt-4">
-                        <li class="text-sm">
+                        <li>
                             <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> Électronique</a>
                         </li>
-                        <li class="text-sm">
+                        <li>
                             <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> Voyage</a>
                         </li>
-                        <li class="text-sm">
+                        <li>
                             <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> Maison et jardin</a>
                         </li>
-                        <li class="text-sm">
+                        <li>
                             <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> Mode</a>
                         </li>
-                        <li class="text-sm">
+                        <li>
                             <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> Beauté et soins de la peau</a>
                         </li>
-                        <li class="text-sm">
+                        <li>
                             <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> Grand magasin</a>
                         </li>
                     </ul>

@@ -5,14 +5,14 @@
             class="object-cover w-full h-40">
     </div>
 
-    <div class="p-3 relative">
+    <div class="p-3 pt-2 relative">
         @if ($coupon->exclusive_coupons == 1)
         <div class="text-end absolute right-0 -top-4">
             <span
                 class="bg-[var(--primary)] text-white text-xs shadow-lg rounded-l-full px-3 py-1 ml-auto">Exclusive</span>
         </div>
         @endif
-        <h3 class="text-lg font-semibold ">{{ $coupon->name }}</h3>
+        <h3 class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap">{{ $coupon->name }}</h3>
 
         <!-- Description -->
         <div>
@@ -25,11 +25,8 @@
         </div>
 
 
-        <div class="flex justify-between items-center sm:mt-4 text-gray-500 text-sm">
-            <span>Weitere Details</span>
-            <span class="flex items-center">
-                <i class="far fa-calendar-alt mr-1"></i>{{ $coupon->expiry_date }}
-            </span>
+        <div class="flex justify-end items-center sm:mt-2 text-gray-500 text-sm">
+            <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date }}
         </div>
         <button onclick="buttonClick('{{ $coupon->id }}', '{{ $coupon->code }}', this);"
             class="btn w-full py-2 rounded mt-4 text-sm" data-title="{{ $coupon->name }}"
@@ -53,14 +50,14 @@
 
         if (newTabValue === '1') {
             const button = document.getElementById(`couponModal-${couponId}`);
-        if (button) {
-            button.click();
-        }
+            if (button) {
+                button.click();
+            }
             // console.log(data);
             // openModal(data);
 
-        // Call the function directly if newTab value is 1
-        }  
+            // Call the function directly if newTab value is 1
+        }
         const toggleButtons = document.querySelectorAll('[id^="toggleButton-"]');
 
         toggleButtons.forEach(button => {
@@ -81,27 +78,27 @@
     }
 
     function openCurrentPageInNewTab(couponId, couponCode) {
-    localStorage.setItem("couponId", couponId);
-    localStorage.setItem("couponCode", couponCode);
-    localStorage.setItem("newTab", 1);
-    window.open(window.location.href, "_blank");
-    document.getElementById(`open-store-${couponId}`).click();
-}
-
-
-function buttonClick(couponId, couponCode, data) {
-    const newTabValue = localStorage.getItem('newTab');
-
-    if (newTabValue === '1') {
-        openModal(data);
-    
-    }else{
         localStorage.setItem("couponId", couponId);
-    localStorage.setItem("couponCode", couponCode);
-    localStorage.setItem("newTab", 1);
-    window.open(window.location.href, "_blank");
-    document.getElementById(`open-store-${couponId}`).click();
-
+        localStorage.setItem("couponCode", couponCode);
+        localStorage.setItem("newTab", 1);
+        window.open(window.location.href, "_blank");
+        document.getElementById(`open-store-${couponId}`).click();
     }
-}
+
+
+    function buttonClick(couponId, couponCode, data) {
+        const newTabValue = localStorage.getItem('newTab');
+
+        if (newTabValue === '1') {
+            openModal(data);
+
+        } else {
+            localStorage.setItem("couponId", couponId);
+            localStorage.setItem("couponCode", couponCode);
+            localStorage.setItem("newTab", 1);
+            window.open(window.location.href, "_blank");
+            document.getElementById(`open-store-${couponId}`).click();
+
+        }
+    }
 </script>

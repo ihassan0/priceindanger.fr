@@ -22,41 +22,44 @@
     <!-- Breadcrums end -->
 
     <!-- Recent Posts  -->
-    <section class="container">
+    <section class="container my-10">
         <div class="lg:flex gap-5">
-            <aside class="lg:w-[30%]">
+            <aside class="lg:w-[30%] relative">
 
-                <!-- Search -->
-                <div class="flex-1 relative h-12 hidden md:block mt-5">
-                    <input type="text" class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm"
-                        placeholder="Trouvez des codes promo et des offres de vos marques préférées Blog...">
-                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
-                </div>
+                <div class="sticky top-0">
 
-                <!-- Recent Posts -->
-                <h3 class="font-semibold text-xl my-5">Messages récents</h3>
-                <div class="border-b border-gray-200 pb-5">
-                    @foreach ($blogs->take(3) as $blog )
-                    <div class="flex gap-3 my-4">
-                        <img src="{{ asset('storage/'. $blog->image) }}" class="w-24 h-16 object-cover">
-                        <span>
-                            <a href="{{ route('blogView',$blog->id) }}" class="font-semibold text-sm text-black opacity-75 cursor-pointer">{{ $blog->title }} </a>
-                            <p class="text-sm">{{ $blog->created_at->format('M d,Y') }}</p>
-                        </span>
+                    <!-- Search -->
+                    <div class="flex-1 relative h-12 hidden md:block mt-5">
+                        <input type="text" class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm"
+                            placeholder="Trouvez des codes promo et des offres de vos marques préférées Blog...">
+                        <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
                     </div>
-                    @endforeach
-                </div>
 
-                <!-- Popular Shops -->
-                <div>
-                    <h3 class="font-semibold text-xl my-5">Magasins populaires</h3>
-                    <ul>
-                        @foreach ($shops->take(10) as $shop )
-                        <a href="#" class="mb-2 block font-medium">
-                            <li>{{ $shop->name }}</li>
-                        </a>
+                    <!-- Recent Posts -->
+                    <h3 class="font-semibold text-xl my-5">Messages récents</h3>
+                    <div class="border-b border-gray-200 pb-5">
+                        @foreach ($blogs->take(3) as $blog )
+                        <div class="flex gap-3 my-4">
+                            <img src="{{ asset('storage/'. $blog->image) }}" class="w-24 h-16 object-cover">
+                            <span>
+                                <a href="{{ route('blogView',$blog->id) }}" class="font-semibold text-sm text-black opacity-75 cursor-pointer">{{ $blog->title }} </a>
+                                <p class="text-sm">{{ $blog->created_at->format('M d,Y') }}</p>
+                            </span>
+                        </div>
                         @endforeach
-                    </ul>
+                    </div>
+
+                    <!-- Popular Shops -->
+                    <div>
+                        <h3 class="font-semibold text-xl my-5">Magasins populaires</h3>
+                        <ul>
+                            @foreach ($shops->take(10) as $shop )
+                            <a href="#" class="mb-2 block font-medium">
+                                <li>{{ $shop->name }}</li>
+                            </a>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </aside>
 

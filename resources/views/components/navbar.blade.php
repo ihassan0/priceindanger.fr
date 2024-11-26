@@ -66,9 +66,9 @@
             @endif
 
             <!-- Navigation Menus -->
-            <li class="p-3 py-4 text-sm"><a href="/" class="!text-white">Maison</a></li>
-            <li class="p-3 py-4 text-sm"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
-            <li class="p-3 py-4 text-sm"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
+            <li class="p-3 py-5 text-sm"><a href="/" class="!text-white">Maison</a></li>
+            <li class="p-3 py-5 text-sm"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
+            <li class="p-3 py-5 text-sm"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
             <!-- Dropdown -->
             <li class="group relative cursor-pointer ">
                 <!-- Button -->
@@ -93,10 +93,10 @@
                     </li>
                 </ul>
             </li>
-            <li class="p-3 py-4 text-sm"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
-            <li class="p-3 py-4 text-sm"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
+            <li class="p-3 py-5 text-sm"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
+            <li class="p-3 py-5 text-sm"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
             </li>
-            <li class="p-3 py-4 text-sm"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
+            <li class="p-3 py-5 text-sm"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
         </ul>
     </section>
 

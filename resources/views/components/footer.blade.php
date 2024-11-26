@@ -1,22 +1,6 @@
-<!-- <footer class="bg-gray-800 text-white py-6">
-    <div class="container mx-auto text-center">
-        <div class="mb-4">
-            <a href="#" class="mx-2 hover:text-gray-400">Home</a>
-            <a href="#" class="mx-2 hover:text-gray-400">About</a>
-            <a href="#" class="mx-2 hover:text-gray-400">Services</a>
-            <a href="#" class="mx-2 hover:text-gray-400">Contact</a>
-        </div>
-
-        <p class="text-gray-400">&copy; 2024 MyWebsite. All rights reserved.</p>
-    </div>
-</footer> -->
-
-
-
-
 <footer class="bg-[#F7F8FB] text-black">
-    <div class="mx-auto w-full max-w-screen-xl">
-        <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+    <div class="mx-auto w-full max-w-6xl">
+        <div class="grid grid-cols-2 gap-4 px-4 py-6 lg:py-8 md:grid-cols-5">
             <div>
                 <h2 class=" text-xl font-semibold uppercase">Logo</h2>
                 <p class="my-4 text-sm">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
@@ -30,7 +14,6 @@
                     <p class="text-sm">admin@priceindanger.com</p>
                 </a>
             </div>
-
             <div>
                 <h2 class="mb-4 font-semibold uppercase">Liens utiles</h2>
                 <ul>
@@ -77,9 +60,9 @@
                     </li>
                 </ul>
             </div>
-            <div>
+            <div class="lg:col-span-2">
                 <h2 class="mb-4 font-semibold uppercase">Shops</h2>
-                <div class="grid md:grid-cols-4 grid-cols-2 gap-2">
+                <div class="grid md:grid-cols-4 grid-cols-2 gap-1">
                     @foreach ($shops as $shop)
                     <a href="#" class="h-16 hover:brightness-50 transition-all duration-300">
                         <img src="{{ asset('storage/' . $shop->logo) }}" class="w-full h-full object-cover rounded-md"

@@ -42,7 +42,7 @@
                         <h3 class="font-semibold text-xl">Top-Kategorien</h3>
                         <ul class="flex flex-col gap-2 mt-4">
                             @foreach($topCategories as $topcat)
-                            <li class="text-sm">
+                            <li>
                                 <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $topcat->name }}</a>
                             </li>
                             @endforeach

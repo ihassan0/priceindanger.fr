@@ -38,14 +38,14 @@
                         <i class="fa-solid fa-star text-[#CCCCCC] peer peer-hover:text-yellow-500 hover:text-yellow-500 text-lg cursor-pointer"></i>
                     </div>
 
-                    <button class="btn py-2 px-5 rounded-full overflow-hidden">Donner une évaluation</button>
+                    <button class="btn py-3 px-5 rounded-full overflow-hidden">Donner une évaluation</button>
                 </div>
                 <!-- Shops -->
                 <div class="mb-6">
                     <h3 class="font-semibold text-xl">Magasins similaires</h3>
                     <ul class="flex flex-col gap-2 mt-4">
                         @foreach ($shops->take(6) as $shop )
-                        <li class="text-sm">
+                        <li>
                             <a href="#" class="md:text-[17px]"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $shop->name }}</a>
                         </li>
                         @endforeach
@@ -56,7 +56,7 @@
                     <h3 class="font-semibold text-xl">Top-Kategorien</h3>
                     <ul class="flex flex-col gap-2 mt-4">
                         @foreach ($topCategories->take(6) as $category )
-                        <li class="text-sm">
+                        <li>
                             <a href="#" class="md:text-[17px]"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $category->name }}</a>
                         </li>
                         @endforeach
@@ -113,9 +113,8 @@
 
                                 <p class="mt-4 text-sm" style="color:black;"><span>Date d'expiration :</span></p>
                                 <div class="flex gap-3 items-center mt-2 text-gray-500 text-sm">
-                                    <span>Weitere Details</span>
                                     <span class="flex items-center">
-                                        <i class="far fa-calendar-alt mr-1"></i>{{ $coupon->expiry_date }}
+                                        <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date }}
                                     </span>
                                 </div>
 
@@ -135,26 +134,26 @@
 
         <!-- Table -->
         <div class="w-full rounded-md p-7 mt-10" style="box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;">
-            <h2 class="text-3xl font-semibold mb-2">Aktuell Apimanu Gutscheincodes Nov 2024</h2>
+            <h2 class="text-xl md:text-3xl font-semibold mb-2">Aktuell Apimanu Gutscheincodes Nov 2024</h2>
             <div class="mt-4 overflow-x-auto">
                 <table class="min-w-full table-auto border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="w-1/3 px-4 py-2 text-left text-lg font-semibold text-gray-700">Rabatt</th>
-                            <th class="w-2/5 px-4 py-2 text-left text-lg font-semibold text-gray-700">Beschreibung</th>
+                            <th class="w-2/5 px-4 py-2 text-left text-lg font-semibold text-gray-700 hidden lg:inline">Beschreibung</th>
                             <th class="w-1/3 px-4 py-2 text-center text-lg font-semibold text-gray-700">Ablauf</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         <tr>
                             <td class="px-4 py-2 whitespace-nowrap text-gray-800">7-tägiges Rückgaberecht</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-800">Sie können Ihre Bestellung innerhalb von 7 Tagen
+                            <td class="px-4 py-2 whitespace-nowrap text-gray-800 hidden lg:inline">Sie können Ihre Bestellung innerhalb von 7 Tagen
                                 nach Erhalt zurückgeben </td>
                             <td class="px-4 py-2 whitespace-nowrap text-center text-gray-800"></td>
                         </tr>
                         <tr>
                             <td class="px-4 py-2 whitespace-nowrap text-gray-800">10% Gutscheincode</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-800">10% Rabatt auf alle mit Gutscheincode bei Apimanu
+                            <td class="px-4 py-2 whitespace-nowrap text-gray-800 hidden lg:inline">10% Rabatt auf alle mit Gutscheincode bei Apimanu
                             </td>
                             <td class="px-4 py-2 whitespace-nowrap text-center text-gray-800">2024-12-31</td>
                         </tr>
@@ -162,30 +161,31 @@
                 </table>
             </div>
         </div>
-        <!-- Description -->
-        <section class="bg-[#F7F7F7] my-10">
-            <div class="px-3 py-10">
-                {!! $store->description !!}
-            </div>
-        </section>
-        <!-- Comment -->
-        <div>
-            <h3 class="font-semibold text-2xl my-5">Commentaires</h3>
-            <h3 class="font-semibold text-2xl my-5">Écrivez un commentaire</h3>
-
-            <form>
-                <div class="flex flex-col md:flex-row gap-4">
-                    <input type="text" name="name" placeholder="Ton Nom"
-                        class="border border-gray-300 p-3 rounded-md flex-1">
-                    <input type="email" name="name" placeholder="Votre email"
-                        class="border border-gray-300 p-3 rounded-md flex-1">
-                </div>
-                <textarea name="message" cols="30" placeholder="Votre commentaire"
-                    class="border border-gray-300 p-3 rounded-md w-full mt-4"></textarea>
-                <button class="btn rounded-full text-xl px-10 overflow-hidden py-2 mt-5">Soumettre</button>
-            </form>
-        </div>
     </main>
+
+    <!-- Description -->
+    <section class="bg-[#F7F7F7] my-10">
+        <div class="container px-3 py-10">
+            {!! $store->description !!}
+        </div>
+    </section>
+    <!-- Comment -->
+    <div class="container mb-10">
+        <h3 class="font-semibold text-2xl my-5">Commentaires</h3>
+        <h3 class="font-semibold text-2xl my-5">Écrivez un commentaire</h3>
+
+        <form>
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" name="name" placeholder="Ton Nom"
+                    class="border border-gray-300 p-3 rounded-md flex-1">
+                <input type="email" name="name" placeholder="Votre email"
+                    class="border border-gray-300 p-3 rounded-md flex-1">
+            </div>
+            <textarea name="message" cols="30" placeholder="Votre commentaire"
+                class="border border-gray-300 p-3 rounded-md w-full mt-4"></textarea>
+            <button class="btn rounded-full text-xl px-10 overflow-hidden py-2 mt-5">Soumettre</button>
+        </form>
+    </div>
 
     <!--  Footer  -->
     @include('components.footer')

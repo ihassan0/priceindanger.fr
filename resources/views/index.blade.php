@@ -50,11 +50,13 @@
 
     <!-- Banner Section -->
     <section class="container">
-        <div class="swiper-container md:h-[450px] mx-auto xl:ml-[33%] lg:ml-[28%] mt-5 overflow-hidden relative">
+        <div class="swiper-container md:h-[450px] mx-auto xl:ml-[25%] lg:ml-[28%] mt-5 overflow-hidden relative">
             <div class="swiper-wrapper ">
                 @foreach ($banners as $banner)
                 <div class="swiper-slide rounded-md overflow-hidden">
-                    <img src="{{ asset('storage/' . $banner->banner) }}" class="w-full h-auto" alt="Banner Image">
+                    <a href="#">
+                        <img src="{{ asset('storage/' . $banner->banner) }}" class="w-full h-auto" alt="Banner Image">
+                    </a>
                 </div>
                 @endforeach
             </div>
@@ -67,11 +69,11 @@
     <!--  Shops section   -->
 
     <section class="container overflow-hidden">
-        <p class="text-sm text-center opacity-85 my-3">Lorsque vous achetez via des liens sur priceindanger.com, nous
+        <p class="text-[15px] text-center opacity-85 my-4">Lorsque vous achetez via des liens sur priceindanger.com, nous
             pouvons gagner une commission</p>
         <div class="border-b-[1px] border-gray-200 my-10 pb-5 flex items-center justify-between">
 
-            <h1 class="lg:text-3xl text-xl font-bold ">Obtenez toutes sortes de bons d'achat et de codes de réduction
+            <h1 class="lg:text-[40px] text-xl font-bold leading-snug">Obtenez toutes sortes de bons d'achat et de codes de réduction
             </h1>
             <span class="text-lg font-bold flex items-center">
                 <i class="fa-solid fa-chevron-left shop-swiper-button-prev"></i>
@@ -82,9 +84,11 @@
         <div class="swiper-container-shop py-5">
             <div class="swiper-wrapper">
                 @foreach ($shops as $shop)
-                <div class="swiper-slide bg-white hover:shadow-xl transition duration-300 p-5 rounded-lg"
+                <div class="swiper-slide bg-white hover:shadow-xl transition duration-300 p-3 rounded-lg"
                     style="box-shadow: 0px 8px 16px rgb(0 0 0 / 5%);">
-                    <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-16 w-full object-cover">
+                    <a href="#">
+                        <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-16 mx-auto">
+                    </a>
                 </div>
                 @endforeach
             </div>
@@ -102,11 +106,10 @@
     <!--  Exclusive coupons   -->
     <section class="container overflow-hidden">
         <div class="border-b-[1px] border-gray-200 my-10 pb-5 flex items-center justify-between">
-            <h1 class="lg:text-3xl text-xl font-bold ">Codes promo exclusifs</h1>
+            <h1 class="lg:text-[32px] leading-snug text-xl font-bold ">Codes promo exclusifs</h1>
         </div>
 
         <div class="py-5">
-            <!-- {{ print_r($exclusives) }} -->
             <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-5">
                 @foreach ($exclusives as $coupon)
                 @include('components.couponCard', ['coupon' => $coupon])
@@ -123,9 +126,9 @@
     <section class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
             @foreach ($banners->take(2) as $banner)
-            <a href="#" class="overflow-hidden group">
+            <a href="#" class="overflow-hidden group rounded-md overflow-hidden">
                 <img src="{{ asset('storage/' . $banner->banner) }}"
-                    class="w-full h-auto object-cover rounded-md transition-all duration-300 group-hover:scale-105"
+                    class="w-full h-auto object-cover  transition-all duration-300 group-hover:scale-105"
                     alt="Banner Image">
             </a>
             @endforeach
@@ -140,7 +143,7 @@
     <section class="container overflow-hidden">
         <div class="border-b-[1px] border-gray-200 my-10 pb-5 flex items-center justify-between">
 
-            <h1 class="lg:text-3xl text-xl font-bold ">Bons populaires</h1>
+            <h1 class="lg:text-[32px] leading-snug text-xl font-bold ">Bons populaires</h1>
         </div>
 
         <div class="py-5">
@@ -161,7 +164,7 @@
 
     <section class="container overflow-hidden">
         <div class="border-b-[1px] border-gray-200 my-10 pb-5 flex items-center justify-between">
-            <h1 class="lg:text-3xl text-xl font-bold ">Codes de réduction de marques célèbres</h1>
+            <h1 class="lg:text-[32px] leading-snug text-xl font-bold ">Codes de réduction de marques célèbres</h1>
             <span class="text-lg font-bold flex items-center">
                 <i class="fa-solid fa-chevron-left store-swiper-button-prev"></i>
                 <i class="fa-solid fa-chevron-right store-swiper-button-next ml-2"></i>
