@@ -236,10 +236,6 @@
                 nextEl: '.shop-swiper-button-next',
                 prevEl: '.shop-swiper-button-prev',
             },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
             breakpoints: {
                 400: {
                     slidesPerView: 2,
@@ -304,10 +300,6 @@
             navigation: {
                 nextEl: '.store-swiper-button-next',
                 prevEl: '.store-swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
             },
             breakpoints: {
                 400: {
