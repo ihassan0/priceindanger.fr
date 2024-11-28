@@ -30,12 +30,22 @@
                     <div class="mb-5">
                         <h3 class="font-semibold text-xl">Trier par</h3>
                         <ul class="flex flex-col gap-2 mt-4">
-                            @foreach($topCategories as $key => $topcat)
                             <li class="flex items-center gap-2">
-                                <input type="checkbox" name="select" id="category-{{ $key }}" value="{{ $topcat->id }}" class="cursor-pointer">
-                                <label for="category-{{ $key }}" class="cursor-pointer whitespace-nowrap overflow-hidden">{{ $topcat->name }}</label>
+                                <input type="checkbox" name="select" id="category-1" class="cursor-pointer">
+                                <label for="category-1" class="cursor-pointer whitespace-nowrap overflow-hidden">Dernier</label>
                             </li>
-                            @endforeach
+                            <li class="flex items-center gap-2">
+                                <input type="checkbox" name="select" id="category-2" class="cursor-pointer">
+                                <label for="category-2" class="cursor-pointer whitespace-nowrap overflow-hidden">Populaire</label>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <input type="checkbox" name="select" id="category-3" class="cursor-pointer">
+                                <label for="category-3" class="cursor-pointer whitespace-nowrap overflow-hidden">Bon d'évènement</label>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <input type="checkbox" name="select" id="category-4" class="cursor-pointer">
+                                <label for="category-4" class="cursor-pointer whitespace-nowrap overflow-hidden">Tous les bons</label>
+                            </li>
                         </ul>
                     </div>
                     <div class="mb-5">

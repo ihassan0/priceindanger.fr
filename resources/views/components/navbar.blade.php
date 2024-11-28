@@ -4,7 +4,9 @@
 
         <!-- Logo -->
         <div class="flex items-center justify-between">
-            <h3 class="text-2xl">Logo</h3>
+            <a href="/">
+                <img src="{{url('logos/priceindanger.webp')}}" class="sm:w-[230px] w-[170px]" />
+            </a>
             <div class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer flex md:hidden">
                 <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="" class="w-[32px]">
                 <p class="font-semibold text-[#333]">French <i class="fa-solid fa-caret-down"></i></p>
@@ -36,7 +38,7 @@
         <ul class="text-white flex items-center justify-center xl:gap-5 gap-3">
             <!-- Categories Menus -->
             @if (Request::is('/'))
-            <li class="bg-[var(--primary)] p-4 cursor-pointer relative w-60">
+            <li class="bg-[var(--primary)] p-5 cursor-pointer relative w-60">
                 <span class="uppercase text-[16px] font-medium">
                     <i class="fa-solid fa-bars mr-2"></i>
                     Catégories
@@ -66,9 +68,9 @@
             @endif
 
             <!-- Navigation Menus -->
-            <li class="p-3 py-5 text-sm"><a href="/" class="!text-white">Maison</a></li>
-            <li class="p-3 py-5 text-sm"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
-            <li class="p-3 py-5 text-sm"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
+            <li class="p-3 py-5"><a href="/" class="!text-white">Maison</a></li>
+            <li class="p-3 py-5"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
+            <li class="p-3 py-5"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
             <!-- Dropdown -->
             <li class="group relative cursor-pointer ">
                 <!-- Button -->
@@ -93,10 +95,10 @@
                     </li>
                 </ul>
             </li>
-            <li class="p-3 py-5 text-sm"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
-            <li class="p-3 py-5 text-sm"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
+            <li class="p-3 py-5"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
+            <li class="p-3 py-5"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
             </li>
-            <li class="p-3 py-5 text-sm"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
+            <li class="p-3 py-5"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
         </ul>
     </section>
 

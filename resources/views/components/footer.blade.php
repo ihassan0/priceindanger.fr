@@ -1,9 +1,11 @@
 <footer class="bg-[#F7F8FB] text-black">
     <div class="mx-auto w-full max-w-6xl">
-        <div class="grid grid-cols-2 gap-4 px-4 py-6 lg:py-8 md:grid-cols-5">
-            <div>
-                <h2 class=" text-xl font-semibold uppercase">Logo</h2>
-                <p class="my-4 text-sm">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
+        <div class="grid grid-cols-2 gap-4 px-4 py-6 lg:py-8 lg:grid-cols-6">
+            <div class="lg:col-span-2">
+                <a href="/">
+                    <img src="{{url('logos/priceindanger.webp')}}" class="w-[180px]" />
+                </a>
+                <p class="my-4 text-sm md: w-[95%] leading-7">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
                 </p>
                 <a href="mailto:admin@priceindanger.com" class="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

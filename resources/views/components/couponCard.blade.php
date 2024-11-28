@@ -1,28 +1,31 @@
 <div
-    class="flex flex-col justify-between swiper-slide border rounded-lg overflow-hidden shadow bg-[#F5F5F5] hover:shadow-lg transition duration-200">
-    <div class="flex justify-center sm:mb-4 mb-1">
+    class="relative flex flex-col justify-between swiper-slide border rounded-lg shadow bg-[#F5F5F5] hover:shadow-lg transition duration-200">
+    <div class="flex justify-center sm:mb-2 mb-1">
         <img src="{{ asset('storage/'. $coupon->store->logo) }}" alt="{{ $coupon->store->store_name }}"
-            class="object-cover w-full h-40">
+            class="object-cover w-full h-40 rounded-t-lg">
     </div>
 
-    <div class="p-3 pt-2 relative">
-        @if ($coupon->exclusive_coupons == 1)
-        <div class="text-end absolute right-0 -top-4">
-            <span
-                class="bg-[var(--primary)] text-white text-xs shadow-lg rounded-l-full px-3 py-1 ml-auto">Exclusive</span>
-        </div>
-        @endif
+    @if ($coupon->exclusive_coupons == 1)
+    <div class="bagde-flag-wrap ">
+        <span
+            class="bagde-flag">Exclusive</span>
+    </div>
+    @endif
+    <div class="p-3 pt-2">
         <h3 class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap">{{ $coupon->name }}</h3>
 
         <!-- Description -->
         <div>
-            <div id="description-{{ $coupon->id }}" class="description-content transition-all duration-300"
+            <div class="description-content transition-all duration-300"
                 style="max-height: 0; overflow: hidden;">
                 <p style="color:black;">{{$coupon->description}}</p>
             </div>
-            <button id="toggleButton-{{ $coupon->id }}" class="p-0 text-[12px] sm:text-sm" style="color: #DA3737;"><i
-                    class="fa-solid fa-chevron-down"></i> Plus d'informations</button>
+            <button class="toggleButton p-0 text-[12px] sm:text-sm" style="color: #DA3737;">
+                <i class="fa-solid fa-chevron-down"></i>
+                Plus d'informations
+            </button>
         </div>
+
 
 
         <div class="flex justify-end items-center sm:mt-2 text-gray-500 text-sm">
@@ -58,12 +61,10 @@
 
             // Call the function directly if newTab value is 1
         }
-        const toggleButtons = document.querySelectorAll('[id^="toggleButton-"]');
 
-        toggleButtons.forEach(button => {
+        document.querySelectorAll('.toggleButton').forEach(button => {
             button.addEventListener('click', function() {
-                const couponId = this.id.split('-')[1];
-                const description = document.getElementById(`description-${couponId}`);
+                const description = this.previousElementSibling;
                 const isCollapsed = description.style.maxHeight === "0px";
 
                 if (isCollapsed) {

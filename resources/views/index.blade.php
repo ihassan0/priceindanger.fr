@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="text-center my-14">
-            <button class="btn rounded-full overflow-hidden mx-auto uppercase py-4 px-14">Aller dans les
+            <button class="btn rounded-full overflow-hidden mx-auto uppercase py-4 px-10">Aller dans les
                 magasins</button>
         </div>
     </section>

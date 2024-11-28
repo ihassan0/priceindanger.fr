@@ -87,7 +87,7 @@
                     <div>
                         <div class="flex flex-col md:flex-row gap-3 border-b transition duration-200 py-5 relative ">
                             <div class="sm:mb-4 mb-1">
-                                <p class="text-2xl md:px-10 md:py-8 font-semibold text-[var(--secondary)] bg-[#00265450] text-center py-3 rounded-md border-2 border-[var(--secondary)]">
+                                <p class="flex items-center justify-center text-center p-3 text-pretty overflow-hidden sm:min-h-[80px] h-auto h-[80px] sm:w-[135px] text-2xl font-semibold text-[var(--secondary)] bg-[#00265450] rounded-md border-2 border-[var(--secondary)]" style="font-size: clamp(24px ,50%, 30px );">
                                     {{$coupon->discount}}%
                                 </p>
                             </div>
@@ -98,10 +98,10 @@
                             </div>
                             @endif
                             <div class="p-3  flex-1">
-                                <h3 class="md:text-[22px]  font-semibold ">{{ $coupon->name }}</h3>
+                                <h3 class="text-[22px]  font-semibold ">{{ $coupon->name }}</h3>
 
                                 <div class="description-content transition-all duration-300 lg:block hidden">
-                                    <p style="color:black;">{{$coupon->description}}</p>
+                                    <p class="w-[80%]" style="color:black;">{{$coupon->description}}</p>
                                 </div>
                                 <!-- Description -->
                                 <div class="lg:hidden">
@@ -133,7 +133,7 @@
         </div>
 
         <!-- Table -->
-        <div class="w-full rounded-md p-7 mt-10" style="box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;">
+        <div class="w-full rounded-md sm:p-7 p-4 mt-10" style="box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;">
             <h2 class="text-xl md:text-3xl font-semibold mb-2">Aktuell Apimanu Gutscheincodes Nov 2024</h2>
             <div class="mt-4 overflow-x-auto">
                 <table class="min-w-full table-auto border border-gray-200">
