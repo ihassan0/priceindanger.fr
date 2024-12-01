@@ -21,10 +21,10 @@
     @include('components.breadcrums', ['current_page' => $store->name])
     <!-- Breadcrums end -->
 
-    <main class="container my-20">
+    <main class="container my-16">
         <div class="flex flex-col lg:flex-row gap-3">
             <!-- Review , Shops, Categories -->
-            <div class="lg:w-1/4 relative">
+            <div class="lg:w-1/4 relative order-2 lg:order-1">
                 <!-- ratings -->
                 <div class="mb-6">
                     <img src="{{ asset('storage/'. $store->logo) }}" class="w-2/4 ">
@@ -42,8 +42,15 @@
                 </div>
                 <!-- Shops -->
                 <div class="mb-6">
-                    <h3 class="font-semibold text-xl">Magasins similaires</h3>
-                    <ul class="flex flex-col gap-2 mt-4">
+                    <div
+                        class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header ">
+                        <h3 class="font-semibold text-xl">Magasins similaires</h3>
+                        <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
+                    </div>
+
+                    <!-- Categories List -->
+                    <ul
+                        class="flex flex-col gap-2 mt-4 transition-all duration-300 overflow-hidden toggle-content max-h-0 lg:max-h-none">
                         @foreach ($shops->take(6) as $shop )
                         <li>
                             <a href="#" class="md:text-[17px]"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $shop->name }}</a>
@@ -53,73 +60,90 @@
                 </div>
                 <!-- Categories -->
                 <div class="mb-6">
-                    <h3 class="font-semibold text-xl">Top-Kategorien</h3>
-                    <ul class="flex flex-col gap-2 mt-4">
-                        @foreach ($topCategories->take(6) as $category )
+                    <div
+                        class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header ">
+                        <h3 class="font-semibold text-xl">Top-Kategorien</h3>
+                        <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
+                    </div>
+
+                    <!-- Categories List -->
+                    <ul
+                        class="flex flex-col gap-2 mt-4 transition-all duration-300 overflow-hidden toggle-content max-h-0 lg:max-h-none">
+                        @foreach ($topCategories->take(6) as $category)
                         <li>
                             <a href="#" class="md:text-[17px]"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $category->name }}</a>
                         </li>
                         @endforeach
                     </ul>
                 </div>
+
             </div>
 
             <!-- Buttons , Coupons -->
-            <div class="lg:w-3/4">
+            <div class="lg:w-3/4 order-1 lg:order-2">
                 <!-- Buttons -->
-                <div class="flex items-center gap-3 overflow-auto">
+                <div class="flex items-center md:gap-3 gap-1 overflow-auto">
                     <button
-                        class="active border border-[var(--secondary)] uppercase md:px-7 px-5 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
+                        class="active border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
                         (34)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-5 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
+                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
                         (18)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-5 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
+                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
                         (16)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-5 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
+                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
                         (0)</button>
                 </div>
                 <!-- Coupons -->
                 <div class="mt-10">
                     @foreach ($store->coupons as $coupon)
                     <div>
-                        <div class="flex flex-col md:flex-row gap-3 border-b transition duration-200 py-5 relative ">
-                            <div class="sm:mb-4 mb-1">
-                                <p class="flex items-center justify-center text-center p-3 text-pretty overflow-hidden sm:min-h-[80px] h-auto h-[80px] sm:w-[135px] text-2xl font-semibold text-[var(--secondary)] bg-[#00265450] rounded-md border-2 border-[var(--secondary)]" style="font-size: clamp(24px ,50%, 30px );">
+                        <div class="flex flex-col md:flex-row items-center gap-3 border-b transition duration-200 py-5 relative ">
+                            <div class="sm:mb-4 mb-1 h-fit w-full md:w-auto md:block hidden">
+                                <p class="flex items-center justify-center text-center p-3 text-pretty overflow-hidden sm:min-h-[80px] h-auto h-[80px] sm:w-[135px] font-semibold text-[var(--secondary)] bg-[#00265450] md:bg-transparent rounded-md border-2 md:border-0 border-[var(--secondary)]" style="font-size: clamp(24px ,50%, 40px );">
                                     {{$coupon->discount}}%
                                 </p>
                             </div>
 
                             @if ($coupon -> exclusive_coupons == 1)
-                            <div class="text-end absolute right-0 top-[17px]">
+                            <div class="text-end absolute right-0 top-[5px]">
                                 <span class="bg-[var(--primary)] text-white text-xs shadow-lg rounded-l-full px-3 py-1 ml-auto">Exclusive</span>
                             </div>
                             @endif
-                            <div class="p-3  flex-1">
-                                <h3 class="text-[22px]  font-semibold ">{{ $coupon->name }}</h3>
-
-                                <div class="description-content transition-all duration-300 lg:block hidden">
-                                    <p class="w-[80%]" style="color:black;">{{$coupon->description}}</p>
-                                </div>
-                                <!-- Description -->
-                                <div class="lg:hidden">
-                                    <div id="description-{{ $coupon->id }}" class="description-content transition-all duration-300" style="max-height: 0; overflow: hidden;">
-                                        <p style="color:black;">{{$coupon->description}}</p>
+                            <div class="p-3  flex-1 w-full">
+                                <div class="flex  gap-2">
+                                    <div class="h-fit w-[30%] md:hidden">
+                                        <p class="text-lg text-center p-3 text-pretty overflow-hidden  font-semibold text-[var(--secondary)] bg-[#00265450] rounded-md border-2 border-[var(--secondary)] ">
+                                            {{$coupon->discount}}%
+                                        </p>
                                     </div>
-                                    <button id="toggleButton-{{ $coupon->id }}" class="p-0 text-[12px] sm:text-sm" style="color: #DA3737;"><i class="fa-solid fa-chevron-down"></i> Plus d'informations</button>
+                                    <div>
+                                        <h3 class="md:text-[22px] text-lg  font-semibold ">{{ $coupon->name }}</h3>
+
+                                        <div class="description-content transition-all duration-300 lg:block hidden">
+                                            <p class="w-[80%]" style="color:black;">{{$coupon->description}}</p>
+                                        </div>
+                                        <!-- Description -->
+                                        <div class="lg:hidden">
+                                            <div id="description-{{ $coupon->id }}" class="description-content transition-all duration-300" style="max-height: 0; overflow: hidden;">
+                                                <p style="color:black;">{{$coupon->description}}</p>
+                                            </div>
+                                            <button id="toggleButton-{{ $coupon->id }}" class="p-0 text-[12px] sm:text-sm" style="color: #DA3737;"><i class="fa-solid fa-chevron-down"></i> Plus d'informations</button>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <p class="mt-4 text-sm" style="color:black;"><span>Date d'expiration :</span></p>
-                                <div class="flex gap-3 items-center mt-2 text-gray-500 text-sm">
+                                <p class="mt-4 text-sm text-black md:block hidden"><span>Date d'expiration :</span></p>
+                                <div class="flex gap-3 items-center mt-2 text-gray-500 text-sm justify-end">
                                     <span class="flex items-center">
                                         <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date }}
                                     </span>
                                 </div>
 
                                 <button onclick="openModal()"
-                                    class="btn px-10 py-2 overflow-hidden rounded-full mt-4 text-sm">
+                                    class="btn w-full md:w-auto px-10 py-3 overflow-hidden md:rounded-full rounded-lg mt-4 md:text-sm text-xs">
                                     CODE ANZEIGEN
                                 </button>
                             </div>
@@ -135,27 +159,27 @@
         <!-- Table -->
         <div class="w-full rounded-md sm:p-7 p-4 mt-10" style="box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;">
             <h2 class="text-xl md:text-3xl font-semibold mb-2">Aktuell Apimanu Gutscheincodes Nov 2024</h2>
-            <div class="mt-4 overflow-x-auto">
+            <div class="mt-4">
                 <table class="min-w-full table-auto border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="w-1/3 px-4 py-2 text-left text-lg font-semibold text-gray-700">Rabatt</th>
-                            <th class="w-2/5 px-4 py-2 text-left text-lg font-semibold text-gray-700 hidden lg:inline">Beschreibung</th>
-                            <th class="w-1/3 px-4 py-2 text-center text-lg font-semibold text-gray-700">Ablauf</th>
+                            <th class="w-1/5 px-4 py-2 text-left text-lg font-semibold text-gray-700">Rabatt</th>
+                            <th class="w-3/5 px-4 py-2 text-left text-lg font-semibold text-gray-700 ">Beschreibung</th>
+                            <th class="w-1/5 px-4 py-2 text-center text-lg font-semibold text-gray-700">Ablauf</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         <tr>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-800">7-tägiges Rückgaberecht</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-800 hidden lg:inline">Sie können Ihre Bestellung innerhalb von 7 Tagen
+                            <td class="px-4 py-2 text-xs md:text-base text-gray-800">7-tägiges Rückgaberecht</td>
+                            <td class="px-4 py-2 text-xs md:text-base text-gray-800 ">Sie können Ihre Bestellung innerhalb von 7 Tagen
                                 nach Erhalt zurückgeben </td>
-                            <td class="px-4 py-2 whitespace-nowrap text-center text-gray-800"></td>
+                            <td class="px-4 py-2 text-xs md:text-base text-center text-gray-800"></td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-800">10% Gutscheincode</td>
-                            <td class="px-4 py-2 whitespace-nowrap text-gray-800 hidden lg:inline">10% Rabatt auf alle mit Gutscheincode bei Apimanu
+                            <td class="px-4 py-2 text-xs md:text-base text-gray-800">10% Gutscheincode</td>
+                            <td class="px-4 py-2 text-xs md:text-base text-gray-800 ">10% Rabatt auf alle mit Gutscheincode bei Apimanu
                             </td>
-                            <td class="px-4 py-2 whitespace-nowrap text-center text-gray-800">2024-12-31</td>
+                            <td class="px-4 py-2 text-xs md:text-base text-center text-gray-800">2024-12-31</td>
                         </tr>
                     </tbody>
                 </table>
@@ -166,6 +190,9 @@
     <!-- Description -->
     <section class="bg-[#F7F7F7] my-10">
         <div class="container px-3 py-10">
+            <div class="border-b-[1px] border-gray-200 mb-7 pb-5">
+                <h1 class="lg:text-[32px] leading-snug text-xl font-bold text-center">ABOUT YOU Gutscheine und Rabattcodes 2024</h1>
+            </div>
             {!! $store->description !!}
         </div>
     </section>
@@ -197,14 +224,38 @@
 <script src="https://kit.fontawesome.com/35b4de642d.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-    const categoryDropdownButton = document.getElementById('categoryDropdownButton');
-    const categoryDropdownList = document.getElementById('categoryDropdownList');
+    // Toggle categories and store height at small device
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleHeaders = document.querySelectorAll('.toggle-header');
 
-    categoryDropdownButton.addEventListener('click', () => {
-        categoryDropdownList.classList.toggle('show');
+        if (window.innerWidth < 1025) {
+            toggleHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.toggle-icon');
+                    if (content.classList.contains("max-h-0")) {
+                        content.classList.replace("max-h-0", "max-h-[500px]");
+                        icon.classList.replace('fa-plus', 'fa-minus');
+                    } else {
+                        content.classList.replace("max-h-[500px]", "max-h-0");
+                        icon.classList.replace('fa-minus', 'fa-plus');
+                    }
+                });
+            });
+        } else {
+            const contents = document.querySelectorAll('.toggle-content');
+            contents.forEach(content => {
+                content.style.maxHeight = 'none';
+            });
+
+            const icons = document.querySelectorAll('.toggle-icon');
+            icons.forEach(icon => {
+                icon.classList.add('hidden');
+            });
+        }
     });
-</script>
-<script>
+
+
     window.onload = function() {
         const toggleButtons = document.querySelectorAll('[id^="toggleButton-"]');
 

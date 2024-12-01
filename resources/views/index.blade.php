@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Simple Navbar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -69,9 +70,9 @@
     <!--  Shops section   -->
 
     <section class="container overflow-hidden">
-        <p class="text-[15px] text-center opacity-85 my-4">Lorsque vous achetez via des liens sur priceindanger.com, nous
+        <p class="text-[15px] text-center opacity-85 my-4 mt-6">Lorsque vous achetez via des liens sur priceindanger.com, nous
             pouvons gagner une commission</p>
-        <div class="border-b-[1px] border-gray-200 my-10 pb-5 flex items-center justify-between">
+        <div class="border-b-[1px] border-gray-200 my-7 pb-5 flex items-center justify-between">
 
             <h1 class="lg:text-[40px] text-xl font-bold leading-snug">Obtenez toutes sortes de bons d'achat et de codes de réduction
             </h1>
@@ -84,17 +85,17 @@
         <div class="swiper-container-shop py-5">
             <div class="swiper-wrapper">
                 @foreach ($shops as $shop)
-                <div class="swiper-slide bg-white hover:shadow-xl transition duration-300 p-3 rounded-lg"
+                <div class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded-lg group overflow-hidden"
                     style="box-shadow: 0px 8px 16px rgb(0 0 0 / 5%);">
                     <a href="#">
-                        <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-16 mx-auto">
+                        <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-24 mx-auto group-hover:scale-[1.15] transition-all duration-300">
                     </a>
                 </div>
                 @endforeach
             </div>
         </div>
         <div class="text-center my-14">
-            <button class="btn rounded-full overflow-hidden mx-auto uppercase py-4 px-10">Aller dans les
+            <button class="btn rounded-full overflow-hidden mx-auto uppercase py-3 px-8">Aller dans les
                 magasins</button>
         </div>
     </section>
@@ -105,7 +106,7 @@
 
     <!--  Exclusive coupons   -->
     <section class="container overflow-hidden">
-        <div class="border-b-[1px] border-gray-200 my-10 pb-5 flex items-center justify-between">
+        <div class="border-b-[1px] border-gray-200 my-7 pb-5 flex items-center justify-between">
             <h1 class="lg:text-[32px] leading-snug text-xl font-bold ">Codes promo exclusifs</h1>
         </div>
 
@@ -189,7 +190,10 @@
 
     {{-- description --}}
     <section class="bg-[#F7F7F7]">
-        <div class="container description px-3 py-10">
+        <div class="container description px-3 pb-10 pt-5">
+            <div class="border-b-[1px] border-gray-200 my-5 pb-5">
+                <h1 class="lg:text-[32px] leading-snug text-xl font-bold text-center">La destination ultime des bons d'achat</h1>
+            </div>
             {!! $homesettings->description !!}
         </div>
     </section>
@@ -242,7 +246,7 @@
                     spaceBetween: 10,
                 },
                 800: {
-                    slidesPerView: 4,
+                    slidesPerView: 5,
                     spaceBetween: 20,
                 },
             },

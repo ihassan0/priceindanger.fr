@@ -1,5 +1,5 @@
 <section class="bg-[var(--secondary)] text-white">
-    <div class="flex flex-col md:flex-row items-center justify-center py-20 px-10 gap-5 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-center py-16 px-10 gap-5 max-w-6xl mx-auto">
         <div class="flex items-center gap-5 flex-1">
             <i class="fa-regular fa-paper-plane opacity-30 text-5xl"></i>
             <span>

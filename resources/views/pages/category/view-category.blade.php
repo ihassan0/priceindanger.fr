@@ -23,35 +23,45 @@
 
 
 
-    <main class="container my-20">
+    <main class="container my-16">
         <div class="flex flex-col lg:flex-row gap-3">
             <div class="lg:w-1/4 relative">
                 <div class="sticky top-0">
-                    <h3 class="font-semibold text-xl">Top-Kategorien</h3>
-                    <ul class="flex flex-col gap-2 mt-4">
-                        @foreach($topCategories as $topcat)
-                        <li>
-                            <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $topcat->name }}</a>
-                        </li>
-                        @endforeach
-                    </ul>
+                    <div class="mb-6">
+                        <div
+                            class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header">
+                            <h3 class="font-semibold text-xl">Top-Kategorien</h3>
+                            <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
+                        </div>
+
+                        <!-- Categories List -->
+                        <ul
+                            class="flex flex-col gap-2 mt-4 transition-all duration-300 overflow-hidden toggle-content max-h-0 lg:max-h-none">
+                            @foreach ($topCategories as $topcat)
+                            <li>
+                                <a href="#" class="md:text-[17px]"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $topcat->name }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
 
 
             <div class="lg:w-3/4">
-                <div class="flex items-center gap-3 overflow-auto">
+                <!-- Buttons -->
+                <div class="flex items-center md:gap-3 gap-1 overflow-auto">
                     <button
-                        class="active border border-[var(--secondary)] uppercase px-7 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
+                        class="active border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
                         (34)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase px-7 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
+                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
                         (18)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase px-7 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
+                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
                         (16)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase px-7 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
+                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
                         (0)</button>
                 </div>
 
@@ -74,11 +84,44 @@
     <script src="https://kit.fontawesome.com/35b4de642d.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        const categoryDropdownButton = document.getElementById('categoryDropdownButton');
-        const categoryDropdownList = document.getElementById('categoryDropdownList');
+        // const categoryDropdownButton = document.getElementById('categoryDropdownButton');
+        // const categoryDropdownList = document.getElementById('categoryDropdownList');
 
-        categoryDropdownButton.addEventListener('click', () => {
-            categoryDropdownList.classList.toggle('show');
+        // categoryDropdownButton.addEventListener('click', () => {
+        //     categoryDropdownList.classList.toggle('show');
+        // });
+
+
+
+        // Toggle categories and store height at small device
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleHeaders = document.querySelectorAll('.toggle-header');
+
+            if (window.innerWidth < 1025) {
+                toggleHeaders.forEach(header => {
+                    header.addEventListener('click', () => {
+                        const content = header.nextElementSibling;
+                        const icon = header.querySelector('.toggle-icon');
+                        if (content.classList.contains("max-h-0")) {
+                            content.classList.replace("max-h-0", "max-h-[500px]");
+                            icon.classList.replace('fa-plus', 'fa-minus');
+                        } else {
+                            content.classList.replace("max-h-[500px]", "max-h-0");
+                            icon.classList.replace('fa-minus', 'fa-plus');
+                        }
+                    });
+                });
+            } else {
+                const contents = document.querySelectorAll('.toggle-content');
+                contents.forEach(content => {
+                    content.style.maxHeight = 'none';
+                });
+
+                const icons = document.querySelectorAll('.toggle-icon');
+                icons.forEach(icon => {
+                    icon.classList.add('hidden');
+                });
+            }
         });
     </script>
 </body>

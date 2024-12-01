@@ -1,11 +1,11 @@
 <footer class="bg-[#F7F8FB] text-black">
     <div class="mx-auto w-full max-w-6xl">
-        <div class="grid grid-cols-2 gap-4 px-4 py-6 lg:py-8 lg:grid-cols-6">
+        <div class="grid md:grid-cols-2 gap-4 px-4 py-6 lg:py-8 lg:grid-cols-6">
             <div class="lg:col-span-2">
                 <a href="/">
                     <img src="{{url('logos/priceindanger.webp')}}" class="w-[180px]" />
                 </a>
-                <p class="my-4 text-sm md: w-[95%] leading-7">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
+                <p class="sm:my-4 my-2 text-sm md: w-[95%] leading-7">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
                 </p>
                 <a href="mailto:admin@priceindanger.com" class="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -19,25 +19,25 @@
             <div>
                 <h2 class="mb-4 font-semibold uppercase">Liens utiles</h2>
                 <ul>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="{{ route('allCategories') }}" class="text-sm">La catégorie</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="{{ route('aboutUs') }}" class="text-sm">À propos de nous</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="{{ route('allBlogs') }}" class="text-sm">Blog</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="{{ route('faqs') }}" class="text-sm">Faqs</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="{{ route('contactUs') }}" class="text-sm">Contactez-nous</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="{{ route('privacy') }}" class="text-sm">Politique de confidentialité</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="{{ route('imprint') }}" class="text-sm">Imprimer</a>
                     </li>
                 </ul>
@@ -45,26 +45,26 @@
             <div>
                 <h2 class="mb-4 font-semibold uppercase">La catégorie</h2>
                 <ul>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="#" class="text-sm">Surfbretter</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="#" class="text-sm">Montres pour femmes</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="#" class="text-sm">Sacs</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="#" class="text-sm">Accessoires de cuisine</a>
                     </li>
-                    <li class="mb-2">
+                    <li class="sm:mb-2 mb-1">
                         <a href="#" class="text-sm">Chaussures pour enfants</a>
                     </li>
                 </ul>
             </div>
             <div class="lg:col-span-2">
                 <h2 class="mb-4 font-semibold uppercase">Shops</h2>
-                <div class="grid md:grid-cols-4 grid-cols-2 gap-1">
+                <div class="grid grid-cols-4 gap-1">
                     @foreach ($shops as $shop)
                     <a href="#" class="h-16 hover:brightness-50 transition-all duration-300">
                         <img src="{{ asset('storage/' . $shop->logo) }}" class="w-full h-full object-cover rounded-md"

@@ -68,13 +68,13 @@
             @endif
 
             <!-- Navigation Menus -->
-            <li class="p-3 py-5"><a href="/" class="!text-white">Maison</a></li>
-            <li class="p-3 py-5"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
-            <li class="p-3 py-5"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
+            <li class="py-5 w-24 overflow-hidden text-center"><a href="/" class="!text-white">Maison</a></li>
+            <li class="py-5 w-24 overflow-hidden text-center"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
+            <li class="py-5 w-24 overflow-hidden text-center"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
             <!-- Dropdown -->
-            <li class="group relative cursor-pointer ">
+            <li class="group relative cursor-pointer">
                 <!-- Button -->
-                <span>
+                <span class="block w-40 overflow-hidden text-center">
                     <a class="menu-hover !text-white">
                         Occasions spéciales
                     </a>
@@ -95,10 +95,10 @@
                     </li>
                 </ul>
             </li>
-            <li class="p-3 py-5"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
-            <li class="p-3 py-5"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
+            <li class="py-5 w-32 overflow-hidden text-center"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
+            <li class="py-5 w-32 overflow-hidden text-center"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
             </li>
-            <li class="p-3 py-5"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
+            <li class="py-5 w-24 overflow-hidden text-center"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
         </ul>
     </section>
 
@@ -147,7 +147,7 @@
         <div id="menuOverlay" class="fixed inset-0 z-10 bg-black bg-opacity-50 hidden" onclick="closeRightDrawer()">
         </div>
         <div id="menuDrawer"
-            class="fixed right-0 top-0 z-10 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300">
+            class="fixed right-0 top-0 z-20 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300">
 
             <div class="bg-[var(--secondary)] h-full">
                 <ul>
@@ -160,15 +160,14 @@
                     <!-- Dropdown -->
                     <li class="group relative cursor-pointer ">
                         <!-- Button -->
-                        <span id="dropdownButton" class="block p-3 py-4 text-sm font-medium text-white">
+                        <span class="block p-3 py-4 text-sm font-medium text-white toggle-header">
                             Occasions spéciales
                             <i class="fa-solid fa-caret-down text-xs"></i>
                         </span>
 
                         <!-- Dropdown List  -->
 
-                        <ul id="dropdownList"
-                            class="max-h-0 ml-3 mb-3 overflow-hidden transition-all duration-300 ease-in-out">
+                        <ul class="max-h-0 ml-3 overflow-hidden transition-all duration-300 ease-in-out">
                             <li>
                                 @foreach ($events as $event)
                                 <a href="{{ route('event', $event->id) }}"
@@ -239,13 +238,37 @@
             closeRightDrawer();
         }
     });
-    const dropdownButton = document.getElementById('dropdownButton');
-    const dropdownList = document.getElementById('dropdownList');
+    // const dropdownButton = document.getElementById('dropdownButton');
+    // const dropdownList = document.getElementById('dropdownList');
 
-    dropdownButton.addEventListener('click', () => {
-        dropdownList.classList.toggle('show');
-    });
+    // dropdownButton.addEventListener('click', () => {
+    //     dropdownList.classList.toggle('show');
     // });
+    // });
+
+
+    // Toggle categories and store height at small device
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleHeaders = document.querySelectorAll('.toggle-header');
+
+        if (window.innerWidth < 1025) {
+            toggleHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    if (content.classList.contains("max-h-0")) {
+                        content.classList.replace("max-h-0", "max-h-[500px]");
+                    } else {
+                        content.classList.replace("max-h-[500px]", "max-h-0");
+                    }
+                });
+            });
+        } else {
+            const contents = document.querySelectorAll('.toggle-content');
+            contents.forEach(content => {
+                content.style.maxHeight = 'none';
+            });
+        }
+    });
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

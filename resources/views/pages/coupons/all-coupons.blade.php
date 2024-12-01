@@ -23,13 +23,21 @@
 
 
 
-    <main class="container my-20">
+    <main class="container my-16">
         <div class="flex flex-col lg:flex-row gap-3">
             <div class="lg:w-1/4 relative">
                 <div class="sticky top-0">
+
                     <div class="mb-5">
-                        <h3 class="font-semibold text-xl">Trier par</h3>
-                        <ul class="flex flex-col gap-2 mt-4">
+                        <div
+                            class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header">
+                            <h3 class="font-semibold text-xl">Trier par</h3>
+                            <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
+                        </div>
+
+                        <!-- List -->
+                        <ul
+                            class="flex flex-col gap-2 mt-4 transition-all duration-300 overflow-hidden toggle-content max-h-0 lg:max-h-none">
                             <li class="flex items-center gap-2">
                                 <input type="checkbox" name="select" id="category-1" class="cursor-pointer">
                                 <label for="category-1" class="cursor-pointer whitespace-nowrap overflow-hidden">Dernier</label>
@@ -48,9 +56,18 @@
                             </li>
                         </ul>
                     </div>
+
                     <div class="mb-5">
-                        <h3 class="font-semibold text-xl">Top-Kategorien</h3>
-                        <ul class="flex flex-col gap-2 mt-4">
+                        <div
+                            class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header">
+                            <h3 class="font-semibold text-xl">Top-Kategorien</h3>
+                            <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
+                        </div>
+
+                        <!-- List -->
+                        <ul
+                            class="flex flex-col gap-2 mt-4 transition-all duration-300 overflow-hidden toggle-content max-h-0 lg:max-h-none">
+
                             @foreach($topCategories as $topcat)
                             <li>
                                 <a href="#"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $topcat->name }}</a>
@@ -83,11 +100,30 @@
     <script src="https://kit.fontawesome.com/35b4de642d.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        const categoryDropdownButton = document.getElementById('categoryDropdownButton');
-        const categoryDropdownList = document.getElementById('categoryDropdownList');
+        // Toggle categories and store height at small device
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleHeaders = document.querySelectorAll('.toggle-header');
 
-        categoryDropdownButton.addEventListener('click', () => {
-            categoryDropdownList.classList.toggle('show');
+            if (window.innerWidth < 1025) {
+                toggleHeaders.forEach(header => {
+                    header.addEventListener('click', () => {
+                        const content = header.nextElementSibling;
+                        const icon = header.querySelector('.toggle-icon');
+                        if (content.classList.contains("max-h-0")) {
+                            content.classList.replace("max-h-0", "max-h-[500px]");
+                            icon.classList.replace('fa-plus', 'fa-minus');
+                        } else {
+                            content.classList.replace("max-h-[500px]", "max-h-0");
+                            icon.classList.replace('fa-minus', 'fa-plus');
+                        }
+                    });
+                });
+            } else {
+                const contents = document.querySelectorAll('.toggle-content');
+                contents.forEach(content => {
+                    content.classList.add("max-h-0");
+                });
+            }
         });
     </script>
 </body>

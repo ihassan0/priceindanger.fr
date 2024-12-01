@@ -105,8 +105,11 @@
         <div class="grid lg:grid-cols-4 gap-x-6 gap-y-4">
             @foreach ($categories as $category )
 
-            <a href="{{ route('categoryView',$category->id) }}" class="border border-[#cbcbcb] w-full text-left px-4 py-3 rounded-sm">
-                {{ $category->name }}
+            <a href="{{ route('categoryView',$category->id) }}" >
+                <span class="border border-[#cbcbcb] w-full block text-left px-4 py-3 rounded-sm">
+
+                    {{ $category->name }}
+                </span>
             </a>
             @endforeach
         </div>

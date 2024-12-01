@@ -1,3 +1,4 @@
+
 <div
     class="relative flex flex-col justify-between swiper-slide border rounded-lg shadow bg-[#F5F5F5] hover:shadow-lg transition duration-200">
     <div class="flex justify-center sm:mb-2 mb-1">
@@ -69,10 +70,10 @@
 
                 if (isCollapsed) {
                     description.style.maxHeight = description.scrollHeight + "px";
-                    this.innerHTML = `<i class="fa-solid fa-chevron-up"></i> Moins d'informations`;
+                    this.innerHTML = `<i class="fa-solid fa-chevron-up mr-1"></i> Moins d'informations`;
                 } else {
                     description.style.maxHeight = "0px";
-                    this.innerHTML = `<i class="fa-solid fa-chevron-down"></i> Plus d'informations`;
+                    this.innerHTML = `<i class="fa-solid fa-chevron-down mr-1"></i> Plus d'informations`;
                 }
             });
         });

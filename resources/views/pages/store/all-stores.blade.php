@@ -21,7 +21,7 @@
         <section class="container my-10 mb-16">
 
                 <!-- Desktop filters -->
-                <ul class="sm:flex hidden items-center justify-center flex-wrap mb-10 mt-16 gap-2">
+                <ul class="sm:flex hidden items-center justify-center flex-wrap mb-10  gap-2">
                         <li><button
                                         class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">A</button>
                         </li>
