@@ -1,13 +1,13 @@
 <footer class="bg-[#F7F8FB] text-black">
     <div class="mx-auto w-full max-w-6xl">
-        <div class="grid md:grid-cols-2 gap-4 px-4 py-6 lg:py-8 lg:grid-cols-6">
+        <div class="grid md:grid-cols-2 gap-4 px-4 pt-10 lg:pt-16 lg:grid-cols-6">
             <div class="lg:col-span-2">
                 <a href="/">
                     <img src="{{url('logos/priceindanger.webp')}}" class="w-[180px]" />
                 </a>
-                <p class="sm:my-4 my-2 text-sm md: w-[95%] leading-7">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
+                <p class="sm:my-4 my-2 text-sm md: w-[95%] leading-7 text-[#292b2c]">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
                 </p>
-                <a href="mailto:admin@priceindanger.com" class="flex items-center gap-2">
+                <a href="mailto:admin@priceindanger.com" class="flex items-center gap-2 text-[#292b2c]">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -77,7 +77,7 @@
         </div>
         <div class="px-4 py-6 md:flex md:items-center md:justify-between">
 
-            <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+            <div class="flex md:mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse mb-2 md:mb-0">
                 <a href="https://www.facebook.com/priceindanger/" target="_blank"
                     class="text-4xl hover:opacity-70 transition !text-[#0866FF]">
                     <i class="fa-brands fa-square-facebook"></i>
@@ -96,7 +96,7 @@
                         alt="" class="size-8 mt-[3px]">
                 </a>
             </div>
-            <span class="text-sm  sm:text-center">© 2023 Price In Danger. Tous droits réservés.</span>
+            <span class="text-sm sm:text-center">© 2023 Priceindanger. Tous droits réservés.</span>
         </div>
     </div>
 </footer>

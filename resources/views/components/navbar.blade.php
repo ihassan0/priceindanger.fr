@@ -27,7 +27,7 @@
         <!-- Flag -->
         <div class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer hidden md:flex">
             <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="" class="w-[32px]">
-            <p class="font-semibold text-[#333]">French <i class="fa-solid fa-caret-down"></i></p>
+            <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
         </div>
 
     </div>
@@ -35,7 +35,7 @@
     <!-- Desktop Navigation  -->
 
     <section class="bg-[var(--secondary)] hidden lg:block">
-        <ul class="text-white flex items-center justify-center xl:gap-5 gap-3">
+        <ul class="text-white flex items-center justify-center  xl:gap-5 gap-3">
             <!-- Categories Menus -->
             @if (Request::is('/'))
             <li class="bg-[var(--primary)] p-5 cursor-pointer relative w-60">
@@ -45,13 +45,13 @@
                 </span>
 
                 <!-- Menus -->
-                <ul class="absolute left-0 bg-white top-16 text-black w-full shadow-lg list">
+                <ul class="absolute left-0 bg-white top-16 text-black w-full shadow-lg list rounded-b-md">
                     @foreach ($categories as $category)
                     <li class="p-[11px] text-sm text-[#292b2c]"><a href="#"
                             class="whitespace-nowrap text-ellipsis overflow-hidden w-full block">
                             {{ $category->name }} </a></li>
                     @endforeach
-                    <li class="p-[10px] text-[var(--primary)] border-t-[1px] border-gray-300 ">
+                    <li class="p-[10px] text-[var(--primary)] border-t-[1px] border-gray-300">
                         <a href="#">
                             <div class="flex items-center justify-between"> Plus de catégories <i
                                     class="fa-solid fa-plus"></i> </div>
@@ -68,9 +68,9 @@
             @endif
 
             <!-- Navigation Menus -->
-            <li class="py-5 w-24 overflow-hidden text-center"><a href="/" class="!text-white">Maison</a></li>
-            <li class="py-5 w-24 overflow-hidden text-center"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
-            <li class="py-5 w-24 overflow-hidden text-center"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
+            <li class="py-5 w-20 overflow-hidden text-center"><a href="/" class="!text-white">Maison</a></li>
+            <li class="py-5 w-20 overflow-hidden text-center"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
+            <li class="py-5 w-20 overflow-hidden text-center"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
             <!-- Dropdown -->
             <li class="group relative cursor-pointer">
                 <!-- Button -->
@@ -98,7 +98,7 @@
             <li class="py-5 w-32 overflow-hidden text-center"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
             <li class="py-5 w-32 overflow-hidden text-center"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
             </li>
-            <li class="py-5 w-24 overflow-hidden text-center"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
+            <li class="py-5 w-20 overflow-hidden text-center"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
         </ul>
     </section>
 
@@ -156,7 +156,6 @@
                             class="!text-white">Catégories</a></li>
                     <li class="p-3 py-4 text-sm font-medium"><a href="{{ route('allStores') }}"
                             class="!text-white">Magasins</a></li>
-
                     <!-- Dropdown -->
                     <li class="group relative cursor-pointer ">
                         <!-- Button -->

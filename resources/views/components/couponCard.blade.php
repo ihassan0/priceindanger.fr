@@ -22,7 +22,7 @@
                 <p style="color:black;">{{$coupon->description}}</p>
             </div>
             <button class="toggleButton p-0 text-[12px] sm:text-sm" style="color: #DA3737;">
-                <i class="fa-solid fa-chevron-down"></i>
+                <i class="fa-solid fa-chevron-down"></i> &nbsp;
                 Plus d'informations
             </button>
         </div>

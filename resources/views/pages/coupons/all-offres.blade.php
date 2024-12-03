@@ -23,7 +23,7 @@
 
 
 
-    <main class="container my-16">
+    <main class="container mt-10 mb-16">
         <div class="flex flex-col lg:flex-row gap-3">
             <div class="lg:w-1/4 relative">
                 <div class="sticky top-0">
@@ -79,7 +79,7 @@
 
 
             <div class="lg:w-3/4">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-y-7 md:gap-x-4 gap-4 mt-10">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-y-7 md:gap-x-4 gap-4">
                     @foreach ($coupons as $coupon)
                     <div>
                         @include('components.couponCard', ['coupon' => $coupon])

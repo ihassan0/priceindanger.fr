@@ -21,7 +21,7 @@
     @include('components.breadcrums', ['current_page' => $store->name])
     <!-- Breadcrums end -->
 
-    <main class="container my-16">
+    <main class="container mt-10 mb-16">
         <div class="flex flex-col lg:flex-row gap-3">
             <!-- Review , Shops, Categories -->
             <div class="lg:w-1/4 relative order-2 lg:order-1">
@@ -84,20 +84,20 @@
                 <!-- Buttons -->
                 <div class="flex items-center md:gap-3 gap-1 overflow-auto">
                     <button
-                        class="active border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
+                        class="active border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
                         (34)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
                         (18)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
                         (16)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
                         (0)</button>
                 </div>
                 <!-- Coupons -->
-                <div class="mt-10">
+                <div class="sm:mt-10 mt-5">
                     @foreach ($store->coupons as $coupon)
                     <div>
                         <div class="flex flex-col md:flex-row items-center gap-3 border-b transition duration-200 py-5 relative ">
@@ -112,14 +112,14 @@
                                 <span class="bg-[var(--primary)] text-white text-xs shadow-lg rounded-l-full px-3 py-1 ml-auto">Exclusive</span>
                             </div>
                             @endif
-                            <div class="p-3  flex-1 w-full">
+                            <div class="sm:p-3 pt-3  flex-1 w-full">
                                 <div class="flex  gap-2">
                                     <div class="h-fit w-[30%] md:hidden">
-                                        <p class="text-lg text-center p-3 text-pretty overflow-hidden  font-semibold text-[var(--secondary)] bg-[#00265450] rounded-md border-2 border-[var(--secondary)] ">
+                                        <p class="text-[13px] text-center p-3 text-pretty overflow-hidden font-semibold text-[var(--secondary)] bg-[#00265450] rounded-sm border-2 border-[var(--secondary)] ">
                                             {{$coupon->discount}}%
                                         </p>
                                     </div>
-                                    <div>
+                                    <div class="w-full">
                                         <h3 class="md:text-[22px] text-lg  font-semibold ">{{ $coupon->name }}</h3>
 
                                         <div class="description-content transition-all duration-300 lg:block hidden">
@@ -128,18 +128,16 @@
                                         <!-- Description -->
                                         <div class="lg:hidden">
                                             <div id="description-{{ $coupon->id }}" class="description-content transition-all duration-300" style="max-height: 0; overflow: hidden;">
-                                                <p style="color:black;">{{$coupon->description}}</p>
+                                                <p class="text-sm" style="color:black;">{{$coupon->description}}</p>
                                             </div>
                                             <button id="toggleButton-{{ $coupon->id }}" class="p-0 text-[12px] sm:text-sm" style="color: #DA3737;"><i class="fa-solid fa-chevron-down"></i> Plus d'informations</button>
                                         </div>
                                     </div>
                                 </div>
 
-                                <p class="mt-4 text-sm text-black md:block hidden"><span>Date d'expiration :</span></p>
-                                <div class="flex gap-3 items-center mt-2 text-gray-500 text-sm justify-end">
-                                    <span class="flex items-center">
-                                        <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date }}
-                                    </span>
+                                <p class="mt-4 text-black md:block hidden"><span>Date d'expiration :</span></p>
+                                <div class="flex gap-1 items-center justify-end mt-2 text-gray-500 text-sm sm:text-base">
+                                    <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date?$coupon->expiry_date : "Pas de date d'expiration" }}
                                 </div>
 
                                 <button onclick="openModal()"
@@ -163,9 +161,9 @@
                 <table class="min-w-full table-auto border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="w-1/5 px-4 py-2 text-left text-lg font-semibold text-gray-700">Rabatt</th>
-                            <th class="w-3/5 px-4 py-2 text-left text-lg font-semibold text-gray-700 ">Beschreibung</th>
-                            <th class="w-1/5 px-4 py-2 text-center text-lg font-semibold text-gray-700">Ablauf</th>
+                            <th class="w-1/5 px-4 py-2 text-left md:text-lg font-semibold text-gray-700">Rabatt</th>
+                            <th class="w-3/5 px-4 py-2 text-left md:text-lg font-semibold text-gray-700 ">Beschreibung</th>
+                            <th class="w-1/5 px-4 py-2 text-center md:text-lg font-semibold text-gray-700">Ablauf</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">

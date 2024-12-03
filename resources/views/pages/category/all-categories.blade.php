@@ -22,7 +22,7 @@
     <!-- Breadcrums end -->
 
     <!-- Categories Start -->
-    <section class="container my-10 mb-16">
+    <section class="container my-5 md:my-10 mb-16">
 
         <!-- Desktop filters -->
         <ul class="sm:flex hidden items-center justify-center flex-wrap mb-10 mt-16 gap-2">

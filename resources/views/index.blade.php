@@ -106,7 +106,7 @@
 
     <!--  Exclusive coupons   -->
     <section class="container overflow-hidden">
-        <div class="border-b-[1px] border-gray-200 my-7 pb-5 flex items-center justify-between">
+        <div class="border-b-[1px] border-gray-200 mb-5 pb-5 flex items-center justify-between">
             <h1 class="lg:text-[32px] leading-snug text-xl font-bold ">Codes promo exclusifs</h1>
         </div>
 
@@ -142,7 +142,7 @@
     <!--  Popular coupons   -->
 
     <section class="container overflow-hidden">
-        <div class="border-b-[1px] border-gray-200 my-10 pb-5 flex items-center justify-between">
+        <div class="border-b-[1px] border-gray-200 mt-10 mb-5 pb-5 flex items-center justify-between">
 
             <h1 class="lg:text-[32px] leading-snug text-xl font-bold ">Bons populaires</h1>
         </div>
@@ -176,8 +176,9 @@
             <div class="swiper-wrapper">
                 @foreach ($shops as $store)
                 <a href="#"
-                    class="swiper-slide  p-5 rounded-lg opacity-80 cursor-pointer hover:opacity-100 transition duration-300">
-                    <img src="{{ asset('storage/' . $store->logo) }}" alt="Shop Logo" class="h-16 w-full object-cover">
+                    class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded-lg group overflow-hidden"
+                    style="box-shadow: 0px 8px 16px rgb(0 0 0 / 5%);">
+                    <img src="{{ asset('storage/' . $store->logo) }}" alt="Shop Logo" class="h-24 mx-auto group-hover:scale-[1.15] transition-all duration-300">
                 </a>
                 @endforeach
             </div>

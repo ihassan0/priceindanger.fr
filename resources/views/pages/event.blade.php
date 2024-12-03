@@ -32,20 +32,20 @@
 
     <!-- Banner Image  -->
     <div>
-        <img src="{{ url('storage/' . $event->image) }}" class="w-full h-[45dvh] object-cover">
+        <img src="{{ url('storage/' . $event->image) }}" class="w-full h-[20dvh] md:h-[45dvh] object-cover">
     </div>
 
 
     <!-- Description   -->
-    <div class="relative -mt-16">
+    <div class="relative md:-mt-16 -mt-6">
         <p class="md:w-[50%] w-[95%] mx-auto bg-white p-4 shadow-xl rounded-sm text-center" style="left: calc(50% - 30%);">{{ $event->description }}</p>
     </div>
 
-    <main class="container my-20">
+    <main class="container md:my-20 my-10">
         <div class="flex flex-col lg:flex-row gap-3">
             <div class="lg:w-1/4 relative">
                 <div class="sticky top-0">
-                    <div class="mb-6">
+                    <div class="sm:mb-6">
                         <div
                             class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header">
                             <h3 class="font-semibold text-xl">Top-Kategorien</h3>
@@ -82,16 +82,16 @@
                 <!-- Buttons -->
                 <div class="flex items-center md:gap-3 gap-1 overflow-auto">
                     <button
-                        class="active border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
+                        class="active border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
                         (34)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
                         (18)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
                         (16)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-7 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
                         (0)</button>
                 </div>
 
