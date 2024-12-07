@@ -102,7 +102,7 @@
                     <div>
                         <div class="flex flex-col md:flex-row items-center gap-3 border-b transition duration-200 py-4 relative ">
                             <div class="mb-4 h-fit w-[30%] md:block hidden">
-                                <p class="flex items-center justify-center w-full text-center p-3 text-pretty overflow-hidden sm:min-h-[80px] h-auto h-[80px] font-semibold text-[var(--secondary)] bg-[#00265450] md:bg-transparent rounded-md border-2 md:border-0 border-[var(--secondary)]" style="font-size: clamp(24px ,50%, 40px );">
+                                <p class="flex items-center justify-center w-full text-center p-3 text-pretty overflow-hidden sm:min-h-[80px] h-auto h-[80px] font-semibold text-[var(--secondary)] bg-[#00265450] md:bg-transparent rounded-md border-2 md:border-0 border-[var(--secondary)]" style="font-size: clamp(24px ,50%, 35px );">
                                     {{$coupon->discount}}%
                                 </p>
                             </div>
@@ -113,7 +113,7 @@
                             </div>
                             @endif
                             <div class="sm:p-3 pt-3  flex-1 w-full">
-                                <div class="flex  gap-2">
+                                <div class="flex  gap-4">
                                     <div class="w-[35%] min-h-[51px] md:hidden">
                                         <p class="flex items-center justify-center p-1 text-[13px] text-center h-full text-pretty overflow-hidden font-semibold text-[var(--secondary)] bg-[#00265450] rounded-sm border-2 border-[var(--secondary)] ">
                                             {{$coupon->discount}}%
@@ -135,8 +135,8 @@
                                     </div>
                                 </div>
 
-                                <p class="mt-4 text-black md:block hidden"><span>Date d'expiration :</span></p>
-                                <div class="flex gap-1 items-center justify-end md:justify-start mt-2 text-gray-500 text-sm sm:text-base">
+                                <p class="mt-3 text-black md:block hidden"><span>Date d'expiration :</span></p>
+                                <div class="flex gap-1 items-center justify-end md:justify-start mt-1 text-gray-500 text-sm sm:text-base">
                                     <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date?$coupon->expiry_date : "Pas de date d'expiration" }}
                                 </div>
 
