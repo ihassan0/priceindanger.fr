@@ -16,6 +16,7 @@
         @include('components.navbar')
         <!-- Navbar Ends  -->
 
+        @include('components.breadcrums', ['current_page' => "Magasin"])
 
         <!-- Categories Start -->
         <section class="container my-10 mb-16">

@@ -51,7 +51,7 @@
 
     <!-- Banner Section -->
     <section class="container">
-        <div class="swiper-container md:h-[450px] mx-auto xl:ml-[25%] lg:ml-[28%] mt-5 overflow-hidden relative">
+        <div class="swiper-container md:h-[450px] mx-auto xl:ml-[24%] lg:ml-[28%] mt-5 overflow-hidden relative">
             <div class="swiper-wrapper ">
                 @foreach ($banners as $banner)
                 <div class="swiper-slide rounded-md overflow-hidden">
@@ -85,10 +85,10 @@
         <div class="swiper-container-shop py-5">
             <div class="swiper-wrapper">
                 @foreach ($shops as $shop)
-                <div class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded-lg group overflow-hidden"
-                    style="box-shadow: 0px 8px 16px rgb(0 0 0 / 5%);">
+                <div class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded group overflow-hidden"
+                    style="box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 7px">
                     <a href="#">
-                        <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-24 mx-auto group-hover:scale-[1.15] transition-all duration-300">
+                        <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-28 mx-auto group-hover:scale-[1.15] transition-all duration-300">
                     </a>
                 </div>
                 @endforeach
@@ -176,9 +176,9 @@
             <div class="swiper-wrapper">
                 @foreach ($shops as $store)
                 <a href="#"
-                    class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded-lg group overflow-hidden"
-                    style="box-shadow: 0px 8px 16px rgb(0 0 0 / 5%);">
-                    <img src="{{ asset('storage/' . $store->logo) }}" alt="Shop Logo" class="h-24 mx-auto group-hover:scale-[1.15] transition-all duration-300">
+                    class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded group overflow-hidden"
+                    style="box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 7px">
+                    <img src="{{ asset('storage/' . $store->logo) }}" alt="Shop Logo" class="h-28 mx-auto group-hover:scale-[1.15] transition-all duration-300">
                 </a>
                 @endforeach
             </div>
@@ -252,52 +252,6 @@
                 },
             },
         });
-        // const exclusiveCouponSwiper = new Swiper('.swiper-container-exclusive', {
-        //     loop: true,
-        //     slidesPerView: 1,
-        //     spaceBetween: 10,
-        //     navigation: {
-        //         nextEl: '.exclusive-swiper-button-next',
-        //         prevEl: '.exclusive-swiper-button-prev',
-        //     },
-        //     pagination: {
-        //         el: '.swiper-pagination',
-        //         clickable: true,
-        //     },
-        //     breakpoints: {
-        //         400: {
-        //             slidesPerView: 2,
-        //             spaceBetween: 10,
-        //         },
-        //         800: {
-        //             slidesPerView: 4,
-        //             spaceBetween: 20,
-        //         },
-        //     },
-        // });
-        // const popularCouponSwiper = new Swiper('.swiper-container-popular', {
-        //     loop: true,
-        //     slidesPerView: 1,
-        //     spaceBetween: 10,
-        //     navigation: {
-        //         nextEl: '.popular-swiper-button-next',
-        //         prevEl: '.popular-swiper-button-prev',
-        //     },
-        //     pagination: {
-        //         el: '.swiper-pagination',
-        //         clickable: true,
-        //     },
-        //     breakpoints: {
-        //         400: {
-        //             slidesPerView: 2,
-        //             spaceBetween: 10,
-        //         },
-        //         800: {
-        //             slidesPerView: 4,
-        //             spaceBetween: 20,
-        //         },
-        //     },
-        // });
         const storeSwiper = new Swiper('.swiper-container-store', {
             loop: true,
             slidesPerView: 2,
@@ -312,7 +266,7 @@
                     spaceBetween: 10,
                 },
                 800: {
-                    slidesPerView: 4,
+                    slidesPerView: 5,
                     spaceBetween: 20,
                 },
             },

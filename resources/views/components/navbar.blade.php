@@ -68,13 +68,13 @@
             @endif
 
             <!-- Navigation Menus -->
-            <li class="py-5 w-20 overflow-hidden text-center"><a href="/" class="!text-white">Maison</a></li>
-            <li class="py-5 w-20 overflow-hidden text-center"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
-            <li class="py-5 w-20 overflow-hidden text-center"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
+            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="/" class="!text-white">Maison</a></li>
+            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allCategories') }}" class="!text-white">Catégories</a></li>
+            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allStores') }}" class="!text-white">Magasins</a></li>
             <!-- Dropdown -->
             <li class="group relative cursor-pointer">
                 <!-- Button -->
-                <span class="block w-40 overflow-hidden text-center">
+                <span class="block w-40  whitespace-nowrap text-center">
                     <a class="menu-hover !text-white">
                         Occasions spéciales
                     </a>
@@ -95,10 +95,10 @@
                     </li>
                 </ul>
             </li>
-            <li class="py-5 w-32 overflow-hidden text-center"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
-            <li class="py-5 w-32 overflow-hidden text-center"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
+            <li class="py-5 w-[120px]  whitespace-nowrap text-center"><a href="{{ route('allCoupons') }}" class="!text-white">Tous les bons</a></li>
+            <li class="py-5 w-[120px]  whitespace-nowrap text-center"><a href="{{ route('allOffres') }}" class="!text-white">Toutes les offres</a>
             </li>
-            <li class="py-5 w-20 overflow-hidden text-center"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
+            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allBlogs') }}" class="!text-white">Blogs</a></li>
         </ul>
     </section>
 

@@ -1,6 +1,6 @@
 <footer class="bg-[#F7F8FB] text-black">
     <div class="mx-auto w-full max-w-6xl">
-        <div class="grid md:grid-cols-2 gap-4 px-4 pt-10 lg:pt-16 lg:grid-cols-6">
+        <div class="grid sm:grid-cols-2 gap-4 px-4 pt-10 lg:pt-16 lg:grid-cols-6">
             <div class="lg:col-span-2">
                 <a href="/">
                     <img src="{{url('logos/priceindanger.webp')}}" class="w-[180px]" />
