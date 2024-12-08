@@ -32,12 +32,12 @@
 
     <!-- Banner Image  -->
     <div>
-        <img src="{{ url('storage/' . $event->image) }}" class="w-full h-[20dvh] md:h-[45dvh] object-cover">
+        <img src="{{ url('storage/' . $event->image) }}" class="w-full md:h-[45dvh] object-cover">
     </div>
 
 
     <!-- Description   -->
-    <div class="relative md:-mt-16 -mt-6">
+    <div class="relative md:-mt-16 -mt-3">
         <p class="md:w-[50%] w-[95%] mx-auto bg-white p-4 shadow-xl rounded-sm text-center" style="left: calc(50% - 30%);">{{ $event->description }}</p>
     </div>
 

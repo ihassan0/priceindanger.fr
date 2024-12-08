@@ -88,7 +88,7 @@
                 <div class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded group overflow-hidden"
                     style="box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 7px">
                     <a href="#">
-                        <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-28 mx-auto group-hover:scale-[1.15] transition-all duration-300">
+                        <img src="{{ asset('storage/' . $shop->logo) }}" alt="Shop Logo" class="h-28 w-full object-cover group-hover:scale-[1.15] transition-all duration-300">
                     </a>
                 </div>
                 @endforeach
@@ -178,7 +178,7 @@
                 <a href="#"
                     class="swiper-slide bg-white hover:shadow-xl transition duration-300 rounded group overflow-hidden"
                     style="box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 7px">
-                    <img src="{{ asset('storage/' . $store->logo) }}" alt="Shop Logo" class="h-28 mx-auto group-hover:scale-[1.15] transition-all duration-300">
+                    <img src="{{ asset('storage/' . $store->logo) }}" alt="Shop Logo" class="h-28 w-full object-cover group-hover:scale-[1.15] transition-all duration-300">
                 </a>
                 @endforeach
             </div>

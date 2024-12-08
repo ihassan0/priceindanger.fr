@@ -22,13 +22,16 @@
     <!-- Breadcrums end -->
 
     <main class="container mt-10 mb-16">
-        <div class="flex flex-col lg:flex-row gap-3">
+        <div class="flex flex-col lg:flex-row gap-8">
             <!-- Review , Shops, Categories -->
             <div class="lg:w-1/4 relative order-2 lg:order-1">
                 <!-- ratings -->
                 <div class="mb-6">
-                    <img src="{{ asset('storage/'. $store->logo) }}" class="w-2/4 ">
-                    <p>Évaluation: 4.3 sur 5</p>
+                    <a href="#" class="w-full block rounded-lg mb-5 overflow-hidden" style="box-shadow:0px 0px 16px rgb(0 0 0 / 13%);">
+                        <img src="{{ asset('storage/'. $store->logo) }}" class="w-2/4 mx-auto scale-100 hover:scale-125 transition-all duration-500">
+                    </a>
+                    <p class="pt-5 border-t text-[20px] font-bold">ALBERTO</p>
+                    <p class="mt-5">Évaluation: 4.3 sur 5</p>
                     <p class="mt-3">Notes globales: 3</p>
                     <div class="flex flex-row-reverse justify-end gap-2 my-6">
                         <i class="fa-solid fa-star text-[#CCCCCC] peer peer-hover:text-yellow-500 hover:text-yellow-500 text-lg cursor-pointer"></i>
@@ -115,7 +118,7 @@
                             <div class="sm:p-3 pt-3  flex-1 w-full">
                                 <div class="flex  gap-4">
                                     <div class="w-[35%] min-h-[51px] md:hidden">
-                                        <p class="flex items-center justify-center p-1 text-[13px] text-center h-full text-pretty overflow-hidden font-semibold text-[var(--secondary)] bg-[#00265450] rounded-sm border-2 border-[var(--secondary)] ">
+                                        <p class="flex items-center justify-center p-1 text-[13px] text-center h-full text-pretty overflow-hidden font-semibold text-[var(--secondary)] bg-[#00265433] rounded-sm border-2 border-[var(--secondary)] ">
                                             {{$coupon->discount}}%
                                         </p>
                                     </div>
@@ -136,7 +139,7 @@
                                 </div>
 
                                 <p class="mt-3 text-black md:block hidden"><span>Date d'expiration :</span></p>
-                                <div class="flex gap-1 items-center justify-end md:justify-start mt-1 text-gray-500 text-sm sm:text-base">
+                                <div class="flex gap-1 items-center justify-end md:justify-start mt-[0.4rem] text-gray-500 text-sm sm:text-base">
                                     <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date?$coupon->expiry_date : "Pas de date d'expiration" }}
                                 </div>
 

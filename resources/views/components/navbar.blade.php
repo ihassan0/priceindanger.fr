@@ -9,7 +9,7 @@
             </a>
             <div class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer flex md:hidden">
                 <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="" class="w-[32px]">
-                <p class="font-semibold text-[#333]">French <i class="fa-solid fa-caret-down"></i></p>
+                <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
             </div>
         </div>
 
