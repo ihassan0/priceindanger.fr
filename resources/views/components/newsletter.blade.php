@@ -1,10 +1,10 @@
 <section class="bg-[var(--secondary)] text-white">
-    <div class="flex flex-col md:flex-row items-center justify-center py-10 px-10 gap-5 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-center py-10 px-5 md:px-10 gap-5 max-w-6xl mx-auto">
         <div class="flex items-center gap-5 flex-1">
             <i class="fa-regular fa-paper-plane opacity-30 text-5xl"></i>
             <span>
-                <h1 class="text-3xl font-semibold text-white">Inscrivez-vous maintenant à notre newsletter</h1>
-                <p>Inscrivez-vous maintenant pour être informé des promotions.</p>
+                <h1 class="md:text-3xl text-xl font-semibold text-white">Inscrivez-vous maintenant à notre newsletter</h1>
+                <p class="text-sm">Inscrivez-vous maintenant pour être informé des promotions.</p>
             </span>
         </div>
         <div class="relative flex-1 flex items-center w-full md:w-auto">
