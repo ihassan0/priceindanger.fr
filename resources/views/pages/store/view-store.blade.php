@@ -27,8 +27,8 @@
             <div class="lg:w-1/4 relative order-2 lg:order-1">
                 <!-- ratings -->
                 <div class="mb-6">
-                    <a href="#" class="w-full block rounded-lg mb-5 overflow-hidden" style="box-shadow:0px 0px 16px rgb(0 0 0 / 13%);">
-                        <img src="{{ asset('storage/'. $store->logo) }}" class="w-2/4 mx-auto scale-100 hover:scale-125 transition-all duration-500">
+                    <a href="#" class="w-full block rounded-lg mb-5 overflow-hidden p-4" style="box-shadow:0px 0px 16px rgb(0 0 0 / 13%);">
+                        <img src="{{ asset('storage/'. $store->logo) }}" class="w-full mx-auto h-[120px] object-cover scale-100 hover:scale-[1.1] transition-all duration-500">
                     </a>
                     <p class="pt-5 border-t text-[20px] font-bold">ALBERTO</p>
                     <p class="mt-5">Évaluation: 4.3 sur 5</p>
