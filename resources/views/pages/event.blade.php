@@ -80,18 +80,18 @@
 
             <div class="lg:w-3/4">
                 <!-- Buttons -->
-                <div class="flex items-center md:gap-3 gap-1 overflow-auto">
+                <div class="flex items-center md:gap-3 gap-1 overflow-auto no-scrollbar">
                     <button
-                        class="active border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
+                        class="active border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
                         (34)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
                         (18)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
                         (16)</button>
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 py-2 rounded-md text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
                         (0)</button>
                 </div>
 

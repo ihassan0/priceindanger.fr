@@ -30,7 +30,7 @@
                     <div class="mb-5">
                         <div
                             class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header">
-                            <h3 class="font-semibold text-xl">Trier par</h3>
+                            <h3 class="font-semibold sm:text-xl text-lg">Trier par</h3>
                             <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
                         </div>
 
@@ -59,7 +59,7 @@
                     <div class="mb-5">
                         <div
                             class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header">
-                            <h3 class="font-semibold text-xl">Top-Kategorien</h3>
+                            <h3 class="font-semibold sm:text-xl text-lg">Top-Kategorien</h3>
                             <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
                         </div>
 

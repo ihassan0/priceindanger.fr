@@ -47,7 +47,7 @@
                 <div class="mb-6">
                     <div
                         class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header ">
-                        <h3 class="font-semibold text-xl">Magasins similaires</h3>
+                        <h3 class="font-semibold sm:text-xl text-lg">Magasins similaires</h3>
                         <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
                     </div>
 
@@ -65,7 +65,7 @@
                 <div class="mb-6">
                     <div
                         class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header ">
-                        <h3 class="font-semibold text-xl">Top-Kategorien</h3>
+                        <h3 class="font-semibold sm:text-xl text-lg">Top-Kategorien</h3>
                         <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
                     </div>
 
@@ -85,7 +85,7 @@
             <!-- Buttons , Coupons -->
             <div class="lg:w-3/4 order-1 lg:order-2">
                 <!-- Buttons -->
-                <div class="flex items-center md:gap-3 gap-1 overflow-auto">
+                <div class="flex items-center md:gap-3 gap-1 overflow-auto no-scrollbar">
                     <button
                         class="active border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
                         (34)</button>

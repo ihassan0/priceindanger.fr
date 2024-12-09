@@ -21,7 +21,7 @@
                 style="max-height: 0; overflow: hidden;">
                 <p style="color:black;">{{$coupon->description}}</p>
             </div>
-            <button class="toggleButton p-0 text-[12px] sm:text-sm" style="color: #DA3737;">
+            <button class="toggleButton p-0 text-[10px] sm:text-sm" style="color: #DA3737;">
                 <i class="fa-solid fa-chevron-down"></i> &nbsp;
                 Plus d'informations
             </button>
@@ -33,7 +33,7 @@
             <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date }}
         </div>
         <button onclick="buttonClick('{{ $coupon->id }}', '{{ $coupon->code }}', this);"
-            class="btn w-full py-2 rounded mt-4 text-sm" data-title="{{ $coupon->name }}"
+            class="btn w-full py-2 rounded mt-4 sm:text-sm text-xs" data-title="{{ $coupon->name }}"
             data-subtitle="{{ $coupon->description }}" data-code="{{ $coupon->code }}"
             data-store-link="{{ route('storeView',$coupon->store->id) }}" id="couponModal-{{ $coupon->id }}">
             CODE ANZEIGEN

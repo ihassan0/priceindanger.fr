@@ -5,7 +5,7 @@
         <!-- Logo -->
         <div class="flex items-center justify-between">
             <a href="/">
-                <img src="{{url('logos/priceindanger.webp')}}" class="sm:w-[230px] w-[170px]" />
+                <img src="{{url('logos/priceindanger.webp')}}" class="sm:w-[230px] w-[128px]" />
             </a>
             <div class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer flex md:hidden">
                 <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="" class="w-[32px]">

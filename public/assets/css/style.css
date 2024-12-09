@@ -175,3 +175,14 @@ h6 {
     border-radius: 4px 4px 4px 0px;
     filter: drop-shadow(1px 1px 2px #00000070);
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
