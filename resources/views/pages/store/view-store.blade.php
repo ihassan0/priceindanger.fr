@@ -164,23 +164,23 @@
                 <table class="min-w-full table-auto border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="w-1/5 px-4 py-2 text-left md:text-lg font-semibold text-gray-700">Rabatt</th>
-                            <th class="w-3/5 px-4 py-2 text-left md:text-lg font-semibold text-gray-700 ">Beschreibung</th>
-                            <th class="w-1/5 px-4 py-2 text-center md:text-lg font-semibold text-gray-700">Ablauf</th>
+                            <th class="w-1/5 sm:px-4 px-2 py-2 text-left md:text-lg text-sm font-semibold text-gray-700">Rabatt</th>
+                            <th class="w-3/5 sm:px-4 px-2 py-2 text-left md:text-lg text-sm font-semibold text-gray-700 ">Beschreibung</th>
+                            <th class="w-1/5 sm:px-4 px-2 py-2 text-center md:text-lg text-sm font-semibold text-gray-700">Ablauf</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         <tr>
-                            <td class="px-4 py-2 text-xs md:text-base text-gray-800">7-tägiges Rückgaberecht</td>
-                            <td class="px-4 py-2 text-xs md:text-base text-gray-800 ">Sie können Ihre Bestellung innerhalb von 7 Tagen
+                            <td class="sm:px-4 px-2 py-2 text-xs md:text-base text-gray-800">7-tägiges Rückgaberecht</td>
+                            <td class="sm:px-4 px-2 py-2 text-xs md:text-base text-gray-800 ">Sie können Ihre Bestellung innerhalb von 7 Tagen
                                 nach Erhalt zurückgeben </td>
-                            <td class="px-4 py-2 text-xs md:text-base text-center text-gray-800"></td>
+                            <td class="sm:px-4 px-2 py-2 text-xs md:text-base text-center text-gray-800"></td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2 text-xs md:text-base text-gray-800">10% Gutscheincode</td>
-                            <td class="px-4 py-2 text-xs md:text-base text-gray-800 ">10% Rabatt auf alle mit Gutscheincode bei Apimanu
+                            <td class="sm:px-4 px-2 py-2 text-xs md:text-base text-gray-800">10% Gutscheincode</td>
+                            <td class="sm:px-4 px-2 py-2 text-xs md:text-base text-gray-800 ">10% Rabatt auf alle mit Gutscheincode bei Apimanu
                             </td>
-                            <td class="px-4 py-2 text-xs md:text-base text-center text-gray-800">2024-12-31</td>
+                            <td class="sm:px-4 px-2 py-2 text-xs md:text-base text-center text-gray-800">2024-12-31</td>
                         </tr>
                     </tbody>
                 </table>
