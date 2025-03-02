@@ -49,37 +49,37 @@
                                                 <label>Store Name:</label>
                                                 <input type="text" name="name" class="form-control">
                                                 @error('name')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
                                                 <label>Store URL:</label>
                                                 <input type="text" name="url" class="form-control">
                                                 @error('url')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
                                                 <label>Logo:</label>
                                                 <input type="file" name="logo" class="form-control">
                                                 @error('logo')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
                                                 <label>Meta Title:</label>
                                                 <input type="text" name="meta_title" class="form-control">
                                                 @error('meta_title')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
                                                 <label>Meta Description:</label>
                                                 <textarea name="meta_desc" class="form-control"></textarea>
                                                 @error('meta_desc')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
                                                 <label>Merchant Id:</label>
                                                 <input type="text" name="merchant" class="form-control">
                                                 @error('merchant')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
 
@@ -88,13 +88,13 @@
                                                     <select class="form-control select2" name="network_id">
                                                         <option value="">Select Network</option>
                                                         @foreach ($networks as $network)
-                                                            <option value="{{ $network->id }}">{{ $network->name }}
-                                                            </option>
+                                                        <option value="{{ $network->id }}">{{ $network->name }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 @error('network_id')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
                                                 <div class="form-group">
@@ -103,28 +103,29 @@
                                                         multiple="">
                                                         <option value="">Select Category</option>
                                                         @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}
-                                                            </option>
+                                                        <option value="{{ $category->id }}">{{ $category->name }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
 
                                                 @error('category_id')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
 
                                                 <div class="form-group">
                                                     <label>Description:</label>
-                                                    <textarea class="summernote" name="description">{{ old('description') }}</textarea>
+                                                    <textarea class="summernote"
+                                                        name="description">{{ old('description') }}</textarea>
                                                     @error('description')
-                                                        <p class="text-danger">{{ $message }}</p>
+                                                    <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
 
                                                 <label>Added By:</label>
                                                 <input type="text" name="Added_by" class="form-control">
                                                 @error('Added_by')
-                                                    <p class="text-danger">{{ $message }} </p>
+                                                <p class="text-danger">{{ $message }} </p>
                                                 @enderror
                                             </div>
                                             <div class="card-footer text-right">
@@ -140,6 +141,7 @@
             </div>
         </div>
     </div>
+    @include('Admin.partials.alerts')
 
     <!-- General JS Scripts -->
     @include('Admin.components.js-scripts')

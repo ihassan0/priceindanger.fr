@@ -104,6 +104,7 @@
     </div>
 
     @include('Admin.partials.alerts')
+
     <!-- General JS Scripts -->
     @include('Admin.components.js-scripts')
 

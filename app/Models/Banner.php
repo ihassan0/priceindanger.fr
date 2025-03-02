@@ -16,7 +16,8 @@ class Banner extends Model
         'banner',
         'store_id',
         'link',
-        'status'
+        'status',
+        'is_main'
     ];
 
     public function store(){

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Navbar</title>
+    <title>Dernières tendances, avis produits et guides d'achat | Priceindanger.fr</title>
+     <link rel="icon" href="{{ asset('logos/favicon.png') }}" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -30,8 +31,9 @@
 
                     <!-- Search -->
                     <div class="flex-1 relative h-12 hidden md:block mt-5">
-                        <input type="text" class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm"
-                            placeholder="Trouvez des codes promo et des offres de vos marques préférées Blog...">
+                        <input type="text"
+                            class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm"
+                            placeholder="Rechercher des blogs">
                         <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
                     </div>
 
@@ -42,7 +44,9 @@
                         <div class="flex gap-3 my-4">
                             <img src="{{ asset('storage/'. $blog->image) }}" class="w-24 h-16 object-cover">
                             <span>
-                                <a href="{{ route('blogView',$blog->id) }}" class="font-semibold text-sm text-black opacity-75 cursor-pointer">{{ $blog->title }} </a>
+                                <a href="{{ route('blogView',$blog->id) }}"
+                                    class="font-semibold text-sm text-black opacity-75 cursor-pointer">{{ $blog->title
+                                    }} </a>
                                 <p class="text-sm">{{ $blog->created_at->format('M d,Y') }}</p>
                             </span>
                         </div>
@@ -50,16 +54,16 @@
                     </div>
 
                     <!-- Popular Shops -->
-                    <div>
-                        <h3 class="font-semibold text-xl my-5">Magasins populaires</h3>
-                        <ul>
-                            @foreach ($shops->take(10) as $shop )
-                            <a href="#" class="mb-2 block font-medium">
-                                <li>{{ $shop->name }}</li>
-                            </a>
-                            @endforeach
-                        </ul>
-                    </div>
+                    <!--<div>-->
+                    <!--    <h3 class="font-semibold text-xl my-5">Magasins populaires</h3>-->
+                    <!--    <ul>-->
+                    <!--        @foreach ($shops->take(10) as $shop )-->
+                    <!--        <a href="#" class="mb-2 block font-medium">-->
+                    <!--            <li>{{ $shop->name }}</li>-->
+                    <!--        </a>-->
+                    <!--        @endforeach-->
+                    <!--    </ul>-->
+                    <!--</div>-->
                 </div>
             </aside>
 
@@ -75,9 +79,12 @@
                         <a href="{{ route('blogView',$blog->id) }}" class="text-xl font-semibold">
                             {{ $blog->title }}
                         </a>
-                        <p class="my-1"> <i class="fa-solid fa-calendar-days text-[var(--primary)] me-2"></i> {{ $blog->created_at->format('M d,Y') }}</p>
-                        <p class="my-1"> <i class="fa-solid fa-pencil text-[var(--primary)] me-2"></i> {{ $blog->writter }}</p>
-                        <a href="{{ route('blogView',$blog->id) }}" class="mt-5 block"><button class="btn px-10 py-1 rounded-sm overflow-hidden">View</button></a>
+                        <p class="my-1"> <i class="fa-solid fa-calendar-days text-[var(--primary)] me-2"></i> {{
+                            $blog->created_at->format('M d,Y') }}</p>
+                        <p class="my-1"> <i class="fa-solid fa-pencil text-[var(--primary)] me-2"></i> {{ $blog->writter
+                            }}</p>
+                        <a href="{{ route('blogView',$blog->id) }}" class="mt-5 block"><button
+                                class="btn px-10 py-1 rounded-sm overflow-hidden">View</button></a>
                     </div>
                 </div>
                 @endforeach
