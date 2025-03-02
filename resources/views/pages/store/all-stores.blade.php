@@ -4,8 +4,7 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Stores | Priceindanger.fr</title>
-         <link rel="icon" href="{{ asset('logos/favicon.png') }}" type="image/x-icon">
+        <title>Simple Navbar</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -17,35 +16,94 @@
         @include('components.navbar')
         <!-- Navbar Ends  -->
 
-        @include('components.breadcrums', ['current_page' => "Magasins"])
+        @include('components.breadcrums', ['current_page' => "Magasin"])
 
         <!-- Categories Start -->
         <section class="container my-10 mb-16">
 
                 <!-- Desktop filters -->
                 <ul class="sm:flex hidden items-center justify-center flex-wrap mb-10  gap-2">
-                        @foreach(range('A', 'Z') as $char)
-                        <li>
-                                <button class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300 
-                                {{ request('letter') === $char ? 'bg-[var(--secondary)] text-white' : '' }}"
-                                        data-letter="{{ $char }}">
-
-                                        {{ $char }}
-                                </button>
-                                <a href="{{ url()->current() }}?letter={{ $char }}" id="link-{{ $char }}"
-                                        style="display: none;">
-                                </a>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">A</button>
                         </li>
-                        @endforeach
-                        <li>
-                                <button class="border border-[#cbcbcb] h-8 px-2 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300
-                                 {{ request('letter') === '0-9' ? 'bg-[var(--secondary)] text-white' : '' }}"
-                                        data-letter="0-9">
-                                        0 - 9
-                                </button>
-                                <a href="{{ url()->current() }}?letter=0-9" id="link-0-9" style="display: none;">
-                                </a>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">B</button>
                         </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">C</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">D</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">E</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">F</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">G</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">H</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">I</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">J</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">K</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">L</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">M</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">N</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">O</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">P</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Q</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">R</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">S</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">T</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">U</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">V</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">W</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">X</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Y</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Z</button>
+                        </li>
+                        <li><button
+                                        class="border border-[#cbcbcb] h-8 px-2 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">0
+                                        - 9</button></li>
                 </ul>
 
 
@@ -54,7 +112,7 @@
                         <!-- Button -->
                         <button id="categoryDropdownButton"
                                 class="flex justify-between p-3 py-4 text-sm font-medium border w-full ">
-                                Commencez par {{ request('letter')? request('letter'): 'A' }}
+                                Commencez par A
                                 <i class="fa-solid fa-caret-down text-xs"></i>
                         </button>
 
@@ -62,18 +120,33 @@
 
                         <ul id="categoryDropdownList"
                                 class="border max-h-0 mb-3 overflow-hidden transition-all duration-300 ease-in-out">
-                                @foreach(range('A', 'Z') as $char)
-                                <li><button class="p-3 text-sm" data-char="{{ $char }}">Commencez par {{ $char
-                                                }}</button>
-                                        <a href="{{ url()->current() }}?letter={{ $char }}" id="link-{{ $char }}"
-                                                style="display: none;"></a>
-                                </li>
-                                @endforeach
-                                <li><button class="p-3 text-sm" data-char="0-9">0 - 9</button>
-                                        <a href="{{ url()->current() }}?letter=0-9" id="link-0-9"
-                                                style="display: none;">
-                                        </a>
-                                </li>
+                                <li><button class="p-3 text-sm">Commencez par A</button></li>
+                                <li><button class="p-3 text-sm">Commencez par B</button></li>
+                                <li><button class="p-3 text-sm">Commencez par C</button></li>
+                                <li><button class="p-3 text-sm">Commencez par D</button></li>
+                                <li><button class="p-3 text-sm">Commencez par E</button></li>
+                                <li><button class="p-3 text-sm">Commencez par F</button></li>
+                                <li><button class="p-3 text-sm">Commencez par G</button></li>
+                                <li><button class="p-3 text-sm">Commencez par H</button></li>
+                                <li><button class="p-3 text-sm">Commencez par I</button></li>
+                                <li><button class="p-3 text-sm">Commencez par J</button></li>
+                                <li><button class="p-3 text-sm">Commencez par K</button></li>
+                                <li><button class="p-3 text-sm">Commencez par L</button></li>
+                                <li><button class="p-3 text-sm">Commencez par M</button></li>
+                                <li><button class="p-3 text-sm">Commencez par N</button></li>
+                                <li><button class="p-3 text-sm">Commencez par O</button></li>
+                                <li><button class="p-3 text-sm">Commencez par P</button></li>
+                                <li><button class="p-3 text-sm">Commencez par Q</button></li>
+                                <li><button class="p-3 text-sm">Commencez par R</button></li>
+                                <li><button class="p-3 text-sm">Commencez par S</button></li>
+                                <li><button class="p-3 text-sm">Commencez par T</button></li>
+                                <li><button class="p-3 text-sm">Commencez par U</button></li>
+                                <li><button class="p-3 text-sm">Commencez par V</button></li>
+                                <li><button class="p-3 text-sm">Commencez par W</button></li>
+                                <li><button class="p-3 text-sm">Commencez par X</button></li>
+                                <li><button class="p-3 text-sm">Commencez par Y</button></li>
+                                <li><button class="p-3 text-sm">Commencez par Z</button></li>
+                                <li><button class="p-3 text-sm">0 - 9</button></li>
 
                         </ul>
                 </div>
@@ -86,16 +159,10 @@
 
 
                         <div>
-                                <a href="{{ route('storeView', [
-    'id' => $store->id,
-    'name' => Str::slug($store->name).'-codes-promo',
-]) }}"
-                                        class="flex items-center gap-2 border border-[#cbcbcb] w-full text-left px-4 py-3 rounded-sm">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="4" stroke="currentColor"
-                                                class="size-[16px] bg-black text-white rounded-full text-[10px] p-[3px]">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                <a href="{{ route('storeView',$store->id) }}" class="flex items-center gap-2 border border-[#cbcbcb] w-full text-left px-4 py-3 rounded-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
+                                                stroke="currentColor" class="size-[16px] bg-black text-white rounded-full text-[10px] p-[3px]">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                                         </svg>
                                         {{ $store->name }}
                                 </a>
@@ -112,43 +179,6 @@
 
 
 </body>
-
-<script>
-        // Dropdown toggle functionality
-        const dropdownButton = document.getElementById('categoryDropdownButton');
-        const dropdownList = document.getElementById('categoryDropdownList');
-    
-        dropdownButton.addEventListener('click', () => {
-            // Toggle max-height for dropdown visibility
-            if (dropdownList.style.maxHeight === '0px' || !dropdownList.style.maxHeight) {
-                dropdownList.style.maxHeight = `${dropdownList.scrollHeight}px`;
-            } else {
-                dropdownList.style.maxHeight = '0px';
-            }
-        });
-    
-        // Button click to trigger anchor links
-        document.querySelectorAll('button[data-char]').forEach(button => {
-            button.addEventListener('click', () => {
-                const char = button.getAttribute('data-char');
-                const anchor = document.getElementById(`link-${char}`);
-                if (anchor) {
-                    anchor.click(); // Trigger the anchor link
-                }
-            });
-        });
-</script>
-<script>
-        document.querySelectorAll('button[data-letter]').forEach(button => {
-            button.addEventListener('click', () => {
-                const letter = button.getAttribute('data-letter');
-                const anchor = document.getElementById(`link-${letter}`);
-                if (anchor) {
-                    anchor.click();
-                }
-            });
-        });
-</script>
 
 <script src="https://kit.fontawesome.com/35b4de642d.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

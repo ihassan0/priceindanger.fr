@@ -148,78 +148,60 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Admin</title>
+    <title>TinyMCE Link Image Example</title>
     {{-- <script
         src="https://cdn.tiny.cloud/1/ypdu0k5q9io1xlkc940k5xnvgetuagfas776g92zgu5iducf/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script> --}}
-    @include('Admin.components.css-links')
-    @include('Admin.components.css-forms')
-
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ url('admin/assets/css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ url('admin/assets/css/components.min.css') }}">
 
     <script src="https://cdn.tiny.cloud/1/ypdu0k5q9io1xlkc940k5xnvgetuagfas776g92zgu5iducf/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
 </head>
 
-<div>
-    <div id="app">
-        <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg"></div>
-            @include('Admin.components.nav')
-            @include('Admin.components.side-bar')
-            <div class="main-content">
-                <section class="section">
-                    <div class="section-header">
-                        <h1>Edit Home Settings</h1>
-                    </div>
-                    <form action="{{ route('admin.home-settings.update', $homeSetting->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Description:</label>
-                                <textarea class="summernote" id="editor"
-                                    name="description">{{ old('description', $homeSetting->description) }}</textarea>
-                                @error('description')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+<body>
+    <div class="container mt-5">
+        <h1>TinyMCE Editor with Link Image Button</h1>
+        <form action="{{ route('admin.home-settings.update', $homeSetting->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Description:</label>
+                    <textarea class="summernote" id="editor"
+                        name="description">{{ old('description', $homeSetting->description) }}</textarea>
+                    @error('description')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
 
-                            <div class="form-group">
-                                <label>Contact Us:</label>
-                                <textarea class="summernote" id="editor"
-                                    name="contact_us">{{ old('contact_us', $homeSetting->contact_us) }}</textarea>
-                                @error('contact_us')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+                <div class="form-group">
+                    <label>Contact Us:</label>
+                    <textarea class="summernote"
+                        name="contact_us">{{ old('contact_us', $homeSetting->contact_us) }}</textarea>
+                    @error('contact_us')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                            <div class="form-group">
-                                <label>Privacy Policy:</label>
-                                <textarea class="summernote" id="editor"
-                                    name="privacy_policy">{{ old('privacy_policy', $homeSetting->privacy_policy) }}</textarea>
-                                @error('privacy_policy')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+                <div class="form-group">
+                    <label>Privacy Policy:</label>
+                    <textarea class="summernote"
+                        name="privacy_policy">{{ old('privacy_policy', $homeSetting->privacy_policy) }}</textarea>
+                    @error('privacy_policy')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
 
-                            <div class="card-footer text-right">
-                                <button class="btn btn-primary" type="submit">Update</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
+                <div class="card-footer text-right">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-</div>
 
-<script>
-    tinymce.init({
+    <script>
+        tinymce.init({
   selector: '#editor',  // Your textarea selector
   plugins: 'image link',
   toolbar: 'image | link | alignleft aligncenter alignright',
@@ -253,10 +235,7 @@
 });
 
 
-</script>
-
-@include('Admin.components.js-scripts')
-@include('Admin.components.js-forms')
+    </script>
 </body>
 
 </html>

@@ -30,30 +30,21 @@ class StoreController extends Controller
     // Store a newly created store in the database
     public function store(Request $request)
     {
-      
        // Validate the input data
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
-        'url' => 'nullable|string',
+        'url' => 'required|url',
         'meta_title' => 'nullable|string|max:255',
         'meta_desc' => 'nullable|string',
         'merchant' => 'nullable|integer',
-        'network_id' => 'nullable|integer',
-        'category_id' => 'nullable|array',
-        'logo' => 'nullable|image|mimes:webp,jpg,jpeg,png',
+        'network_id' => 'required|integer',
+        'category_id' => 'required|array',
+        'logo' => 'nullable|image|mimes:webp,gif',
         'description' => 'nullable|string',
         'about_middle' => 'nullable|string',
         'how_to_use_coupon' => 'nullable|string',
         'Added_by' => 'nullable|string',
     ]);
-
-    $checkStoreExists = Store::where('name', $request->name)->exists();
-
-    if($checkStoreExists) {
-    return redirect()->back()->with('error', 'Store Already exists.');
-
-    }
-    
 
     // Handle file uploads if any
     if ($request->hasFile('logo')) {
@@ -61,16 +52,14 @@ class StoreController extends Controller
     }
 
     // Remove category_id from validated data before creating the store
-    $categoryIds = $validatedData['category_id'] ?? [];
+    $categoryIds = $validatedData['category_id'];
     unset($validatedData['category_id']);
 
     // Create the store
     $store = Store::create($validatedData);
 
     // Attach categories to the store
-    if (!empty($categoryIds)) {
-        $store->categories()->sync($categoryIds);
-    }
+    $store->categories()->sync($categoryIds);
 
     return redirect()->route('admin.stores.index')->with('success', 'Store created successfully.');
     }
@@ -78,11 +67,9 @@ class StoreController extends Controller
     // Display the specified store
     public function show($id)
     {
-        $store = Store::with(['coupons' => function ($query) {
-            $query->orderBy('position', 'asc');
-        }])->findOrFail($id);
+        $store = Store::with(['coupons'])->findOrFail($id);
         // dd($store);
-        return view('Admin.stores.show', compact('store'));
+        return view('admin.stores.show', compact('store'));
     }
 
     // Show the form for editing the specified store
@@ -99,13 +86,13 @@ class StoreController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'url' => 'nullable|string',
+            'url' => 'required|url',
             'meta_title' => 'nullable|string|max:255',
             'meta_desc' => 'nullable|string',
             'merchant' => 'nullable|integer',
-            'network_id' => 'nullable|integer',
-            'category_id' => 'nullable|array',
-            'logo' => 'nullable|image|mimes:webp,jpg,jpeg,png',
+            'network_id' => 'required|integer',
+            'category_id' => 'required|array',
+            'logo' => 'nullable|image|mimes:webp',
             'description' => 'nullable|string',
             'about_middle' => 'nullable|string',
             'how_to_use_coupon' => 'nullable|string',
@@ -121,12 +108,10 @@ class StoreController extends Controller
             }
             $validatedData['logo'] = $request->file('logo')->store('store_logos', 'public');
         }
-        $categoryIds = $validatedData['category_id'] ?? [];
+        $categoryIds = $validatedData['category_id'];
         unset($validatedData['category_id']);
         $store->update($validatedData);
-        if (!empty($categoryIds)) {
         $store->categories()->sync($categoryIds);
-    }
 
         return redirect()->route('admin.stores.index')->with('success', 'Store updated successfully.');
     }
@@ -143,29 +128,15 @@ class StoreController extends Controller
 
      // Remove the specified store from the database
      public function addCouponsView($id)
-     { $storeName = Store::where('id', $id)->value('name');
+     {
         $categories = Category::all();
         $stores = Store::all();
-        $events = Event::where('status',1)->get();
+        $events = Event::all();
          return view('Admin.coupons.create',[
             'id' => $id,
             'categories' => $categories,
             'stores' => $stores,
-            'events' => $events,
-            'storeName' => $storeName
+            'events' => $events
          ]);
      }
-
-
-
-     public function search(Request $request)
-    {
-        // dd($request);
-        $query = $request->input('search');
-        // dd($query);
-        $stores = Store::where('name', 'LIKE', "%{$query}%")
-            ->get();
-
-        return view('Admin.stores.index', compact('stores'));
-    }
 }

@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priceindanger.fr</title>
-     <link rel="icon" href="{{ asset('logos/favicon.png') }}" type="image/x-icon">
+    <title>Simple Navbar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -31,59 +30,43 @@
                     <div class="md:mb-6">
                         <div
                             class="flex items-center justify-between text-[var(--secondary)] border-b lg:border-0 pb-2 cursor-pointer toggle-header">
-                            <h3 class="font-semibold sm:text-xl text-lg">Principales catégories</h3>
+                            <h3 class="font-semibold sm:text-xl text-lg">Top-Kategorien</h3>
                             <i class="fa-solid fa-plus toggle-icon transition-transform duration-300 lg:!hidden"></i>
                         </div>
 
                         <!-- Categories List -->
-                       
-                                                           <ul
-    class="flex flex-col gap-2 mt-4 transition-all duration-300 overflow-hidden toggle-content max-h-0 lg:max-h-none">
-    @foreach($topCategories as $topcat)
-    <li class="flex items-center gap-2 min-w-[200px] whitespace-nowrap">
-        <i class="fa-solid fa-chevron-right text-xs w-4 text-center"></i> 
-        <a href="{{ route('categoryView', $topcat->id)}}">{{ $topcat->name }}</a>
-    </li>
-    @endforeach
-</ul>
+                        <ul
+                            class="flex flex-col gap-2 mt-4 transition-all duration-300 overflow-hidden toggle-content max-h-0 lg:max-h-none">
+                            @foreach ($topCategories as $topcat)
+                            <li>
+                                <a href="#" class="md:text-[17px]"><i class="fa-solid fa-chevron-right mr-1 text-xs"></i> {{ $topcat->name }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
 
 
             <div class="lg:w-3/4">
-                <!-- Buttons -->
-                <div class="flex items-center md:gap-3 gap-1 overflow-auto no-scrollbar">
-                    <a href="{{ route('categoryView', ['id' => $category->id, 'filter' => 'all']) }}">
-                        <button
-                            class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300 {{ $filter === 'all' ? 'bg-[var(--secondary)] text-white' : 'text-black' }}">
-                            Tous ({{ $allCouponsCount }})
-                        </button>
-                    </a>
-
-                    <a href="{{ route('categoryView', ['id' => $category->id, 'filter' => 'guteschein']) }}">
-                        <button
-                            class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300 {{ $filter === 'guteschein' ? 'bg-[var(--secondary)] text-white' : 'text-black' }}">
-                            Codes ({{ $gutescheinCount }})
-                        </button>
-                    </a>
-
-                    <a href="{{ route('categoryView', ['id' => $category->id, 'filter' => 'angebote']) }}">
-                        <button
-                            class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300 {{ $filter === 'angebote' ? 'bg-[var(--secondary)] text-white' : 'text-black' }}">
-                            Offres ({{ $angeboteCount }})
-                        </button>
-                    </a>
-                    <a href="{{ route('categoryView', ['id' => $category->id, 'filter' => 'cashback']) }}">
+               <!-- Buttons -->
+               <div class="flex items-center md:gap-3 gap-1 overflow-auto no-scrollbar">
                     <button
-                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300 {{ $filter === 'cashback' ? 'bg-[var(--secondary)] text-white' : 'text-black' }}">
-                        Cashback ({{$cashbackCount}})
-                    </button>
-                    </a>
+                        class="active border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">All
+                        (34)</button>
+                    <button
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Guteschein
+                        (18)</button>
+                    <button
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Angebote
+                        (16)</button>
+                    <button
+                        class="border border-[var(--secondary)] uppercase md:px-3 px-2 sm:py-2 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap hover:bg-[var(--secondary)] hover:text-white transition-all duration-300">Cashback
+                        (0)</button>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-y-7 md:gap-x-4 gap-4 mt-10">
-                    @foreach ($coupons as $coupon)
+                    @foreach ($category->coupons as $coupon)
                     <div>
                         @include('components.couponCard', ['coupon' => $coupon])
                     </div>

@@ -54,40 +54,40 @@
                                             <label>Change Banner Image:</label>
                                             <input type="file" name="banner" class="form-control">
                                             @error('banner')
-                                            <p class="text-danger">{{ $message }}</p>
+                                                <p class="text-danger">{{ $message }}</p>
                                             @enderror
 
                                             <label>Store:</label>
                                             <select name="store_id" class="form-control">
                                                 @foreach ($stores as $store)
-                                                <option value="{{ $store->id }}" {{ old('store_id', $banner->store_id)
-                                                    == $store->id ? 'selected' : '' }}>
-                                                    {{ $store->name }}
-                                                </option>
+                                                    <option value="{{ $store->id }}"
+                                                        {{ old('store_id', $banner->store_id) == $store->id ? 'selected' : '' }}>
+                                                        {{ $store->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('store_id')
-                                            <p class="text-danger">{{ $message }}</p>
+                                                <p class="text-danger">{{ $message }}</p>
                                             @enderror
 
                                             <label>Link:</label>
                                             <input type="text" name="link" class="form-control"
                                                 value="{{ old('link', $banner->link) }}">
                                             @error('link')
-                                            <p class="text-danger">{{ $message }}</p>
+                                                <p class="text-danger">{{ $message }}</p>
                                             @enderror
 
                                             <label>Status:</label>
                                             <select name="status" class="form-control">
-                                                <option value="1" {{ old('status', $banner->status) == 1 ? 'selected' :
-                                                    '' }}>Active
+                                                <option value="1"
+                                                    {{ old('status', $banner->status) == 1 ? 'selected' : '' }}>Active
                                                 </option>
-                                                <option value="0" {{ old('status', $banner->status) == 0 ? 'selected' :
-                                                    '' }}>
+                                                <option value="0"
+                                                    {{ old('status', $banner->status) == 0 ? 'selected' : '' }}>
                                                     Inactive</option>
                                             </select>
                                             @error('status')
-                                            <p class="text-danger">{{ $message }}</p>
+                                                <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
                                         <div class="card-footer text-right">
@@ -103,7 +103,6 @@
         </div>
     </div>
 
-    @include('Admin.partials.alerts')
     <!-- General JS Scripts -->
     @include('Admin.components.js-scripts')
 

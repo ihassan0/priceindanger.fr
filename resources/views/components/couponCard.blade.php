@@ -1,22 +1,25 @@
+
 <div
     class="relative flex flex-col justify-between swiper-slide border rounded-lg shadow bg-[#F5F5F5] hover:shadow-lg transition duration-200">
-    <div class="flex justify-center sm:mb-2 mb-1 cursor-pointer" onclick="document.getElementById('couponModal-{{ $coupon->id }}').click();">
+    <div class="flex justify-center sm:mb-2 mb-1">
         <img src="{{ asset('storage/'. $coupon->store->logo) }}" alt="{{ $coupon->store->store_name }}"
             class="object-cover w-full h-40 rounded-t-lg">
     </div>
 
     @if ($coupon->exclusive_coupons == 1)
     <div class="bagde-flag-wrap ">
-        <span class="bagde-flag">Exclusif</span>
+        <span
+            class="bagde-flag">Exclusive</span>
     </div>
     @endif
     <div class="p-3 pt-2">
-        <h3 class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer" onclick="document.getElementById('couponModal-{{ $coupon->id }}').click();">{{ $coupon->name }}</h3>
+        <h3 class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap">{{ $coupon->name }}</h3>
 
         <!-- Description -->
         <div>
-            <div class="description-content transition-all duration-300" style="max-height: 0; overflow: hidden;">
-                <p style="color:black;" class="text-sm">{{$coupon->description}}</p>
+            <div class="description-content transition-all duration-300"
+                style="max-height: 0; overflow: hidden;">
+                <p style="color:black;">{{$coupon->description}}</p>
             </div>
             <button class="toggleButton p-0 text-[10px] sm:text-sm" style="color: #DA3737;">
                 <i class="fa-solid fa-chevron-down"></i> &nbsp;
@@ -26,16 +29,14 @@
 
 
 
-    <div class="flex justify-end items-center sm:mt-2 text-gray-500 text-sm min-h-[20px] text-xs sm:text-sm">
-    @if ($coupon->expire_date)
-        <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expire_date }}
-    @endif
-</div>
-
+        <div class="flex justify-end items-center sm:mt-2 text-gray-500 text-sm">
+            <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expiry_date }}
+        </div>
         <button onclick="buttonClick('{{ $coupon->id }}', '{{ $coupon->code }}', this);"
             class="btn w-full py-2 rounded mt-4 sm:text-sm text-xs" data-title="{{ $coupon->name }}"
-            data-subtitle="{{ $coupon->description }}" data-code="{{ $coupon->code }}" data-url="{{ $coupon->redirect_url ?: $coupon->store->url }}" data-store-link="{{ route('storeView',[$coupon->store->id,  'name' => Str::slug($coupon->store->name).'-codes-promo']) }}" id="couponModal-{{ $coupon->id }}">
-            @if($coupon->code !==null) Afficher le code @else Afficher l'offre @endif
+            data-subtitle="{{ $coupon->description }}" data-code="{{ $coupon->code }}"
+            data-store-link="{{ route('storeView',$coupon->store->id) }}" id="couponModal-{{ $coupon->id }}">
+            CODE ANZEIGEN
         </button>
 
     </div>
@@ -56,6 +57,10 @@
             if (button) {
                 button.click();
             }
+            // console.log(data);
+            // openModal(data);
+
+            // Call the function directly if newTab value is 1
         }
 
         document.querySelectorAll('.toggleButton').forEach(button => {

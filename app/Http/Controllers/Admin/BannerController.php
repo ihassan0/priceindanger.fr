@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Store;
-use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Models\emails;
 
 class BannerController extends Controller
 {
@@ -17,7 +15,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = Banner::with('store')->where('is_main',1)->get();
+        $banners = Banner::with('store')->get();
         // dd($banners);
         return view('Admin.banners.index', compact('banners'));
     }
@@ -86,8 +84,7 @@ class BannerController extends Controller
         // Update the banner fields
         $banner->update($validatedData);
     
-        // return redirect()->route('admin.banners.index')->with('success', 'Banner updated successfully.');
-        return redirect()->back()->with('success', 'Banner updated successfully');
+        return redirect()->route('admin.banners.index')->with('success', 'Banner updated successfully.');
     }
 
     /**
@@ -97,39 +94,4 @@ class BannerController extends Controller
     {
         //
     }
-
-
-    public function smallBanners() {
-        $banners = Banner::with('store')->where('is_main',0)->get();
-        // dd($banners);
-        return view('Admin.sm-banners.index', compact('banners'));
-    }
-    
-    
-    
-    public function storeCommentsView() {
-        
-        $comments = Comment::all();
-        return view('Admin.comments.index', compact('comments'));
-    }
-    
-    public function getEmailsView() {
-        $emails = emails::all();
-        return view('Admin.emails.index', compact('emails'));
-    }
-    
-    
-    public function updateCommentStatus(Request $request)
-{
-    $comment = Comment::find($request->id);
-    
-    if ($comment) {
-        $comment->status = $request->status;
-        $comment->save();
-        
-        return response()->json(['success' => true]);
-    }
-
-    return response()->json(['success' => false]);
-}
 }

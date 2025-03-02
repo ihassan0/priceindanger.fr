@@ -94,7 +94,7 @@ class NetworkController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'sometimes|required|string|max:100',
-            'affiliate_url' => 'required|string'
+            'affiliate_url' => 'sometimes|required|url'
         ]);
 
         $network = Network::find($id);

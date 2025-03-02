@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politique de confidentialité | Priceindanger.fr</title>
-     <link rel="icon" href="{{ asset('logos/favicon.png') }}" type="image/x-icon">
+    <title>Simple Navbar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -25,7 +24,7 @@
     <section class="container my-14">
         {!! $homesettings->privacy_policy !!}
     </section>
-
+    
     <!-- Footer  -->
     @include('components.footer')
     <!-- Footer Ends -->

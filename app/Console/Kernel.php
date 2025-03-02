@@ -10,12 +10,9 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
-      protected $commands = [
-        Commands\test::class    
-    ];
     protected function schedule(Schedule $schedule): void
     {
-      $schedule->command('test:token')->everyMinute();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**

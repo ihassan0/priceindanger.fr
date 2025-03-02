@@ -5,8 +5,7 @@
                 <a href="/">
                     <img src="{{url('logos/priceindanger.webp')}}" class="w-[180px]" />
                 </a>
-                <p class="sm:my-4 my-2 text-sm md: w-[95%] leading-7 text-[#292b2c]">Toutes les offres, codes de
-                    réduction et offres Brands sont disponibles ici!
+                <p class="sm:my-4 my-2 text-sm md: w-[95%] leading-7 text-[#292b2c]">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
                 </p>
                 <a href="mailto:admin@priceindanger.com" class="flex items-center gap-2 text-[#292b2c]">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -21,7 +20,7 @@
                 <h2 class="mb-4 font-semibold uppercase">Liens utiles</h2>
                 <ul>
                     <li class="sm:mb-2 mb-1">
-                        <a href="{{ route('allCategories') }}" class="text-sm">Catégories</a>
+                        <a href="{{ route('allCategories') }}" class="text-sm">La catégorie</a>
                     </li>
                     <li class="sm:mb-2 mb-1">
                         <a href="{{ route('aboutUs') }}" class="text-sm">À propos de nous</a>
@@ -30,7 +29,7 @@
                         <a href="{{ route('allBlogs') }}" class="text-sm">Blog</a>
                     </li>
                     <li class="sm:mb-2 mb-1">
-                        <a href="{{ route('faqs') }}" class="text-sm">Faq</a>
+                        <a href="{{ route('faqs') }}" class="text-sm">Faqs</a>
                     </li>
                     <li class="sm:mb-2 mb-1">
                         <a href="{{ route('contactUs') }}" class="text-sm">Contactez-nous</a>
@@ -44,38 +43,30 @@
                 </ul>
             </div>
             <div>
-                <h2 class="mb-4 font-semibold uppercase">Catégories</h2>
+                <h2 class="mb-4 font-semibold uppercase">La catégorie</h2>
                 <ul>
-                      @foreach($topCategories as $topcat)
-   <li class="sm:mb-2 mb-1">
-        <a href="{{ route('categoryView', $topcat->id)}}" class="text-sm">{{ $topcat->name }}</a>
-    </li>
-    @endforeach
-                    <!--<li class="sm:mb-2 mb-1">-->
-                    <!--    <a href="#" class="text-sm">Surfbretter</a>-->
-                    <!--</li>-->
-                    <!--<li class="sm:mb-2 mb-1">-->
-                    <!--    <a href="#" class="text-sm">Montres pour femmes</a>-->
-                    <!--</li>-->
-                    <!--<li class="sm:mb-2 mb-1">-->
-                    <!--    <a href="#" class="text-sm">Sacs</a>-->
-                    <!--</li>-->
-                    <!--<li class="sm:mb-2 mb-1">-->
-                    <!--    <a href="#" class="text-sm">Accessoires de cuisine</a>-->
-                    <!--</li>-->
-                    <!--<li class="sm:mb-2 mb-1">-->
-                    <!--    <a href="#" class="text-sm">Chaussures pour enfants</a>-->
-                    <!--</li>-->
+                    <li class="sm:mb-2 mb-1">
+                        <a href="#" class="text-sm">Surfbretter</a>
+                    </li>
+                    <li class="sm:mb-2 mb-1">
+                        <a href="#" class="text-sm">Montres pour femmes</a>
+                    </li>
+                    <li class="sm:mb-2 mb-1">
+                        <a href="#" class="text-sm">Sacs</a>
+                    </li>
+                    <li class="sm:mb-2 mb-1">
+                        <a href="#" class="text-sm">Accessoires de cuisine</a>
+                    </li>
+                    <li class="sm:mb-2 mb-1">
+                        <a href="#" class="text-sm">Chaussures pour enfants</a>
+                    </li>
                 </ul>
             </div>
             <div class="lg:col-span-2">
-                <h2 class="mb-4 font-semibold uppercase">Magasins</h2>
+                <h2 class="mb-4 font-semibold uppercase">Shops</h2>
                 <div class="grid grid-cols-4 gap-1">
-                    @foreach ($shops->take(12) as $shop)
-                    <a href="{{ route('storeView', [
-    'id' => $shop->id,
-    'name' => Str::slug($shop->name) . '-codes-promo',
-])}}" class="h-16 hover:brightness-50 transition-all duration-300">
+                    @foreach ($shops as $shop)
+                    <a href="#" class="h-16 hover:brightness-50 transition-all duration-300">
                         <img src="{{ asset('storage/' . $shop->logo) }}" class="w-full h-full object-cover rounded-md"
                             alt="Shop Image">
                     </a>
@@ -105,8 +96,7 @@
                         alt="" class="size-8 mt-[3px]">
                 </a>
             </div>
-            <span class="text-sm sm:text-center">© {{ \Carbon\Carbon::now()->format('Y') }} Priceindanger. Tous droits
-                réservés.</span>
+            <span class="text-sm sm:text-center">© 2023 Priceindanger. Tous droits réservés.</span>
         </div>
     </div>
 </footer>

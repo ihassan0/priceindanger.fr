@@ -34,14 +34,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center">
+                                <div class="card-header">
                                     <h4>All Categories</h4>
-                                    <form method="GET" action="{{ route('admin.categories.index') }}"
-                                        class="form-inline">
-                                        <input type="text" name="search" class="form-control mr-2"
-                                            placeholder="Search categories..." value="{{ request()->get('search') }}">
-                                        <button type="submit" class="btn btn-primary">Search</button>
-                                    </form>
                                 </div>
                                 <div class="card-body">
                                     <table class="table">
@@ -55,45 +49,46 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($categories as $category)
-                                            <tr>
-                                                <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $category->name }}</td>
-                                                <td>{{ $category->meta_title }}</td>
-                                                <td>
-                                                    <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip"
-                                                        href="{{ route('admin.categories.edit', $category->id) }}"
-                                                        title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                    <form
-                                                        action="{{ route('admin.categories.destroy', $category->id) }}"
-                                                        method="POST" id="delete-form-{{ $category->id }}"
-                                                        style="display:inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a class="btn btn-danger btn-action" data-toggle="tooltip"
-                                                            title="Delete"
-                                                            data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                            data-confirm-yes="deleteModal({{ $category->id }})">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                    </form>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
+                                                    <td>{{ $category->name }}</td>
+                                                    <td>{{ $category->meta_title }}</td>
+                                                    <td>
+                                                        <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip"
+                                                            href="{{ route('admin.categories.edit', $category->id) }}"
+                                                            title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                                        <form
+                                                            action="{{ route('admin.categories.destroy', $category->id) }}"
+                                                            method="POST" id="delete-form-{{ $category->id }}"
+                                                            style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <a class="btn btn-danger btn-action" data-toggle="tooltip"
+                                                                title="Delete"
+                                                                data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
+                                                                data-confirm-yes="deleteModal({{ $category->id }})">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     {{-- Pagination --}}
                                     <div class="mt-4">
                                         @include('Admin.components.pagination', [
-                                        'paginator' => $categories,
+                                            'paginator' => $categories,
                                         ])
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-
         </div>
     </div>
 

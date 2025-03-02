@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Coupon;
 use App\Models\Network;
 use App\Models\Category;
-use App\Models\Comment;
 class Store extends Model
 {
     use HasFactory;
@@ -32,8 +31,4 @@ class Store extends Model
         return $this->belongsToMany(Category::class);
     }
    
-    public function comments(){
-
-        return $this->hasMany(Comment::class);
-    }
 }
