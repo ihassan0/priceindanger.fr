@@ -79,7 +79,7 @@
 
     <!--Desktop Navigation  -->
 
-    <section class="bg-[var(--secondary)] hidden lg:block">
+    <section class="bg-[var(--secondary)] bg-[url(https://t4.ftcdn.net/jpg/04/61/47/03/360_F_461470323_6TMQSkCCs9XQoTtyer8VCsFypxwRiDGU.jpg)] hidden lg:block">
         <ul class="text-white flex items-center justify-center  xl:gap-5 gap-3">
             <!--Categories Menus -->
             @if (Request::is('/'))
@@ -149,6 +149,8 @@
             </li>
             <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allBlogs') }}"
                     class="!text-white">Blogs</a></li>
+            <li class="openModal py-5 w-20  whitespace-nowrap text-center cursor-pointer"><a
+                    class="!text-white">Submit Code</a></li>
         </ul>
     </section>
 
@@ -160,7 +162,7 @@
         <div class="flex justify-between items-center sm:mx-16 mx-6 relative">
             @if (Request::is('/'))
             <button id="openCategories">
-                <span class="bg-[var(--primary)] p-4 cursor-pointer relative sm:w-60 w-36 block">
+                <span class="bg-[var(--primary)] p-4 cursor-pointer relative sm:w-60 w-fit block">
                     <i class="fa-solid fa-bars mr-2"></i>
                     Catégories
                 </span>
@@ -254,6 +256,9 @@
                             class="!text-white">Offres de reduction</a></li>
                     <li class="p-3 py-4 text-sm font-medium"><a href="{{ route('allBlogs') }}"
                             class="!text-white">Blogs</a></li>
+                    <li class="openModal p-3 py-4 text-sm font-medium cursor-pointer"><a
+                            class="!text-white">Submit Code</a></li>
+                    
                 </ul>
             </div>
         </div>
@@ -261,6 +266,48 @@
 
 
 </nav>
+
+<!-- Modal Container -->
+<div id="modal" class="z-20 fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50 transition-opacity duration-300">
+    <div id="modalContent" class="bg-white min-w-[30%] p-6 rounded-lg shadow-lg transform scale-95 transition-transform duration-300">
+        <div class="submit-box w-content mx-auto">
+            <h1 class="text-2xl text-[var(--secondary)] font-medium poppins text-center">Want to submit a code?</h1>
+            <div class="mt-5 relative">
+                <img class="absolute w-3/4 h-full object-contain z-[-1] -translate-x-2/4 left-2/4 opacity-30" alt="" src="{{url('logos/coupons.png')}}">
+                <label class="opacity-60">Website*</label>
+                <div class="input-wrapper">
+                    <input type="text" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="E.g. Amazon.com">
+                </div>
+                <form id="submit-code-form">
+                    <div class="mt-4">
+                        <label class="opacity-60">Coupon code*</label>
+                        <div class="input-wrapper">
+                            <input type="text" name="coupon" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="E.g. SAVE10">
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label class="opacity-60">Describe the offer*</label>
+                        <div class="input-wrapper">
+                            <textarea name="description" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="E.g. 10% off all dog treats, excluding cat toys" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label class="opacity-60">Expiration date (optional)</label>
+                        <div class="input-wrapper">
+                            <input type="date" id="exp-date" name="expirationDate" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="Pick date">
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-50 mt-4">*Indicates required</p>
+                    <div class="text-center mt-3">
+                        <button class="btn rounded-full overflow-hidden mx-auto py-2 px-8">Submit code</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
     // document.addEventListener('DOMContentLoaded', () => {
@@ -357,45 +404,52 @@
                         $('.suggestions').empty().removeClass('hidden');
                         if (data.length) {
                             data.forEach(item => {
-                               const storeSlug = item.name.toLowerCase().replace(/\s+/g, '-'); // Converts "My Store Name" to "my-store-name"
-    
-    // Append '-codes-promo' to the slug
-        const fullSlug = `${storeSlug}-codes-promo`;
+                                const storeSlug = item.name.toLowerCase().replace(/\s+/g, '-'); // Converts "My Store Name" to "my-store-name"
 
-    // Generate the URL with ID and store name
-    const routeUrlTemplate = `{{ route('storeView', ['__ID__', '__NAME__']) }}`;
+                                // Append '-codes-promo' to the slug
+                                const fullSlug = `${storeSlug}-codes-promo`;
 
-const routeUrl = routeUrlTemplate
-    .replace('__ID__', item.id)
-    .replace('__NAME__', encodeURIComponent(fullSlug));  // Encode to avoid special characters breaking the URL
+                                // Generate the URL with ID and store name
+                                const routeUrlTemplate = `{{ route('storeView', ['__ID__', '__NAME__']) }}`;
 
-        // Hide suggestions when clicking outside
-        $(document).on('click', function(e) {
-            if (!$(e.target).closest('.search-bar, .suggestions').length) {
-                $('.suggestions').addClass('hidden');
-            }
-        });
-        
-        
-       let searchContainer = $("#search-container");
+                                const routeUrl = routeUrlTemplate
+                                    .replace('__ID__', item.id)
+                                    .replace('__NAME__', encodeURIComponent(fullSlug)); // Encode to avoid special characters breaking the URL
 
-        $("#toggle-search").click(function (event) {
-            event.stopPropagation(); // Prevents click from closing immediately
+                                // Hide suggestions when clicking outside
+                                $(document).on('click', function(e) {
+                                    if (!$(e.target).closest('.search-bar, .suggestions').length) {
+                                        $('.suggestions').addClass('hidden');
+                                    }
+                                });
 
-            if (searchContainer.hasClass("max-h-0")) {
-                searchContainer.removeClass("max-h-0").addClass("max-h-40").css("overflow", "visible").hide().slideDown(300);
-            } else {
-                searchContainer.slideUp(300, function () {
-                    searchContainer.removeClass("max-h-40").addClass("max-h-0").css("overflow", "hidden");
-                });
-            }
-        });
 
-        // Close when clicking outside
-        $(document).click(function (event) {
-            if (!$(event.target).closest("#search-container, #toggle-search").length) {
-                searchContainer.slideUp(300, function () {
-                    searchContainer.removeClass("max-h-40").addClass("max-h-0").css("overflow", "hidden");
+                                let searchContainer = $("#search-container");
+
+                                $("#toggle-search").click(function(event) {
+                                    event.stopPropagation(); // Prevents click from closing immediately
+
+                                    if (searchContainer.hasClass("max-h-0")) {
+                                        searchContainer.removeClass("max-h-0").addClass("max-h-40").css("overflow", "visible").hide().slideDown(300);
+                                    } else {
+                                        searchContainer.slideUp(300, function() {
+                                            searchContainer.removeClass("max-h-40").addClass("max-h-0").css("overflow", "hidden");
+                                        });
+                                    }
+                                });
+
+                                // Close when clicking outside
+                                $(document).click(function(event) {
+                                    if (!$(event.target).closest("#search-container, #toggle-search").length) {
+                                        searchContainer.slideUp(300, function() {
+                                            searchContainer.removeClass("max-h-40").addClass("max-h-0").css("overflow", "hidden");
+                                        });
+                                    }
+                                });
+
+                            });
+                        }
+                    }
                 });
             }
         });
@@ -404,26 +458,54 @@ const routeUrl = routeUrlTemplate
 
 <script>
     document.getElementById("languageToggle").addEventListener("click", function() {
-    var dropdown = document.getElementById("dropdownMenu");
-    dropdown.classList.toggle("hidden");
-});
+        var dropdown = document.getElementById("dropdownMenu");
+        dropdown.classList.toggle("hidden");
+    });
 </script>
 
 
 <script>
-    // Function to toggle dropdown visibility
     function toggleDropdown() {
         const dropdown = document.getElementById("languageDropdown");
         dropdown.classList.toggle("hidden");
     }
 
-    // Close dropdown if clicked outside
     document.addEventListener("click", (e) => {
         const dropdown = document.getElementById("languageDropdown");
         const mainDiv = document.querySelector('.items-center');
-        
+
         if (!mainDiv.contains(e.target)) {
             dropdown.classList.add("hidden");
         }
     });
+
+    const modal = $("#modal");
+    const modalContent = $("#modalContent");
+
+    $(".openModal").click(function() {
+        modal.removeClass("hidden");
+        setTimeout(() => {
+            modal.addClass("opacity-100");
+            modalContent.removeClass("scale-95").addClass("scale-100");
+        }, 10);
+    });
+
+    $("#closeModal").click(function() {
+        closeCouponModal();
+    });
+
+    modal.click(function(e) {
+        if (!modalContent.is(e.target) && modalContent.has(e.target).length === 0) {
+            closeCouponModal();
+        }
+    });
+
+    function closeCouponModal() {
+        modalContent.removeClass("scale-100").addClass("scale-95");
+        modal.removeClass("opacity-100");
+
+        setTimeout(() => {
+            modal.addClass("hidden");
+        }, 300);
+    }
 </script>

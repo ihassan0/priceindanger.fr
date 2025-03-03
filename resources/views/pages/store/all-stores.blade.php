@@ -50,10 +50,10 @@
 
 
                 <!-- Small Device filters -->
-                <div class="sm:hidden container">
+                <div class="sm:hidden container sticky top-0 z-[1]">
                         <!-- Button -->
                         <button id="categoryDropdownButton"
-                                class="flex justify-between p-3 py-4 text-sm font-medium border w-full ">
+                                class="flex justify-between bg-white p-3 py-4 text-sm font-medium border w-full ">
                                 Commencez par {{ request('letter')? request('letter'): 'A' }}
                                 <i class="fa-solid fa-caret-down text-xs"></i>
                         </button>
@@ -87,13 +87,17 @@
 
                                 <div>
                                         <a href="{{ route('storeView', [ 'id' => $store->id, 'name' => Str::slug($store->name).'-codes-promo',]) }}"
-                                                class=" category relative opacity-80 w-full block text-left px-4 py-1 rounded-sm">
-                                                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                class="hidden category relative opacity-80 w-full sm:block text-left px-4 py-1 rounded-sm">
+                                                {{ $store->name }}
+                                        </a>
+                                        <a href="{{ route('storeView', [ 'id' => $store->id, 'name' => Str::slug($store->name).'-codes-promo',]) }}"
+                                                class="flex sm:hidden items-center gap-2 border border-[#cbcbcb] w-full text-left px-4 py-3 rounded-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                         stroke-width="4" stroke="currentColor"
                                                         class="size-[16px] bg-black text-white rounded-full text-[10px] p-[3px]">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                                                </svg> -->
+                                                </svg>
                                                 {{ $store->name }}
                                         </a>
                                 </div>

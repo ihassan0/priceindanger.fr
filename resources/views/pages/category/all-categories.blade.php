@@ -53,10 +53,10 @@
 
 
         <!-- Small Device filters -->
-        <div class="sm:hidden container">
+        <div class="sm:hidden container sticky top-0 z-[1]">
             <!-- Button -->
             <button id="categoryDropdownButton"
-                class="flex justify-between p-3 py-4 text-sm font-medium border w-full ">
+                class="flex justify-between bg-white p-3 py-4 text-sm font-medium border w-full ">
                 Commencez par {{ request('letter')? request('letter'): 'A' }}
                 <i class="fa-solid fa-caret-down text-xs"></i>
             </button>
@@ -87,8 +87,11 @@
                 @foreach ($categories as $category )
 
                 <a href="{{ route('categoryView',$category->id) }}">
-                    <span class="category relative opacity-80 w-full block text-left px-4 py-1 rounded-sm">
+                    <span class="category relative opacity-80 w-full hidden sm:block text-left px-4 py-1 rounded-sm">
 
+                        {{ $category->name }}
+                    </span>
+                    <span class="border border-[#cbcbcb] w-full block sm:hidden text-left px-4 py-3 rounded-sm">
                         {{ $category->name }}
                     </span>
                 </a>

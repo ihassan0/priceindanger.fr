@@ -1,21 +1,37 @@
 @if(!Cookie::has('cookie_consent'))
-<div id="cookie-banner" class="fixed bottom-0 w-full bg-gray-900 text-white p-4 text-center">
+<!-- <div id="cookie-banner" class="fixed bottom-0 w-full bg-gray-900 text-white p-4 text-center">
     <p>We use cookies to improve your experience. Do you accept cookies?</p>
     <button onclick="setCookieConsent(true)" class="bg-green-500 px-4 py-2 rounded">Accept</button>
     <button onclick="setCookieConsent(false)" class="bg-red-500 px-4 py-2 rounded">Reject</button>
+</div> -->
+
+<div id="cookie-banner"
+    class="fixed inset-x-0 bottom-0 z-10 flex flex-col justify-between gap-x-8 gap-y-4 bg-white p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8">
+    <p class="max-w-4xl text-sm leading-6 text-gray-900">This website uses cookies to enhance your browsing experience,
+        analyze site traffic, and serve better user experiences. By continuing to use this site, you consent to our use of
+        cookies. Learn more in our <a class="font-semibold text-teal-600" href="/privacy">cookie policy</a>.</p>
+    <div class="mr-16 flex flex-none items-center gap-x-5">
+        <button type="button" onclick="setCookieConsent(true)" class="rounded-md bg-[var(--primary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-70">Accept all 🍪</button>
+        <button type="button" onclick="setCookieConsent(true)" class="text-sm font-semibold leading-6 text-[var(--primary)]">Reject all</button>
+    </div>
 </div>
 
 <script>
     function setCookieConsent(consent) {
         fetch("{{ route('cookie.consent') }}", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": "{{ csrf_token() }}" },
-            body: JSON.stringify({ consent: consent ? 'accepted' : 'rejected' })
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("cookie-banner").style.display = "none";
-        });
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({
+                    consent: consent ? 'accepted' : 'rejected'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("cookie-banner").style.display = "none";
+            });
     }
 </script>
 @endif
