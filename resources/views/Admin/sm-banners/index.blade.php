@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>priceindanger-categories</title>
+    <title>priceindanger-banners</title>
 
     <!-- General CSS Files -->
     @include('Admin.components.css-links')
@@ -29,50 +29,53 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Categories</h1>
+                        <h1>Banners</h1>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h4>All Categories</h4>
-                                    <form method="GET" action="{{ route('admin.categories.index') }}"
-                                        class="form-inline">
-                                        <input type="text" name="search" class="form-control mr-2"
-                                            placeholder="Search categories..." value="{{ request()->get('search') }}">
-                                        <button type="submit" class="btn btn-primary">Search</button>
-                                    </form>
+                                <div class="card-header">
+                                    <h4>All Banners</h4>
                                 </div>
                                 <div class="card-body">
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Category Name</th>
-                                                <th scope="col">Meta Title</th>
+                                                <th scope="col">Banner</th>
+                                                <th scope="col">Store Name</th>
+                                                {{-- <th scope="col">Link</th> --}}
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($categories as $category)
+                                            @foreach ($banners as $banner)
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $category->name }}</td>
-                                                <td>{{ $category->meta_title }}</td>
+                                                <td>{{ $banner->banner }}</td>
+                                                <td>{{ $banner->store->name ?? 'N/A' }}</td>
+                                                {{-- <td><a href="{{ $banner->link }}" target="_blank">{{ $banner->link
+                                                        }}</a></td> --}}
+                                                <td>
+                                                    <span
+                                                        class="badge {{ $banner->status ? 'badge-success' : 'badge-danger' }}">
+                                                        {{ $banner->status ? 'Active' : 'Inactive' }}
+                                                    </span>
+                                                </td>
                                                 <td>
                                                     <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip"
-                                                        href="{{ route('admin.categories.edit', $category->id) }}"
+                                                        href="{{ route('admin.banners.edit', $banner->id) }}"
                                                         title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                    <form
-                                                        action="{{ route('admin.categories.destroy', $category->id) }}"
-                                                        method="POST" id="delete-form-{{ $category->id }}"
+                                                    <form action="{{ route('admin.banners.destroy', $banner->id) }}"
+                                                        method="POST" id="delete-form-{{ $banner->id }}"
                                                         style="display:inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <a class="btn btn-danger btn-action" data-toggle="tooltip"
                                                             title="Delete"
                                                             data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
-                                                            data-confirm-yes="deleteModal({{ $category->id }})">
+                                                            data-confirm-yes="deleteModal({{ $banner->id }})">
                                                             <i class="fas fa-trash"></i>
                                                         </a>
                                                     </form>
@@ -81,19 +84,13 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    {{-- Pagination --}}
-                                    <div class="mt-4">
-                                        @include('Admin.components.pagination', [
-                                        'paginator' => $categories,
-                                        ])
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-
         </div>
     </div>
 

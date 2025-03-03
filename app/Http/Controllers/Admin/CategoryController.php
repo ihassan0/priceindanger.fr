@@ -11,11 +11,20 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(20);
+        // Retrieve the search query if provided
+        $search = $request->input('search');
+    
+        // Check if search term exists; filter categories accordingly
+        $categories = Category::when($search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })->paginate(20);
+    
+        // Return the view with categories and maintain search query
         return view('Admin.category.index', [
             'categories' => $categories,
+            'search' => $search,
         ]);
     }
 

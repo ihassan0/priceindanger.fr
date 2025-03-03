@@ -34,40 +34,44 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+       
         // Validate the request for multiple coupons
     $validatedData = $request->validate([
         'name.*' => 'required|string|max:255',
         'redirect_url.*' => 'nullable',
         'code.*' => 'nullable|string|max:100',
-        'discount.*' => 'required|numeric|min:0|max:100',
-        'start_date.*' => 'required|date',
+        'discount.*' => 'nullable|string',
+        'position.*' => 'nullable|integer|min:0|max:100',
+        'start_date.*' => 'nullable|date',
         'expire_date.*' => 'nullable|date|after:start_date.*',
-        'category_id.*' => 'required|integer|exists:categories,id',
-        'store_id.*' => 'required|integer|exists:stores,id',
-        'status.*' => 'required|boolean',
+        'category_id.*' => 'nullable|integer|exists:categories,id',
+        'event_id.*' => 'nullable|integer',
+        'status.*' => 'nullable|boolean',
         'description.*' => 'nullable|string',
         'exclusive_coupons.*' => 'nullable|boolean',
         'popular_coupons.*' => 'nullable|boolean',
     ]);
 
-    // Loop through each set of coupon data and create the coupons
-    foreach ($validatedData['name'] as $index => $name) {
-        Coupon::create([
-            'name' => $name,
-            'redirect_url' => $validatedData['redirect_url'][$index] ?? null,
-            'code' => $validatedData['code'][$index],
-            'discount' => $validatedData['discount'][$index],
-            'start_date' => $validatedData['start_date'][$index],
-            'expire_date' => $validatedData['expire_date'][$index],
-            'category_id' => $validatedData['category_id'][$index],
-            'store_id' => $validatedData['store_id'][$index],
-            'status' => $validatedData['status'][$index],
-            'description' => $validatedData['description'][$index] ?? null,
-            'exclusive_coupons' => isset($validatedData['exclusive_coupons'][$index]) ? 1 : 0,
-            'popular_coupons' => isset($validatedData['popular_coupons'][$index]) ? 1 : 0,
-        ]);
-    }
+    // Process and store each coupon
+        foreach ($request->name as $key => $value) {
+            //  dd((int) $request->exclusive_coupons[$key]);
+            Coupon::create([
+                'name' => $value,
+               'redirect_url' => is_array($request->redirect_url) && isset($request->redirect_url[$key]) ? $request->redirect_url[$key] : null,
+                'code' => $request->code[$key],
+                'discount' => $request->discount[$key],
+                'start_date' => $request->start_date[$key],
+                'expire_date' => $request->expire_date[$key],
+                'category_id' => $request->category_id[$key],
+                'event_id' => $request->event_id[$key],
+                'store_id' => $request->store[$key],
+                'status' => $request->status[$key],
+                'description' => $request->description[$key] ?? null,
+                'exclusive_coupons' => is_array($request->exclusive_coupons) && isset($request->exclusive_coupons[$key]) ?((int) $request->exclusive_coupons[$key]) : 0,
+                'popular_coupons' => is_array($request->popular_coupons) && isset($request->popular_coupons[$key]) ?((int) $request->popular_coupons[$key]) : 0,
+                'position' => $request->position[$key],
+            ]);
+        }
 
     return redirect()->back()->with('success', 'Coupons created successfully.');
     }
@@ -87,7 +91,7 @@ class CouponController extends Controller
     {
         $categories = Category::all();
         $stores = Store::all();
-        $events = Event::all();
+        $events = Event::where('status',1)->get();
         return view('Admin.coupons.edit', compact('coupon', 'categories', 'stores', 'events'));
     }
 
@@ -98,15 +102,15 @@ class CouponController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'redirect_url' => 'nullable'|'string',
+            'redirect_url' => 'nullable|string',
             'code' => 'nullable|string|max:255',
-            'discount' => 'required|numeric|min:0|max:100',
-            'category_id' => 'required',
-            'store_id' => 'required',
+            'discount' => 'required|string',
+            'category_id' => 'nullable',
+            'event_id'=> 'nullable',
             'event_id' => 'nullable',
-            'start_date' => 'required|date',
+            'start_date' => 'nullable|date',
             'expire_date' => 'nullable|date|after_or_equal:start_date',
-            'status' => 'required|boolean',
+            'status' => 'nullable|boolean',
             'description' => 'nullable|string',
         ]);
         $data = $request->all();
@@ -206,4 +210,64 @@ class CouponController extends Controller
             return redirect()->back()->with('error', 'Failed to upload coupons: ' . $e->getMessage());
         }
     }
+
+
+    public function filterCoupons(Request $request)
+    {
+        $filters = $request->filters;
+        $currentEndpoint = $request->currentEndpoint;
+       
+    
+        // Example logic for filtering
+        $query = Coupon::query();
+    
+        if (in_array('latest', $filters)) {
+            $query->orderBy('created_at', 'desc');
+        }
+    
+        if (in_array('popular', $filters)) {
+            $query->where('popular_coupons', 1);
+        }
+    
+        if (in_array('event', $filters)) {
+            $query->whereNotNull('event_id');
+        }
+    
+        if (in_array('all', $filters)) {
+            // Show all coupons, no specific filter
+        }
+    
+        $coupons = $query->whereNotNull('code')->get();
+        if ($currentEndpoint === '/offres') {
+        $coupons = $query->whereNull('code')->get();
+
+        }
+    
+        // Generate HTML using Blade components
+        $html = '';
+        foreach ($coupons as $coupon) {
+            $html .= view('components.couponCard', compact('coupon'))->render();
+        }
+    
+        return response()->json([
+            'html' => $html,
+            'filters' => $filters
+        ]);
+    }
+
+
+    public function updatePositions(Request $request)
+{
+    $positions = $request->input('positions'); // Assume this is an array of coupon_id => position
+    // dd($positions);
+
+    foreach ($positions as $couponId => $position) {
+        Coupon::where('id', $couponId)->update(['position' => $position]);
+    }
+
+    return redirect()->back();
+}
+
+    
+
 }
