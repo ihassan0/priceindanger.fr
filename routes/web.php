@@ -18,7 +18,8 @@ use App\Models\Coupon;
 use App\Models\Blog;
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,13 @@ Route::get('/clear-route-cache', function () {
     Artisan::call('view:clear');
     return "Route cache cleared!";
 });
+
+Route::post('/cookie/consent', function (Request $request) {
+    $consent = $request->input('consent');
+    $cookie = Cookie::make('cookie_consent', $consent, 60 * 24 * 30); // 30 days
+
+    return response()->json(['message' => 'Cookie preference saved.'])->cookie($cookie);
+})->name('cookie.consent');
 
 Route::get('/run-scheduler', function () {
     Artisan::call('schedule:run');

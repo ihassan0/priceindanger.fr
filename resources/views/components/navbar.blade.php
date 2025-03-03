@@ -1,83 +1,87 @@
-
-
 <nav>
 
     <div class="container  mx-auto md:flex items-center justify-between md:gap-16 gap-8 md:px-5 px-3 py-5">
 
-         <!--Logo -->
+        <!--Logo -->
         <div class="flex items-center justify-between">
             <a href="/">
                 <img src="{{url('logos/priceindanger.webp')}}" class="sm:w-[230px] w-[128px]" />
             </a>
-           <div class="relative">
-        <div id="languageToggle" class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer flex md:hidden">
-            <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="French Flag" class="w-[32px]">
-            <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
-        </div>
-        <div id="dropdownMenu" class="absolute left-0 mt-2 bg-white shadow-md rounded-lg w-36 z-50 hidden">
-            <a href="https://priceindanger.com/" target="_blank" class="flex items-center gap-3 p-2 hover:bg-gray-100">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" 
-                     alt="German Flag" class="w-[32px]">
-                <span>German</span>
-            </a>
-        </div>
-    </div>
+            <div class="relative">
+                <div id="languageToggle"
+                    class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer flex md:hidden">
+                    <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="French Flag"
+                        class="w-[32px]">
+                    <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
+                </div>
+                <div id="dropdownMenu" class="absolute left-0 mt-2 bg-white shadow-md rounded-lg w-36 z-50 hidden">
+                    <a href="https://priceindanger.com/" target="_blank"
+                        class="flex items-center gap-3 p-2 hover:bg-gray-100">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag"
+                            class="w-[32px]">
+                        <span>German</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
-         <!--Search -->
+        <!--Search -->
         <div class="flex-1 relative h-12 my-4 hidden lg:block">
-            <input type="text" class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
+            <input type="text"
+                class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
                 id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
             <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
 
-             <!--Suggestions Dropdown -->
-            <ul id="suggestions" class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
+            <!--Suggestions Dropdown -->
+            <ul id="suggestions"
+                class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
             </ul>
         </div>
-        
+
         @if (Request::is('/'))
-         <!--Search -->
+        <!--Search -->
         <div class="flex-1 relative h-12 my-4 lg:hidden">
-            <input type="text" class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
+            <input type="text"
+                class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
                 id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
             <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
 
-             <!--Suggestions Dropdown -->
-            <ul id="suggestions" class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
+            <!--Suggestions Dropdown -->
+            <ul id="suggestions"
+                class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
             </ul>
         </div>
         @endif
 
-         <!--Flag -->
-      <div class="relative">
-     <!--Main Flag Section -->
-    <div onclick="toggleDropdown()" 
-         class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer hidden md:flex">
-        <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" 
-             alt="French Flag" class="w-[32px]">
-        <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
-    </div>
-    
-     <!--Dropdown with German Flag -->
-    <ul id="languageDropdown" 
-        class="absolute left-0 top-12 bg-white shadow-md rounded-md w-48 hidden">
-        <li class="flex items-center gap-3 p-2 hover:bg-gray-100">
-            <a href="https://priceindanger.com/" target="_blank" class="flex items-center gap-3 w-full">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" 
-                     alt="German Flag" class="w-[24px]">
-                <span>German</span>
-            </a>
-        </li>
-    </ul>
-</div>
+        <!--Flag -->
+        <div class="relative">
+            <!--Main Flag Section -->
+            <div onclick="toggleDropdown()"
+                class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer hidden md:flex">
+                <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="French Flag"
+                    class="w-[32px]">
+                <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
+            </div>
+
+            <!--Dropdown with German Flag -->
+            <ul id="languageDropdown" class="absolute left-0 top-12 bg-white shadow-md rounded-md w-48 hidden">
+                <li class="flex items-center gap-3 p-2 hover:bg-gray-100">
+                    <a href="https://priceindanger.com/" target="_blank" class="flex items-center gap-3 w-full">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag"
+                            class="w-[24px]">
+                        <span>German</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
     </div>
 
-     <!--Desktop Navigation  -->
+    <!--Desktop Navigation  -->
 
     <section class="bg-[var(--secondary)] hidden lg:block">
         <ul class="text-white flex items-center justify-center  xl:gap-5 gap-3">
-             <!--Categories Menus -->
+            <!--Categories Menus -->
             @if (Request::is('/'))
             <li class="bg-[var(--primary)] p-5 cursor-pointer relative w-60">
                 <span class="uppercase text-[16px] font-medium">
@@ -85,7 +89,7 @@
                     Catégories
                 </span>
 
-                 <!--Menus -->
+                <!--Menus -->
                 <ul class="absolute left-0 bg-white top-16 text-black w-full shadow-lg list rounded-b-md">
                     @foreach ($categories as $category)
                     <li class="p-[11px] text-sm text-[#292b2c]"><a href="{{ route('categoryView', $category->id)}}"
@@ -93,7 +97,7 @@
                             {{ $category->name }} </a></li>
                     @endforeach
                     <li class="p-[10px] text-[var(--primary)] border-t-[1px] border-gray-300">
-                       <a href="{{ route('allCategories') }}" >
+                        <a href="{{ route('allCategories') }}">
                             <div class="flex items-center justify-between"> Plus de catégories <i
                                     class="fa-solid fa-plus"></i> </div>
                         </a>
@@ -108,15 +112,15 @@
             </li>
             @endif
 
-             <!--Navigation Menus -->
+            <!--Navigation Menus -->
             <li class="py-5 w-20  whitespace-nowrap text-center"><a href="/" class="!text-white">Maison</a></li>
             <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allCategories') }}"
                     class="!text-white">Catégories</a></li>
             <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allStores') }}"
                     class="!text-white">Magasins</a></li>
-             <!--Dropdown -->
+            <!--Dropdown -->
             <li class="group relative cursor-pointer">
-                 <!--Button -->
+                <!--Button -->
                 <span class="block w-40  whitespace-nowrap text-center">
                     <a class="menu-hover !text-white">
                         Occasions spéciales
@@ -124,7 +128,7 @@
                     <i class="fa-solid fa-caret-down text-xs"></i>
                 </span>
 
-                 <!--Dropdown List  -->
+                <!--Dropdown List  -->
 
                 <ul
                     class="bg-[var(--secondary)] rounded-[3px] p-2 absolute top-9 z-50 transition-all duration-200 opacity-0 translate-y-7 group-hover:opacity-100 group-hover:translate-y-0 delayed-invisible">
@@ -148,11 +152,11 @@
         </ul>
     </section>
 
-     <!--Mobile Navigation  -->
+    <!--Mobile Navigation  -->
 
     <section class="bg-[var(--secondary)] text-white lg:hidden">
 
-         <!--Buttons to Open the Drawers -->
+        <!--Buttons to Open the Drawers -->
         <div class="flex justify-between items-center sm:mx-16 mx-6 relative">
             @if (Request::is('/'))
             <button id="openCategories">
@@ -161,21 +165,26 @@
                     Catégories
                 </span>
             </button>
-            @else 
-           <button id="toggle-search">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-    </svg>
-</button>
-            
-            <div id="search-container" class="w-full absolute my-4 top-7 max-h-0 overflow-hidden transition-all duration-300">
-    <input type="text" class="text-black border border-1 rounded-sm w-full h-12 p-3 focus-visible:outline-none text-sm search-bar"
-        id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
-    <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
+            @else
+            <button id="toggle-search">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+            </button>
 
-    <!-- Suggestions Dropdown -->
-    <ul id="suggestions" class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm"></ul>
-</div>
+            <div id="search-container"
+                class="w-full absolute my-4 top-7 max-h-0 overflow-hidden transition-all duration-300">
+                <input type="text"
+                    class="text-black border border-1 rounded-sm w-full h-12 p-3 focus-visible:outline-none text-sm search-bar"
+                    id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
+                <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
+
+                <!-- Suggestions Dropdown -->
+                <ul id="suggestions"
+                    class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm"></ul>
+            </div>
             @endif
 
             <button id="openMenus" class="p-4 ml-auto" onclick="openRightDrawer()">Menu <i
@@ -184,7 +193,7 @@
 
 
         @if (Request::is('/'))
-         <!--Categories Drawer Overlay and Drawer -->
+        <!--Categories Drawer Overlay and Drawer -->
         <div id="categoriesOverlay" class="fixed inset-0 z-10 bg-black bg-opacity-50 hidden"></div>
         <div id="categoriesDrawer"
             class="fixed left-0 top-0 z-50 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
@@ -204,7 +213,7 @@
         </div>
         @endif
 
-         <!--Menus Drawer Overlay and Drawer -->
+        <!--Menus Drawer Overlay and Drawer -->
         <div id="menuOverlay" class="fixed inset-0 z-10 bg-black bg-opacity-50 hidden" onclick="closeRightDrawer()">
         </div>
         <div id="menuDrawer"
@@ -217,15 +226,16 @@
                             class="!text-white">Catégories</a></li>
                     <li class="p-3 py-4 text-sm font-medium"><a href="{{ route('allStores') }}"
                             class="!text-white">Magasins</a></li>
-                     <!--Dropdown -->
+                    <!--Dropdown -->
                     <li class="group relative cursor-pointer ">
-                         <!--Button -->
-                        <span class="flex items-center justify-between p-3 py-4 text-sm font-medium text-white toggle-header">
+                        <!--Button -->
+                        <span
+                            class="flex items-center justify-between p-3 py-4 text-sm font-medium text-white toggle-header">
                             Occasions spéciales
                             <i class="fa-solid fa-caret-down text-xs"></i>
                         </span>
 
-                         <!--Dropdown List  -->
+                        <!--Dropdown List  -->
 
                         <ul class="max-h-0 ml-3 overflow-hidden transition-all duration-300 ease-in-out">
                             <li>
@@ -353,23 +363,11 @@
         const fullSlug = `${storeSlug}-codes-promo`;
 
     // Generate the URL with ID and store name
-    const routeUrl = `{{ route('storeView', [':id', ':name']) }}`
-        .replace(':id', item.id)
-        .replace(':name', fullSlug);
-                                $('.suggestions').append(`<a href="${routeUrl}"><li class="flex gap-4 items-center p-2 border border-gray-200 mb-2 rounded-sm transition-all duration-300 hover:bg-gray-200 cursor-pointer"><img src="{{ asset('storage/${item.logo}') }}" class="size-12 object-cover"> <p class="text-lg text-[#292b2c] "> ${item.name} </p> </li></a>`);
-                            });
-                        } else {
-                            $('.suggestions').append('<li class="p-2 text-gray-500">No results found</li>');
-                        }
-                    },
-                    error: function() {
-                        $('.suggestions').addClass('hidden');
-                    }
-                });
-            } else {
-                $('.suggestions').addClass('hidden');
-            }
-        });
+    const routeUrlTemplate = `{{ route('storeView', ['__ID__', '__NAME__']) }}`;
+
+const routeUrl = routeUrlTemplate
+    .replace('__ID__', item.id)
+    .replace('__NAME__', encodeURIComponent(fullSlug));  // Encode to avoid special characters breaking the URL
 
         // Hide suggestions when clicking outside
         $(document).on('click', function(e) {
@@ -405,7 +403,7 @@
 </script>
 
 <script>
-document.getElementById("languageToggle").addEventListener("click", function() {
+    document.getElementById("languageToggle").addEventListener("click", function() {
     var dropdown = document.getElementById("dropdownMenu");
     dropdown.classList.toggle("hidden");
 });
