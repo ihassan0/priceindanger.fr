@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catégories | Priceindanger.fr</title>
-     <link rel="icon" href="{{ asset('logos/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('logos/favicon.png') }}" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -23,15 +23,15 @@
     <!-- Breadcrums end -->
 
     <!-- Categories Start -->
-    <section class="container my-5 md:my-10 mb-16">
+    <section class="my-5 md:my-0 mb-16">
 
 
         <!-- Desktop filters -->
-        <ul class="sm:flex hidden items-center justify-center flex-wrap mb-10 mt-16 gap-2">
+        <ul class="sm:flex hidden container items-center justify-center flex-wrap mt-16 gap-2">
             @foreach(range('A', 'Z') as $char)
             <li>
-                <button class="border border-[#cbcbcb] size-8 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300 
-                    {{ request('letter') === $char ? 'bg-[var(--secondary)] text-white' : '' }}"
+                <button class="hover:border-b-[3px] hover:border-[var(--secondary)] size-8 text-[#8f8f8f] hover:text-[var(--secondary)] hover:font-semibold transition-all duration-300 
+                    {{ request('letter') === $char ? 'border-b-[3px] border-[var(--secondary)] text-[var(--secondary)] font-semibold' : '' }}"
                     data-letter="{{ $char }}">
 
                     {{ $char }}
@@ -41,8 +41,8 @@
             </li>
             @endforeach
             <li>
-                <button class="border border-[#cbcbcb] h-8 px-2 text-[#8f8f8f] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300
-                     {{ request('letter') === '0-9' ? 'bg-[var(--secondary)] text-white' : '' }}" data-letter="0-9">
+                <button class="hover:border-b-[3px] hover:border-[var(--secondary)] h-8 px-2  text-[#8f8f8f] hover:text-[var(--secondary)] hover:font-semibold transition-all duration-300
+                     {{ request('letter') === '0-9' ? 'border-b-[3px] border-[var(--secondary)] text-[var(--secondary)] font-semibold' : '' }}" data-letter="0-9">
                     0 - 9
                 </button>
                 <a href="{{ url()->current() }}?letter=0-9" id="link-0-9" style="display: none;">
@@ -53,7 +53,7 @@
 
 
         <!-- Small Device filters -->
-        <div class="sm:hidden">
+        <div class="sm:hidden container">
             <!-- Button -->
             <button id="categoryDropdownButton"
                 class="flex justify-between p-3 py-4 text-sm font-medium border w-full ">
@@ -82,17 +82,18 @@
 
 
         <!-- Categories -->
+        <div class="bg-gray-50 py-8">
+            <div class="container grid lg:grid-cols-4 gap-x-6 gap-y-4">
+                @foreach ($categories as $category )
 
-        <div class="grid lg:grid-cols-4 gap-x-6 gap-y-4">
-            @foreach ($categories as $category )
+                <a href="{{ route('categoryView',$category->id) }}">
+                    <span class="category relative opacity-80 w-full block text-left px-4 py-1 rounded-sm">
 
-            <a href="{{ route('categoryView',$category->id) }}">
-                <span class="border border-[#cbcbcb] w-full block text-left px-4 py-3 rounded-sm">
-
-                    {{ $category->name }}
-                </span>
-            </a>
-            @endforeach
+                        {{ $category->name }}
+                    </span>
+                </a>
+                @endforeach
+            </div>
         </div>
     </section>
     <!-- Categories end -->
@@ -106,7 +107,7 @@
         // Dropdown toggle functionality
         const dropdownButton = document.getElementById('categoryDropdownButton');
         const dropdownList = document.getElementById('categoryDropdownList');
-    
+
         dropdownButton.addEventListener('click', () => {
             // Toggle max-height for dropdown visibility
             if (dropdownList.style.maxHeight === '0px' || !dropdownList.style.maxHeight) {
@@ -115,7 +116,7 @@
                 dropdownList.style.maxHeight = '0px';
             }
         });
-    
+
         // Button click to trigger anchor links
         document.querySelectorAll('button[data-char]').forEach(button => {
             button.addEventListener('click', () => {
