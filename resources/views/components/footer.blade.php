@@ -1,3 +1,27 @@
+@if(!Cookie::has('cookie_consent'))
+<div id="cookie-banner" class="fixed bottom-0 w-full bg-gray-900 text-white p-4 text-center">
+    <p>We use cookies to improve your experience. Do you accept cookies?</p>
+    <button onclick="setCookieConsent(true)" class="bg-green-500 px-4 py-2 rounded">Accept</button>
+    <button onclick="setCookieConsent(false)" class="bg-red-500 px-4 py-2 rounded">Reject</button>
+</div>
+
+<script>
+    function setCookieConsent(consent) {
+        fetch("{{ route('cookie.consent') }}", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": "{{ csrf_token() }}" },
+            body: JSON.stringify({ consent: consent ? 'accepted' : 'rejected' })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("cookie-banner").style.display = "none";
+        });
+    }
+</script>
+@endif
+
+
+
 <footer class="bg-[#F7F8FB] text-black">
     <div class="mx-auto w-full max-w-6xl">
         <div class="grid sm:grid-cols-2 gap-4 px-4 pt-10 lg:pt-16 lg:grid-cols-6">
@@ -5,7 +29,8 @@
                 <a href="/">
                     <img src="{{url('logos/priceindanger.webp')}}" class="w-[180px]" />
                 </a>
-                <p class="sm:my-4 my-2 text-sm md: w-[95%] leading-7 text-[#292b2c]">Toutes les offres, codes de réduction et offres Brands sont disponibles ici !
+                <p class="sm:my-4 my-2 text-sm md: w-[95%] leading-7 text-[#292b2c]">Toutes les offres, codes de
+                    réduction et offres Brands sont disponibles ici !
                 </p>
                 <a href="mailto:admin@priceindanger.com" class="flex items-center gap-2 text-[#292b2c]">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -45,21 +70,26 @@
             <div>
                 <h2 class="mb-4 font-semibold uppercase">La catégorie</h2>
                 <ul>
+                    @foreach($topCategories as $topcat)
                     <li class="sm:mb-2 mb-1">
-                        <a href="#" class="text-sm">Surfbretter</a>
+                        <a href="{{ route('categoryView', $topcat->id)}}" class="text-sm">{{ $topcat->name }}</a>
                     </li>
-                    <li class="sm:mb-2 mb-1">
-                        <a href="#" class="text-sm">Montres pour femmes</a>
-                    </li>
-                    <li class="sm:mb-2 mb-1">
-                        <a href="#" class="text-sm">Sacs</a>
-                    </li>
-                    <li class="sm:mb-2 mb-1">
-                        <a href="#" class="text-sm">Accessoires de cuisine</a>
-                    </li>
-                    <li class="sm:mb-2 mb-1">
-                        <a href="#" class="text-sm">Chaussures pour enfants</a>
-                    </li>
+                    @endforeach
+                    <!--<li class="sm:mb-2 mb-1">-->
+                    <!--    <a href="#" class="text-sm">Surfbretter</a>-->
+                    <!--</li>-->
+                    <!--<li class="sm:mb-2 mb-1">-->
+                    <!--    <a href="#" class="text-sm">Montres pour femmes</a>-->
+                    <!--</li>-->
+                    <!--<li class="sm:mb-2 mb-1">-->
+                    <!--    <a href="#" class="text-sm">Sacs</a>-->
+                    <!--</li>-->
+                    <!--<li class="sm:mb-2 mb-1">-->
+                    <!--    <a href="#" class="text-sm">Accessoires de cuisine</a>-->
+                    <!--</li>-->
+                    <!--<li class="sm:mb-2 mb-1">-->
+                    <!--    <a href="#" class="text-sm">Chaussures pour enfants</a>-->
+                    <!--</li>-->
                 </ul>
             </div>
             <div class="lg:col-span-2">

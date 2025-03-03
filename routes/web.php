@@ -12,7 +12,8 @@ use App\Http\Controllers\ExtraPagesController;
 use App\Http\Controllers\IndexController;
 use App\Models\HomeSettings;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,11 +27,23 @@ use Illuminate\Support\Facades\Route;
 // Main Pages
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/event/{id}', [IndexController::class, 'event'])->name('event');
-Route::get('/stores', [IndexController::class, 'allStores'])->name('allStores');
-Route::get('/store/{id}', [IndexController::class, 'storeView'])->name('storeView');
-Route::get('/categories', [IndexController::class, 'allCategories'])->name('allCategories');
-Route::get('/category/{id}', [IndexController::class, 'categoryView'])->name('categoryView');
+Route::post('/cookie/consent', function (Request $request) {
+    $consent = $request->input('consent');
+    $cookie = Cookie::make('cookie_consent', $consent, 60 * 24 * 30); // 30 days
+
+    return response()->json(['message' => 'Cookie preference saved.'])->cookie($cookie);
+})->name('cookie.consent');
+
+Route::get('/run-scheduler', function () {
+    Artisan::call('schedule:run');
+    return 'Scheduler has been triggered!';
+});
+
+Route::get('/occasions-spéciales/{id}', [IndexController::class, 'event'])->name('event');
+Route::get('/magasins', [IndexController::class, 'allStores'])->name('allStores');
+Route::get('/magasins/{id}/{name}', [IndexController::class, 'storeView'])->name('storeView');
+Route::get('/catégories', [IndexController::class, 'allCategories'])->name('allCategories');
+Route::get('/catégories/{id}', [IndexController::class, 'categoryView'])->name('categoryView');
 Route::get('/blogs', [IndexController::class, 'allBlogs'])->name('allBlogs');
 Route::get('/blog/{id}', [IndexController::class, 'blogView'])->name('blogView');
 Route::get('/coupons', [IndexController::class, 'allCoupons'])->name('allCoupons');
