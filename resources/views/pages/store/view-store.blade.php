@@ -189,7 +189,7 @@
                                 <div class="flex  gap-4">
                                     <div class="w-[35%] min-h-[51px] md:hidden">
                                         <p
-                                            class="flex items-center justify-center p-1 text-[13px] text-center h-full text-pretty overflow-hidden font-semibold text-[var(--secondary)] bg-[#0026541A] rounded-sm border-2 border-[var(--secondary)] ">
+                                            class="flex items-center justify-center p-1 text-[13px] text-center h-auto text-pretty overflow-hidden font-semibold text-[var(--secondary)] bg-[#0026541A] rounded-sm border-2 border-[var(--secondary)] ">
                                             {{$coupon->discount}}
                                         </p>
                                     </div>
