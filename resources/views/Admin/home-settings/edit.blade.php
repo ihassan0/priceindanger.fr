@@ -174,7 +174,8 @@
                     <div class="section-header">
                         <h1>Edit Home Settings</h1>
                     </div>
-                    <form action="{{ route('admin.home-settings.update', $homeSetting->id) }}" method="POST">
+                    <form action="{{ route('admin.home-settings.update', $homeSetting->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card-body">
@@ -205,6 +206,15 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label>Navbar Image:</label>
+                                <input type="file" name="navbar_image" class="form-control">
+                                @error('navbar_image')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
 
 
                             <div class="card-footer text-right">

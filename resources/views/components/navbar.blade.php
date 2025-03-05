@@ -80,8 +80,12 @@
 
     <!--Desktop Navigation  -->
 
-    <section class="bg-[var(--secondary)] bg-[url('https://imgde.shoppingspout.de/event_images/womenday-theme3XioVnArrkK-hbg_img.png')] bg-no-repeat bg-center bg-cover hidden lg:block">
-        <ul class="text-white flex items-center justify-center xl:gap-5 gap-3">
+    <section class="{{ $homesettings->navbar_image 
+        ? 'bg-[url(' . asset('storage/' . $homesettings->navbar_image) . ')] bg-no-repeat bg-center bg-cover hidden lg:block' 
+        : 'bg-[var(--secondary)]' }} hidden lg:block">
+        >
+        <ul class="text-white flex items-center justify-center  xl:gap-5 gap-3">
+
             <!--Categories Menus -->
             @if (Request::is('/'))
             <li class="bg-[var(--primary)] p-5 cursor-pointer relative w-60">
@@ -98,7 +102,7 @@
                             {{ $category->name }} </a></li>
                     @endforeach
                     <li class="p-[10px] text-[var(--primary)] border-t-[1px] border-gray-300">
-                        <a href="{{ route('allCategories') }}">
+                        <a href="{{ route('allCategories' , ['letter' => 'A']) }}">
                             <div class="flex items-center justify-between"> Plus de catégories <i
                                     class="fa-solid fa-plus"></i> </div>
                         </a>
@@ -114,10 +118,12 @@
             @endif
 
             <!--Navigation Menus -->
-            <li class="py-5  whitespace-nowrap text-center"><a href="/" class="!text-white">Maison</a></li>
-            <li class="py-5  whitespace-nowrap text-center"><a href="{{ route('allCategories') }}"
-                    class="!text-white">Catégories</a></li>
-            <li class="py-5  whitespace-nowrap text-center"><a href="{{ route('allStores') }}"
+
+            <li class="py-5   whitespace-nowrap text-center"><a href="/" class="!text-white">Maison</a></li>
+            <li class="py-5   whitespace-nowrap text-center"><a
+                    href="{{ route('allCategories', ['letter' => 'A']) }}" class="!text-white">Catégories</a></li>
+            <li class="py-5 whitespace-nowrap text-center"><a href="{{ route('allStores' , ['letter' => 'A']) }}"
+
                     class="!text-white">Magasins</a></li>
             <!--Dropdown -->
             <li class="group relative cursor-pointer">
@@ -150,6 +156,7 @@
             </li>
             <li class="py-5  whitespace-nowrap text-center"><a href="{{ route('allBlogs') }}"
                     class="!text-white">Blogs</a></li>
+
             <li class="openModal py-5 whitespace-nowrap text-center cursor-pointer"><a
                     class="!text-white">Submit Code</a></li>
         </ul>
@@ -258,6 +265,7 @@
                             class="!text-white">Offres de reduction</a></li>
                     <li class="p-3 py-4 text-sm font-medium"><a href="{{ route('allBlogs') }}"
                             class="!text-white">Blogs</a></li>
+
                     <li class="openModal p-3 py-4 text-sm font-medium cursor-pointer"><a
                             class="!text-white">Submit Code</a></li>
 
@@ -270,6 +278,7 @@
 </nav>
 
 <!-- Modal Container -->
+
 <div id="modal" class="z-20 fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50 transition-opacity duration-300">
     <div id="modalContent" class="bg-white min-w-[30%] overflow-hidden rounded-lg shadow-lg transform scale-95 transition-transform duration-300">
         <div class="submit-box w-content mx-auto">
@@ -278,25 +287,33 @@
                 <img class="absolute w-3/4 h-full object-contain z-[-1] -translate-x-2/4 left-2/4 opacity-10" alt="" src="{{url('logos/favicon.png')}}">
                 <label class="opacity-60">Website*</label>
                 <div class="input-wrapper">
-                    <input type="text" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="E.g. Amazon.com">
+                    <input type="text"
+                        class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none"
+                        placeholder="E.g. Amazon.com">
                 </div>
                 <form id="submit-code-form">
                     <div class="mt-4">
                         <label class="opacity-60">Coupon code*</label>
                         <div class="input-wrapper">
-                            <input type="text" name="coupon" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="E.g. SAVE10">
+                            <input type="text" name="coupon"
+                                class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none"
+                                placeholder="E.g. SAVE10">
                         </div>
                     </div>
                     <div class="mt-4">
                         <label class="opacity-60">Describe the offer*</label>
                         <div class="input-wrapper">
-                            <textarea name="description" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="E.g. 10% off all dog treats, excluding cat toys" rows="3"></textarea>
+                            <textarea name="description"
+                                class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none"
+                                placeholder="E.g. 10% off all dog treats, excluding cat toys" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="mt-4">
                         <label class="opacity-60">Expiration date (optional)</label>
                         <div class="input-wrapper">
-                            <input type="date" id="exp-date" name="expirationDate" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="Pick date">
+                            <input type="date" id="exp-date" name="expirationDate"
+                                class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none"
+                                placeholder="Pick date">
                         </div>
                     </div>
                     <p class="text-sm opacity-50 mt-4">*Indicates required</p>

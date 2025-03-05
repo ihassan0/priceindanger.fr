@@ -30,6 +30,7 @@
         <ul class="sm:flex hidden container items-center justify-center flex-wrap mt-16 gap-2">
             @foreach(range('A', 'Z') as $char)
             <li>
+
                 <button class="hover:border-b-[3px] hover:border-[var(--secondary)] size-8  hover:text-[var(--secondary)] hover:font-semibold transition-all duration-300 
                     {{ request('letter') === $char ? 'border-b-[3px] border-[var(--secondary)] text-[var(--secondary)] font-semibold' : 'text-[#8f8f8f]' }}"
                     data-letter="{{ $char }}">
@@ -40,8 +41,10 @@
             </li>
             @endforeach
             <li>
-                <button class="hover:border-b-[3px] hover:border-[var(--secondary)] h-8 px-2  text-[#8f8f8f] hover:text-[var(--secondary)] hover:font-semibold transition-all duration-300
-                     {{ request('letter') === '0-9' ? 'border-b-[3px] border-[var(--secondary)] text-[var(--secondary)] font-semibold' : '' }}" data-letter="0-9">
+                <button
+                    class="hover:border-b-[3px] hover:border-[var(--secondary)] h-8 px-2  text-[#8f8f8f] hover:text-[var(--secondary)] hover:font-semibold transition-all duration-300
+                     {{ request('letter') === '0-9' ? 'border-b-[3px] border-[var(--secondary)] text-[var(--secondary)] font-semibold' : '' }}"
+                    data-letter="0-9">
                     0 - 9
                 </button>
                 <a href="{{ url()->current() }}?letter=0-9" id="link-0-9" style="display: none;">

@@ -6,6 +6,17 @@
 </div> -->
 
 <div id="cookie-banner"
+    class="fixed inset-x-0 bottom-0 z-10 flex flex-col justify-between gap-x-8 gap-y-4 bg-white p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8">
+    <p class="max-w-4xl text-sm leading-6 text-gray-900">This website uses cookies to enhance your browsing experience,
+        analyze site traffic, and serve better user experiences. By continuing to use this site, you consent to our use
+        of
+        cookies. Learn more in our <a class="font-semibold text-teal-600" href="/privacy">cookie policy</a>.</p>
+    <div class="mr-16 flex flex-none items-center gap-x-5">
+        <button type="button" onclick="setCookieConsent(true)"
+            class="rounded-md bg-[var(--primary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-70">Accept
+            all 🍪</button>
+        <button type="button" onclick="setCookieConsent(true)"
+            class="text-sm font-semibold leading-6 text-[var(--primary)]">Reject all</button>
     class="fixed inset-x-0 bottom-0 z-10  bg-white">
     <div class="border-b border-gray-200 flex sm:px-6 py-2">
         <div class="items-center flex space-x-2 justify-center md:p-3 p-2 cursor-pointer border-b transition-all border-b-transparent text-sm sm:text-base"><label for="functional" class="pointer-events-none">Funktional</label><input id="functional" checked type="checkbox"></div>
@@ -74,7 +85,7 @@
                 <h2 class="mb-4 font-semibold uppercase">Liens utiles</h2>
                 <ul>
                     <li class="sm:mb-2 mb-1">
-                        <a href="{{ route('allCategories') }}" class="text-sm">Catégories</a>
+                        <a href="{{ route('allCategories', ['letter' => 'A']) }}" class="text-sm">Catégories</a>
                     </li>
                     <li class="sm:mb-2 mb-1">
                         <a href="{{ route('aboutUs') }}" class="text-sm">À propos de nous</a>
