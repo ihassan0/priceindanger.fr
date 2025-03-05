@@ -17,6 +17,26 @@
             all 🍪</button>
         <button type="button" onclick="setCookieConsent(true)"
             class="text-sm font-semibold leading-6 text-[var(--primary)]">Reject all</button>
+    class="fixed inset-x-0 bottom-0 z-10  bg-white">
+    <div class="border-b border-gray-200 flex sm:px-6 py-2">
+        <div class="items-center flex space-x-2 justify-center md:p-3 p-2 cursor-pointer border-b transition-all border-b-transparent text-sm sm:text-base"><label for="functional" class="pointer-events-none">Funktional</label><input id="functional" checked type="checkbox"></div>
+        <div class="items-center flex space-x-2 justify-center md:p-3 p-2 cursor-pointer border-b transition-all border-b-transparent text-sm sm:text-base"><label for="analytics" class="pointer-events-none">Webanalyse</label><input id="analytics" type="checkbox"></div>
+        <div class="items-center flex space-x-2 justify-center md:p-3 p-2 cursor-pointer border-b transition-all border-b-transparent text-sm sm:text-base"><label for="marketing" class="pointer-events-none">Marketing</label><input id="marketing" type="checkbox"></div>
+        <div class="items-center flex space-x-2 justify-center md:p-3 p-2 cursor-pointer border-b transition-all border-b-transparent text-sm sm:text-base">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" height="1rem" width="1rem">
+                <path d="M144 64c-53 0-96 43-96 96c0 8.8-7.2 16-16 16s-16-7.2-16-16C16 89.3 73.3 32 144 32h32c70.7 0 128 57.3 128 128c0 35.3-16.6 68.4-44.8 89.6l-60.8 45.6C184.3 305.8 176 322.4 176 340v12c0 8.8-7.2 16-16 16s-16-7.2-16-16V340c0-27.7 13-53.8 35.2-70.4L240 224c20.1-15.1 32-38.8 32-64c0-53-43-96-96-96H144zm-8 384a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="flex flex-col justify-between gap-x-8 gap-y-4 p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8">
+
+        <p class="max-w-4xl text-sm leading-6 text-gray-900">This website uses cookies to enhance your browsing experience,
+            analyze site traffic, and serve better user experiences. By continuing to use this site, you consent to our use of
+            cookies. Learn more in our <a class="font-semibold text-teal-600" href="/privacy">cookie policy</a>.</p>
+        <div class="mr-16 flex flex-none items-center gap-x-5">
+            <button type="button" onclick="setCookieConsent(true)" class="rounded-md bg-[var(--primary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-70">Accept all 🍪</button>
+            <button type="button" onclick="setCookieConsent(true)" class="text-sm font-semibold leading-6 text-[var(--primary)]">Reject all</button>
+        </div>
     </div>
 </div>
 

@@ -10,6 +10,12 @@
         <span class="bagde-flag">Exclusif</span>
     </div>
     @endif
+
+    <!-- Expiring soon -->
+    <div class="bg-[var(--secondary)] text-white px-2 py-1 absolute top-0 right-0 rounded-tr-lg rounded-bl-lg text-xs font-medium">
+        <span>Expire bientôt</span>
+    </div>
+
     <div class="p-3 pt-2">
         <h3 class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer" onclick="document.getElementById('couponModal-{{ $coupon->id }}').click();">{{ $coupon->name }}</h3>
 
@@ -26,11 +32,11 @@
 
 
 
-    <div class="flex justify-end items-center sm:mt-2 text-gray-500 text-sm min-h-[20px] text-xs sm:text-sm">
-    @if ($coupon->expire_date)
-        <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expire_date }}
-    @endif
-</div>
+        <div class="flex justify-end items-center sm:mt-2 text-gray-500 text-sm min-h-[20px] text-xs sm:text-sm">
+            @if ($coupon->expire_date)
+            <i class="far fa-calendar-alt mr-1 text-[var(--secondary)]"></i>{{ $coupon->expire_date }}
+            @endif
+        </div>
 
         <button onclick="buttonClick('{{ $coupon->id }}', '{{ $coupon->code }}', this);"
             class="btn w-full py-2 rounded mt-4 sm:text-sm text-xs" data-title="{{ $coupon->name }}"

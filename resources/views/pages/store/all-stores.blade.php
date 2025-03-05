@@ -87,7 +87,7 @@
 
                                 <div>
                                         <a href="{{ route('storeView', [ 'id' => $store->id, 'name' => Str::slug($store->name).'-codes-promo',]) }}"
-                                                class="hidden category relative opacity-80 w-full sm:block text-left px-4 py-1 rounded-sm">
+                                                class="hidden category relative opacity-80 font-medium w-full sm:block text-left px-4 py-1 rounded-sm">
                                                 {{ $store->name }}
                                         </a>
                                         <a href="{{ route('storeView', [ 'id' => $store->id, 'name' => Str::slug($store->name).'-codes-promo',]) }}"
