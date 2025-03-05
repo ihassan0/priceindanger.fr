@@ -47,6 +47,7 @@ class IndexController extends Controller
         $events = Event::where('status', 1)->get();
         $shops = Store::inRandomOrder()->limit(14)->get();
         $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
+        $homesettings = HomeSettings::first();
     
         // Get counts for all coupon types within the category
         $allCouponsCount = Coupon::where('event_id', $id)->count();
@@ -82,6 +83,7 @@ class IndexController extends Controller
             'coupons',
             'filter',
             'cashbackCount',
+            'homesettings'
         ));
     }
     
@@ -93,6 +95,7 @@ class IndexController extends Controller
         $events = Event::where('status',1)->get();
         $shops = Store::inRandomOrder()->limit(14)->get();
          $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
+         $homesettings = HomeSettings::first();
         $letter = $req->query('letter', null); 
         if($letter == null) {
             $letter = 'A';
@@ -108,7 +111,7 @@ class IndexController extends Controller
 
     $stores = $stores->get();
         // $stores = Store::all();
-        return view('pages.store.all-stores',compact('events','shops','letter','stores','topCategories'));
+        return view('pages.store.all-stores',compact('events','shops','letter','stores','topCategories','homesettings'));
     }
 
 // =================================================================================================================================================
@@ -118,6 +121,7 @@ class IndexController extends Controller
     $events = Event::where('status', 1)->get();
     $shops = Store::inRandomOrder()->limit(14)->get();
     $store = Store::with(['categories'])->findOrFail($id); // Ensure the store exists or throw a 404
+    $homesettings = HomeSettings::first();
     // dd($store);
     $categoryIds = $store->categories->pluck('id');
     // dd($categoryIds);
@@ -182,7 +186,8 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
         'coupons',
         'filter',
         'relevantStores',
-        'cashbackCount'
+        'cashbackCount',
+        'homesettings'
     ));
 }
 
@@ -197,6 +202,7 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
         $events = Event::where('status', 1)->get();
         $shops = Store::inRandomOrder()->limit(14)->get();
          $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
+         $homesettings = HomeSettings::first();
         // $categories = Category::all();
         $letter = $req->query('letter', null); 
         if($letter == null) {
@@ -213,7 +219,7 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
 
     $categories = $categories->get();
 
-        return view('pages.category.all-categories', compact('events', 'shops', 'letter','categories', 'topCategories'));
+        return view('pages.category.all-categories', compact('events', 'shops', 'letter','categories', 'topCategories','homesettings'));
     }
 
 
@@ -226,6 +232,7 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
         $shops = Store::inRandomOrder()->limit(14)->get();
         $category = Category::findOrFail($id); // Ensure category exists or throw 404
         $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
+        $homesettings = HomeSettings::first();
     
         // Get counts for all coupon types within the category
         $allCouponsCount = Coupon::where('category_id', $id)->count();
@@ -261,7 +268,8 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
             'angeboteCount',
             'coupons',
             'filter',
-            'cashbackCount'
+            'cashbackCount',
+            'homesettings'
         ));
     }
     
@@ -276,8 +284,9 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
         $events = Event::where('status', 1)->get();
         $shops = Store::inRandomOrder()->limit(14)->get();
         $blogs = Blog::all();
+        $homesettings = HomeSettings::first();
          $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
-        return view('pages.blogs.all-blogs', compact('events', 'shops', 'blogs','topCategories'));
+        return view('pages.blogs.all-blogs', compact('events', 'shops', 'blogs','topCategories','homesettings'));
     }
 
 
@@ -291,8 +300,9 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
         $shops = Store::inRandomOrder()->limit(14)->get();
         $blog = Blog::find($id);
         $blogs = Blog::all();
+        $homesettings = HomeSettings::first();
          $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
-        return view('pages.blogs.view-blog', compact('events', 'shops', 'blogs','blog','topCategories'));
+        return view('pages.blogs.view-blog', compact('events', 'shops', 'blogs','blog','topCategories','homesettings'));
     }
 
 
@@ -306,7 +316,8 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
         $shops = Store::inRandomOrder()->limit(14)->get();
         $coupons = Coupon::whereNotNull('code')->where('status', 1)->get();
          $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
-        return view('pages.coupons.all-coupons', compact('events', 'shops', 'coupons','topCategories'));
+         $homesettings = HomeSettings::first();
+        return view('pages.coupons.all-coupons', compact('events', 'shops', 'coupons','topCategories','homesettings'));
     }
 
 
@@ -321,7 +332,8 @@ $relevantStores = Store::whereHas('categories', function ($query) use ($category
         $shops = Store::inRandomOrder()->limit(14)->get();
         $coupons = Coupon::whereNull('code')->where('status', 1)->get();
          $topCategories = Category::whereIn('id', [233, 287, 254, 296, 216, 291,258])->get();
-        return view('pages.coupons.all-offres', compact('events', 'shops', 'coupons','topCategories'));
+         $homesettings = HomeSettings::first();
+        return view('pages.coupons.all-offres', compact('events', 'shops', 'coupons','topCategories','homesettings'));
     }
 
       // =============================================================================================================================

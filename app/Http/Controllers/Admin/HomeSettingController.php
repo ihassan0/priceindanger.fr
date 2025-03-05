@@ -56,18 +56,32 @@ class HomeSettingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
+        $validatedData= $request->validate([
             'description' => 'required|string',
             'contact_us' => 'required|string',
             'privacy_policy' => 'required|string',
+           'navbar_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+
         ]);
 
         $homeSetting = HomeSettings::findOrFail($id);
-        $homeSetting->update($request->only([
-            'description',
-            'contact_us',
-            'privacy_policy',
-        ]));
+        if ($request->hasFile('navbar_image')) {
+            // Delete old banner image if exists
+            if ($homeSetting->navbar_image && Storage::disk('public')->exists($homeSetting->navbar_image)) {
+                Storage::disk('public')->delete($homeSetting->navbar_image);
+            }
+    
+            // Store new banner image with a unique name
+            $filePath = $request->file('navbar_image')->store('banners', 'public');
+            $validatedData['navbar_image'] = $filePath;
+        }
+        // $homeSetting->update($request->only([
+        //     'description',
+        //     'contact_us',
+        //     'privacy_policy',
+        // ]));
+
+        $homeSetting->update($validatedData);
 
         return redirect()->route('admin.home-settings.index')->with('success', 'Home settings updated successfully.');
     }

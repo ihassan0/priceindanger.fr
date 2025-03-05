@@ -16,5 +16,6 @@ class HomeSettings extends Model
                             'contact_us',
                             'privacy_policy',
                             'FAQ',
+                            'navbar_image'
 ];
 }
