@@ -30,10 +30,9 @@
         <ul class="sm:flex hidden container items-center justify-center flex-wrap mt-16 gap-2">
             @foreach(range('A', 'Z') as $char)
             <li>
-                <button class="hover:border-b-[3px] hover:border-[var(--secondary)] size-8 text-[#8f8f8f] hover:text-[var(--secondary)] hover:font-semibold transition-all duration-300 
-                    {{ request('letter') === $char ? 'border-b-[3px] border-[var(--secondary)] text-[var(--secondary)] font-semibold' : '' }}"
+                <button class="hover:border-b-[3px] hover:border-[var(--secondary)] size-8  hover:text-[var(--secondary)] hover:font-semibold transition-all duration-300 
+                    {{ request('letter') === $char ? 'border-b-[3px] border-[var(--secondary)] text-[var(--secondary)] font-semibold' : 'text-[#8f8f8f]' }}"
                     data-letter="{{ $char }}">
-
                     {{ $char }}
                 </button>
                 <a href="{{ url()->current() }}?letter={{ $char }}" id="link-{{ $char }}" style="display: none;">
@@ -87,7 +86,7 @@
                 @foreach ($categories as $category )
 
                 <a href="{{ route('categoryView',$category->id) }}">
-                    <span class="category relative opacity-80 w-full hidden sm:block text-left px-4 py-1 rounded-sm">
+                    <span class="category relative opacity-80 font-medium w-full hidden sm:block text-left px-4 py-1 rounded-sm">
 
                         {{ $category->name }}
                     </span>

@@ -77,10 +77,11 @@
 
     </div>
 
+
     <!--Desktop Navigation  -->
 
-    <section class="bg-[var(--secondary)] bg-[url(https://t4.ftcdn.net/jpg/04/61/47/03/360_F_461470323_6TMQSkCCs9XQoTtyer8VCsFypxwRiDGU.jpg)] hidden lg:block">
-        <ul class="text-white flex items-center justify-center  xl:gap-5 gap-3">
+    <section class="bg-[var(--secondary)] bg-[url('https://imgde.shoppingspout.de/event_images/womenday-theme3XioVnArrkK-hbg_img.png')] bg-no-repeat bg-center bg-cover hidden lg:block">
+        <ul class="text-white flex items-center justify-center xl:gap-5 gap-3">
             <!--Categories Menus -->
             @if (Request::is('/'))
             <li class="bg-[var(--primary)] p-5 cursor-pointer relative w-60">
@@ -113,15 +114,15 @@
             @endif
 
             <!--Navigation Menus -->
-            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="/" class="!text-white">Maison</a></li>
-            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allCategories') }}"
+            <li class="py-5  whitespace-nowrap text-center"><a href="/" class="!text-white">Maison</a></li>
+            <li class="py-5  whitespace-nowrap text-center"><a href="{{ route('allCategories') }}"
                     class="!text-white">Catégories</a></li>
-            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allStores') }}"
+            <li class="py-5  whitespace-nowrap text-center"><a href="{{ route('allStores') }}"
                     class="!text-white">Magasins</a></li>
             <!--Dropdown -->
             <li class="group relative cursor-pointer">
                 <!--Button -->
-                <span class="block w-40  whitespace-nowrap text-center">
+                <span class="block   whitespace-nowrap text-center">
                     <a class="menu-hover !text-white">
                         Occasions spéciales
                     </a>
@@ -142,21 +143,22 @@
                     </li>
                 </ul>
             </li>
-            <li class="py-5 w-[120px]  whitespace-nowrap text-center"><a href="{{ route('allCoupons') }}"
+            <li class="py-5  whitespace-nowrap text-center"><a href="{{ route('allCoupons') }}"
                     class="!text-white">Codes Promo</a></li>
-            <li class="py-5 w-[120px]  whitespace-nowrap text-center"><a href="{{ route('allOffres') }}"
+            <li class="py-5 whitespace-nowrap text-center"><a href="{{ route('allOffres') }}"
                     class="!text-white">Offres de reduction</a>
             </li>
-            <li class="py-5 w-20  whitespace-nowrap text-center"><a href="{{ route('allBlogs') }}"
+            <li class="py-5  whitespace-nowrap text-center"><a href="{{ route('allBlogs') }}"
                     class="!text-white">Blogs</a></li>
-            <li class="openModal py-5 w-20  whitespace-nowrap text-center cursor-pointer"><a
+            <li class="openModal py-5 whitespace-nowrap text-center cursor-pointer"><a
                     class="!text-white">Submit Code</a></li>
         </ul>
     </section>
 
+
     <!--Mobile Navigation  -->
 
-    <section class="bg-[var(--secondary)] text-white lg:hidden">
+    <section class="bg-[var(--secondary)] bg-[url('https://imgde.shoppingspout.de/event_images/womenday-theme3XioVnArrkK-hbg_img.png')] bg-no-repeat bg-center bg-cover text-white lg:hidden">
 
         <!--Buttons to Open the Drawers -->
         <div class="flex justify-between items-center sm:mx-16 mx-6 relative">
@@ -258,7 +260,7 @@
                             class="!text-white">Blogs</a></li>
                     <li class="openModal p-3 py-4 text-sm font-medium cursor-pointer"><a
                             class="!text-white">Submit Code</a></li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -269,11 +271,11 @@
 
 <!-- Modal Container -->
 <div id="modal" class="z-20 fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50 transition-opacity duration-300">
-    <div id="modalContent" class="bg-white min-w-[30%] p-6 rounded-lg shadow-lg transform scale-95 transition-transform duration-300">
+    <div id="modalContent" class="bg-white min-w-[30%] overflow-hidden rounded-lg shadow-lg transform scale-95 transition-transform duration-300">
         <div class="submit-box w-content mx-auto">
-            <h1 class="text-2xl text-[var(--secondary)] font-medium poppins text-center">Want to submit a code?</h1>
-            <div class="mt-5 relative">
-                <img class="absolute w-3/4 h-full object-contain z-[-1] -translate-x-2/4 left-2/4 opacity-30" alt="" src="{{url('logos/coupons.png')}}">
+            <h1 class="text-2xl text-white py-3 font-medium poppins text-center bg-[var(--primary)]">Want to submit a code?</h1>
+            <div class="mt-5 relative p-6">
+                <img class="absolute w-3/4 h-full object-contain z-[-1] -translate-x-2/4 left-2/4 opacity-10" alt="" src="{{url('logos/favicon.png')}}">
                 <label class="opacity-60">Website*</label>
                 <div class="input-wrapper">
                     <input type="text" class="border border-[#00000080] bg-transparent rounded-sm w-full py-1 px-3 focus-visible:outline-none" placeholder="E.g. Amazon.com">
