@@ -80,11 +80,8 @@
 
     <!--Desktop Navigation  -->
 
-    <section class="{{ $homesettings->navbar_image 
-        ? 'bg-[url(' . asset('storage/' . $homesettings->navbar_image) . ')] bg-no-repeat bg-center bg-cover hidden lg:block' 
-        : 'bg-[var(--secondary)]' }} hidden lg:block">
-        >
-        <ul class="text-white flex items-center justify-center  xl:gap-5 gap-3">
+    <section class="bg-[var(--secondary)] bg-[url('https://imgde.shoppingspout.de/event_images/womenday-theme3XioVnArrkK-hbg_img.png')] bg-no-repeat bg-center bg-cover hidden lg:block">
+    <ul class="text-white flex items-center justify-center xl:gap-5 gap-3">
 
             <!--Categories Menus -->
             @if (Request::is('/'))
