@@ -51,7 +51,7 @@ class="fixed inset-x-0 bottom-0 z-10  bg-white">
 
 
 
-<footer class="bg-[#F7F8FB] text-black">
+<footer class="bg-[#F7F8FB] bg-[url('https://imgde.shoppingspout.de/event_images/womenday-theme3XioVnArrkK-hbg_img.png')] bg-no-repeat bg-cover text-black">
     <div class="mx-auto w-full max-w-6xl">
         <div class="grid sm:grid-cols-2 gap-4 px-4 pt-10 lg:pt-16 lg:grid-cols-6">
             <div class="lg:col-span-2">

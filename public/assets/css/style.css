@@ -186,3 +186,15 @@ h6 {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
+
+
+.category::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50px;
+    top: calc(50% - 2px);
+    left: 2px;
+}

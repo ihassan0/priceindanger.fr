@@ -1,87 +1,88 @@
 <nav>
+    <div class="bg-[url('https://imgde.shoppingspout.de/event_images/womenday-theme3XioVnArrkK-hbg_img.png')]">
+        <div class="container mx-auto md:flex items-center justify-between md:gap-16 gap-8 md:px-5 px-3 py-5">
 
-    <div class="container  mx-auto md:flex items-center justify-between md:gap-16 gap-8 md:px-5 px-3 py-5">
+            <!--Logo -->
+            <div class="flex items-center justify-between">
+                <a href="/">
+                    <img src="{{url('logos/priceindanger.webp')}}" class="sm:w-[230px] w-[128px]" />
+                </a>
+                <div class="relative">
+                    <div id="languageToggle"
+                        class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer flex md:hidden">
+                        <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="French Flag"
+                            class="w-[32px]">
+                        <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
+                    </div>
+                    <div id="dropdownMenu" class="absolute left-0 mt-2 bg-white shadow-md rounded-lg w-36 z-50 hidden">
+                        <a href="https://priceindanger.com/" target="_blank"
+                            class="flex items-center gap-3 p-2 hover:bg-gray-100">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag"
+                                class="w-[32px]">
+                            <span>German</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-        <!--Logo -->
-        <div class="flex items-center justify-between">
-            <a href="/">
-                <img src="{{url('logos/priceindanger.webp')}}" class="sm:w-[230px] w-[128px]" />
-            </a>
+            <!--Search -->
+            <div class="flex-1 relative h-12 my-4 hidden lg:block">
+                <input type="text"
+                    class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
+                    id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
+                <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
+
+                <!--Suggestions Dropdown -->
+                <ul id="suggestions"
+                    class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
+                </ul>
+            </div>
+
+            @if (Request::is('/'))
+            <!--Search -->
+            <div class="flex-1 relative h-12 my-4 lg:hidden">
+                <input type="text"
+                    class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
+                    id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
+                <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
+
+                <!--Suggestions Dropdown -->
+                <ul id="suggestions"
+                    class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
+                </ul>
+            </div>
+            @endif
+
+            <!--Flag -->
             <div class="relative">
-                <div id="languageToggle"
-                    class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer flex md:hidden">
+                <!--Main Flag Section -->
+                <div onclick="toggleDropdown()"
+                    class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer hidden md:flex">
                     <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="French Flag"
                         class="w-[32px]">
                     <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
                 </div>
-                <div id="dropdownMenu" class="absolute left-0 mt-2 bg-white shadow-md rounded-lg w-36 z-50 hidden">
-                    <a href="https://priceindanger.com/" target="_blank"
-                        class="flex items-center gap-3 p-2 hover:bg-gray-100">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag"
-                            class="w-[32px]">
-                        <span>German</span>
-                    </a>
-                </div>
-            </div>
-        </div>
 
-        <!--Search -->
-        <div class="flex-1 relative h-12 my-4 hidden lg:block">
-            <input type="text"
-                class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
-                id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
-            <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
-
-            <!--Suggestions Dropdown -->
-            <ul id="suggestions"
-                class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
-            </ul>
-        </div>
-
-        @if (Request::is('/'))
-        <!--Search -->
-        <div class="flex-1 relative h-12 my-4 lg:hidden">
-            <input type="text"
-                class="border border-1 rounded-sm w-full h-full p-3 focus-visible:outline-none text-sm search-bar"
-                id="search-bar" placeholder="Trouvez des codes promo et des offres de vos marques préférées">
-            <i class="fa-solid fa-magnifying-glass absolute right-3 top-[30%] bg-white pl-3"></i>
-
-            <!--Suggestions Dropdown -->
-            <ul id="suggestions"
-                class="suggestions absolute bg-white w-full hidden mt-1 overflow-auto text-sm z-10 rounded-sm">
-            </ul>
-        </div>
-        @endif
-
-        <!--Flag -->
-        <div class="relative">
-            <!--Main Flag Section -->
-            <div onclick="toggleDropdown()"
-                class="items-center border-l-2 md:pl-10 pl-5 gap-3 cursor-pointer hidden md:flex">
-                <img src="https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg" alt="French Flag"
-                    class="w-[32px]">
-                <p class="font-semibold text-[#333]">French &nbsp;<i class="fa-solid fa-caret-down"></i></p>
+                <!--Dropdown with German Flag -->
+                <ul id="languageDropdown" class="absolute left-0 top-12 bg-white shadow-md rounded-md w-48 hidden">
+                    <li class="flex items-center gap-3 p-2 hover:bg-gray-100">
+                        <a href="https://priceindanger.com/" target="_blank" class="flex items-center gap-3 w-full">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag"
+                                class="w-[24px]">
+                            <span>German</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
-            <!--Dropdown with German Flag -->
-            <ul id="languageDropdown" class="absolute left-0 top-12 bg-white shadow-md rounded-md w-48 hidden">
-                <li class="flex items-center gap-3 p-2 hover:bg-gray-100">
-                    <a href="https://priceindanger.com/" target="_blank" class="flex items-center gap-3 w-full">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="German Flag"
-                            class="w-[24px]">
-                        <span>German</span>
-                    </a>
-                </li>
-            </ul>
         </div>
-
     </div>
 
 
     <!--Desktop Navigation  -->
 
-    <section class="bg-[var(--secondary)] bg-[url('https://imgde.shoppingspout.de/event_images/womenday-theme3XioVnArrkK-hbg_img.png')] bg-no-repeat bg-center bg-cover hidden lg:block">
-    <ul class="text-white flex items-center justify-center xl:gap-5 gap-3">
+    <section class="bg-[var(--secondary)] bg-no-repeat bg-center bg-cover hidden lg:block">
+        <ul class="text-white flex items-center justify-center xl:gap-5 gap-3">
 
             <!--Categories Menus -->
             @if (Request::is('/'))
@@ -278,10 +279,10 @@
 
 <div id="modal" class="z-20 fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50 transition-opacity duration-300">
     <div id="modalContent" class="bg-white min-w-[30%] overflow-hidden rounded-lg shadow-lg transform scale-95 transition-transform duration-300">
+        <img class="absolute w-[35%] h-full object-contain z-[-1] -translate-x-2/4 -translate-y-2/4 top-2/4 left-2/4 opacity-10" alt="" src="{{url('logos/favicon.png')}}">
         <div class="submit-box w-content mx-auto">
-            <h1 class="text-2xl text-white py-3 font-medium poppins text-center bg-[var(--primary)]">Want to submit a code?</h1>
+            <h1 class="text-2xl text-white py-3 font-medium poppins text-center bg-[var(--secondary)]">Want to submit a code?</h1>
             <div class="mt-5 relative p-6">
-                <img class="absolute w-3/4 h-full object-contain z-[-1] -translate-x-2/4 left-2/4 opacity-10" alt="" src="{{url('logos/favicon.png')}}">
                 <label class="opacity-60">Website*</label>
                 <div class="input-wrapper">
                     <input type="text"
@@ -315,7 +316,7 @@
                     </div>
                     <p class="text-sm opacity-50 mt-4">*Indicates required</p>
                     <div class="text-center mt-3">
-                        <button class="btn rounded-full overflow-hidden mx-auto py-2 px-8">Submit code</button>
+                        <button class="btn submit_code rounded-full overflow-hidden mx-auto py-2 px-8">Submit code</button>
                     </div>
                 </form>
             </div>
@@ -324,6 +325,21 @@
 </div>
 
 
+<style>
+    .submit_code {
+        border: 1px solid var(--primary);
+    }
+
+    .submit_code::before,
+    .submit_code::after {
+        background-color: var(--primary);
+    }
+
+    .submit_code:hover {
+        color: var(--primary) !important;
+        border: 1px solid var(--primary);
+    }
+</style>
 
 <script>
     // document.addEventListener('DOMContentLoaded', () => {
